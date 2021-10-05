@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ruh.login">
+
+
+<!-- 예시	 -->
+<!-- 	<select id="boardlist" resultType="hkDto" parameterType="String"> -->
+<!-- 		SELECT SEQ,ID,TITLE,CONTENT,REGDATE -->
+<!-- 		FROM ( -->
+<!-- 			 SELECT ROW_NUMBER() OVER(ORDER BY REGDATE) RN, -->
+<!-- 		     SEQ, ID, TITLE, CONTENT, REGDATE -->
+<!-- 			 FROM HKBOARD -->
+<!-- 			 ) -->
+<!-- 		WHERE CEIL(RN/5)=#{pnum} -->
+<!-- 	</select> -->
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
