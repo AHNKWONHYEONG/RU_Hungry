@@ -14,7 +14,9 @@
 <!-- 			 ) -->
 <!-- 		WHERE CEIL(RN/5)=#{pnum} -->
 <!-- 	</select> -->
+	<insert id="">
 	
+	</insert>
 	
 </mapper>
 

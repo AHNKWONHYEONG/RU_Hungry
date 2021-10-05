@@ -142,15 +142,26 @@ span {
 				Password</span>
 			<button class="submit">Login</button>
 		</form>
+		
+		
 		<form id="register" action="" class="input-group">
-			<input type="text" class="input-field"
-				placeholder="User name or Email" required> <input
-				type="email" class="input-field" placeholder="Your Email" required>
-			<input type="password" class="input-field"
-				placeholder="Enter Password" required> <input
-				type="checkbox" class="checkbox"><span>Terms and
-				conditions</span>
-			<button class="submit">REGISTER</button>
+			<input type="text" class="input-field" placeholder="ID를 입력하세요" required="required">
+			<input type="password" class="input-field" placeholder="PW를 입력하세요" required="required"> 
+			<input type="text" class="input-field" placeholder="이름을 입력하세요" required="required">
+			<input type="text" class="input-field" placeholder="별명을 입력하세요" required="required">
+			
+			<input type="radio" name="sexck"  value="m" /><label>남</label>
+			<input type="radio" name="sexck"  value="w" /><label>여</label>
+			<br/> <hr/>
+			
+			<div>
+			<h5>생년월일을 선택하세요</h5>
+			<input type="date"  required="required">
+			</div>
+			
+			<hr/>
+			<input type="email" class="input-field" placeholder="이메일을 입력하세요"  required="required">
+			<button class="submit">회원가입</button>
 		</form>
 	</div>
 	<script>
@@ -168,6 +179,7 @@ span {
 			x.style.left = "-400px";
 			y.style.left = "50px";
 			z.style.left = "110px";
+			
 		}
 	</script>
 </body>
