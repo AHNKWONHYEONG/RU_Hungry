@@ -14,8 +14,9 @@
 <!-- 			 ) -->
 <!-- 		WHERE CEIL(RN/5)=#{pnum} -->
 <!-- 	</select> -->
-	<insert id="">
-	
+	<insert id="register"  parameterType="ruhDto">
+			INSERT INTO USERS VALUES(RUH_SEQ.nextval, #{id}, #{pw} , #{name},#{nickname},SYSDATE, 'n' , #{sex} ,#{birth},#{email})
+			
 	</insert>
 	
 </mapper>

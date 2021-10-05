@@ -28,4 +28,22 @@ public class LoginDao extends SqlMapConfig{
 		}
 		return dto;
 	}
+	
+	
+	public boolean Regist(LoginDto dto) {
+		SqlSession sqlSession=null;
+		int count=0;
+		
+		try {
+			sqlSession=getSqlSessionFactory().openSession(true);
+			count=sqlSession.insert(namespace+"register", dto);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		
+		return count>0? true:false;
+	}
 }

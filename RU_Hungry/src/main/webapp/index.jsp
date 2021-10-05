@@ -144,24 +144,24 @@ span {
 		</form>
 		
 		
-		<form id="register" action="" class="input-group">
-			<input type="text" class="input-field" placeholder="ID를 입력하세요" required="required">
-			<input type="password" class="input-field" placeholder="PW를 입력하세요" required="required"> 
-			<input type="text" class="input-field" placeholder="이름을 입력하세요" required="required">
-			<input type="text" class="input-field" placeholder="별명을 입력하세요" required="required">
+		<form id="register" action="LoginController.do?command=register"  method="post" class="input-group">
+			<input type="text" name="id" class="input-field" placeholder="ID를 입력하세요" required="required">
+			<input type="password" name="pw" class="input-field" placeholder="PW를 입력하세요" required="required"> 
+			<input type="text" name="name" class="input-field" placeholder="이름을 입력하세요" required="required">
+			<input type="text" name="nickname" class="input-field" placeholder="별명을 입력하세요" required="required">
 			
-			<input type="radio" name="sexck"  value="m" /><label>남</label>
-			<input type="radio" name="sexck"  value="w" /><label>여</label>
+			<input type="radio" name="sexchk"  value="m" /><label>남</label>
+			<input type="radio" name="sexchk"  value="w" /><label>여</label>
 			<br/> <hr/>
 			
 			<div>
 			<h5>생년월일을 선택하세요</h5>
-			<input type="date"  required="required">
+			<input type="date"  name="birth" required="required">
 			</div>
 			
 			<hr/>
-			<input type="email" class="input-field" placeholder="이메일을 입력하세요"  required="required">
-			<button class="submit">회원가입</button>
+			<input type="email" name="email" class="input-field" placeholder="이메일을 입력하세요"  required="required">
+			<button type="submit" >회원가입</button>
 		</form>
 	</div>
 	<script>
