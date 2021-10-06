@@ -8,7 +8,6 @@
 <title></title>
 </head>
 <body>
-안녕
-<a href="LoginController.do?command=index">로그아웃</a>
+하이
 </body>
 </html>

@@ -134,7 +134,7 @@ span {
 			<button type="button" class="togglebtn" onclick="register()">REGISTER</button>
 		</div>
 		
-		<form id="login" action="LoginController.do?command=login" class="input-group" method="post">
+		<form id="login" action="UsersController.do?command=login" class="input-group" method="post">
 			<input type="text" name="id" class="input-field" placeholder="User name or Email" required>
 			<input type="password" name="pw" class="input-field" placeholder="Enter Password" required>
 			<input type="checkbox" class="checkbox"><span>Remember
@@ -143,7 +143,7 @@ span {
 		</form>
 		
 		
-		<form id="register" action="LoginController.do?command=register"  method="post" class="input-group">
+		<form id="register" action="UsersController.do?command=register"  method="post" class="input-group">
 			<input type="text" name="id" class="input-field" placeholder="ID를 입력하세요" required="required">
 			<input type="password" name="pw" class="input-field" placeholder="PW를 입력하세요" required="required"> 
 			<input type="text" name="name" class="input-field" placeholder="이름을 입력하세요" required="required">

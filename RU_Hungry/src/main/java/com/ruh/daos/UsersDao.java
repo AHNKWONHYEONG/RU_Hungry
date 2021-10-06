@@ -6,13 +6,13 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.ruh.config.SqlMapConfig;
-import com.ruh.dtos.LoginDto;
+import com.ruh.dtos.UsersDto;
 
-public class LoginDao extends SqlMapConfig{
+public class UsersDao extends SqlMapConfig{
 	private String namespace="com.ruh.login.";
 	
-	public LoginDto getLogin(String id, String pw) {
-		LoginDto dto=null;
+	public UsersDto getLogin(String id, String pw) {
+		UsersDto dto=null;
 		SqlSession sqlSession=null;
 		
 		try {
@@ -30,7 +30,7 @@ public class LoginDao extends SqlMapConfig{
 	}
 	
 	
-	public boolean Regist(LoginDto dto) {
+	public boolean Regist(UsersDto dto) {
 		SqlSession sqlSession=null;
 		int count=0;
 		

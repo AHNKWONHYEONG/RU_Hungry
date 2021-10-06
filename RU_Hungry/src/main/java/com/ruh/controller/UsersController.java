@@ -19,13 +19,13 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.ruh.daos.LoginDao;
-import com.ruh.dtos.LoginDto;
+import com.ruh.daos.UsersDao;
+import com.ruh.dtos.UsersDto;
 import com.sun.jdi.Location;
 
 
-@WebServlet("/LoginController.do")
-public class LoginController extends HttpServlet {
+@WebServlet("/UsersController.do")
+public class UsersController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	//원하는 쿠기 구하는 메서드
@@ -44,7 +44,7 @@ public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command=request.getParameter("command");
 		
-		LoginDao dao=new LoginDao();
+		UsersDao dao=new UsersDao();
 		HttpSession session=request.getSession();//session객체 구함
 		
 		if(command.equals("register")) {  //예시
@@ -61,11 +61,11 @@ public class LoginController extends HttpServlet {
 			 SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 			try {
-				boolean isS= dao.Regist(new LoginDto(0, id, pw, name, nickname, null, null, sex, transFormat.parse(birth), email) );
+				boolean isS= dao.Regist(new UsersDto(0, id, pw, name, nickname, null, null, sex, transFormat.parse(birth), email) );
 				if (isS) {
 					String jsTag="<script type='text/javascript'>"
 								+	"alert('회원가입을 축하드립니다.');"
-								+	"location.href = 'LoginController.do?command=index';"
+								+	"location.href = 'UsersController.do?command=index';"
 								+"</script>";
 					PrintWriter pwr=response.getWriter();
 					pwr.print(jsTag);
@@ -79,28 +79,37 @@ public class LoginController extends HttpServlet {
 		}
 		
 		else if(command.equals("index")) {
+			session.removeAttribute("readcount");
 			response.sendRedirect("index.jsp");
 			
 		}
 		
 		else if(command.equals("login")) {
+			session.removeAttribute("readcount");
+			
 			String id=request.getParameter("id");
 			String pw=request.getParameter("pw");
 			
-			LoginDto dto=dao.getLogin(id, pw);
+			UsersDto dto=dao.getLogin(id, pw);
 			
 			if(dto.getId()!=null) {
 				session.setAttribute("ruhDto", dto);
 				session.setMaxInactiveInterval(10*60);
-				response.sendRedirect("usermain.jsp");
+				response.sendRedirect("main.jsp");
 			}else {
 				String jsTag="<script type='text/javascript'>"
 						+	"alert('로그인이 필요합니다..');"
-						+	"location.href = 'LoginController.do?command=index';"
+						+	"location.href = 'UsersController.do?command=index';"
 						+"</script>";
 				PrintWriter pwr=response.getWriter();
 				pwr.print(jsTag);
 			}
+		}
+		else if(command.equals("usermain")) {
+			response.sendRedirect("main.jsp");
+		}
+		else if(command.equals("worldcup")) {
+			response.sendRedirect("worldcup.jsp");
 		}
 	}
 
