@@ -130,17 +130,16 @@ span {
 	<div class="form-wrap">
 		<div class="button-wrap">
 			<div id="btn"></div>
-			<button type="button" class="togglebtn" onclick="login()">LOG
-				IN</button>
+			<button type="button" class="togglebtn" onclick="login()">LOGIN</button>
 			<button type="button" class="togglebtn" onclick="register()">REGISTER</button>
 		</div>
-		<form id="login" action="" class="input-group">
-			<input type="text" class="input-field"
-				placeholder="User name or Email" required> <input
-				type="password" class="input-field" placeholder="Enter Password"
-				required> <input type="checkbox" class="checkbox"><span>Remember
+		
+		<form id="login" action="LoginController.do?command=login" class="input-group" method="post">
+			<input type="text" name="id" class="input-field" placeholder="User name or Email" required>
+			<input type="password" name="pw" class="input-field" placeholder="Enter Password" required>
+			<input type="checkbox" class="checkbox"><span>Remember
 				Password</span>
-			<button class="submit">Login</button>
+			<button type="submit" class="submit">Login</button>
 		</form>
 		
 		
@@ -161,7 +160,7 @@ span {
 			
 			<hr/>
 			<input type="email" name="email" class="input-field" placeholder="이메일을 입력하세요"  required="required">
-			<button type="submit" >회원가입</button>
+			<button type="submit" class="submit" >회원가입</button>
 		</form>
 	</div>
 	<script>

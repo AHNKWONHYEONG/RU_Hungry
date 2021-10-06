@@ -19,6 +19,12 @@
 			
 	</insert>
 	
+	<select id="getlogin" parameterType="map" resultType="ruhDto">
+		SELECT SEQ ,ID ,PW ,NAME ,REGDATE ,DELFLAG ,SEX ,BIRTH ,EMAIL 
+		FROM USERS 
+		WHERE ID=#{id} AND PW=#{pw} AND DELFLAG='n'
+	</select>
+	
 </mapper>
 
 

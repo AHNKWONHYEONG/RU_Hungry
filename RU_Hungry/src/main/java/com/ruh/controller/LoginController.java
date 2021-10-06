@@ -11,9 +11,11 @@ import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -25,11 +27,25 @@ import com.sun.jdi.Location;
 @WebServlet("/LoginController.do")
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	//원하는 쿠기 구하는 메서드
+//		public Cookie getCookie(String cookieName, HttpServletRequest request) {
+//			
+//			Cookie[] cookies=request.getCookies();
+//			Cookie cookie=null;
+//			for (int i = 0; i < cookies.length; i++) {
+//				if(cookies[i].getName().equals(cookieName)) {
+//					cookie=cookies[i];				
+//				}
+//			}
+//			return cookie;
+//		}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command=request.getParameter("command");
 		
 		LoginDao dao=new LoginDao();
+		HttpSession session=request.getSession();//session객체 구함
 		
 		if(command.equals("register")) {  //예시
 		
@@ -60,9 +76,31 @@ public class LoginController extends HttpServlet {
 				e.printStackTrace();
 			}
 
-		}else if(command.equals("index")) {
+		}
+		
+		else if(command.equals("index")) {
 			response.sendRedirect("index.jsp");
 			
+		}
+		
+		else if(command.equals("login")) {
+			String id=request.getParameter("id");
+			String pw=request.getParameter("pw");
+			
+			LoginDto dto=dao.getLogin(id, pw);
+			
+			if(dto.getId()!=null) {
+				session.setAttribute("ruhDto", dto);
+				session.setMaxInactiveInterval(10*60);
+				response.sendRedirect("usermain.jsp");
+			}else {
+				String jsTag="<script type='text/javascript'>"
+						+	"alert('로그인이 필요합니다..');"
+						+	"location.href = 'LoginController.do?command=index';"
+						+"</script>";
+				PrintWriter pwr=response.getWriter();
+				pwr.print(jsTag);
+			}
 		}
 	}
 
@@ -71,3 +109,15 @@ public class LoginController extends HttpServlet {
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+

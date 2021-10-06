@@ -19,8 +19,8 @@ public class LoginDao extends SqlMapConfig{
 			Map<String, String>map=new HashMap<>();
 			map.put("id", id);
 			map.put("pw", pw);
-			sqlSession=getSqlSessionFactory().openSession(false);
-			dto=sqlSession.selectOne(namespace+"getLogin", map);
+			sqlSession=getSqlSessionFactory().openSession(true);
+			dto=sqlSession.selectOne(namespace+"getlogin", map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
