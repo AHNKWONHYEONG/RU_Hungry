@@ -8,8 +8,8 @@
 		VALUES(RUH_SEQ.nextval,#{category},#{title},#{id},#{content},SYSDATE)
 	</insert>
 	
-	<select id="reviewboard" parameterType="reviewDto" resultType="reviewDto">
-		SELECT #{seq} ,#{category} ,#{title} ,#{id} ,#{content} ,#{regdate} 
+	<select id="reviewboard"  resultType="reviewDto">
+		SELECT SEQ ,CATEGORY ,TITLE ,ID ,CONTENT ,REGDATE 
 		FROM REVIEW
 	</select>
 
