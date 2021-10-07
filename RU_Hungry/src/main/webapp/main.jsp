@@ -7,6 +7,34 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+var imgArray = new Array();
+
+imgArray[0] = "randimg/0.jpg";
+imgArray[1] = "randimg/1.jpg";
+imgArray[2] = "randimg/2.jpg";
+imgArray[3] = "randimg/3.jpg";
+imgArray[4] = "randimg/4.jpg";
+imgArray[5] = "randimg/5.jpg";
+
+function funccc(){
+   var imgNum = Math.round(Math.random()*2);
+   var objImg = document.getElementById("introImg");
+   objImg.src = imgArray[imgNum];
+   let x = document.getElementsByClassName("quiz-text")[0];
+      x.innerText="Javascript"; 
+   if(imgNum==0){
+       x.innerText="오늘의 추천 메뉴는 스무디입니다."; 
+   }else if(imgNum==1){
+       x.innerText="오늘의 추천 메뉴는 에스프레소 입니다."; 
+   }else if(imgNum==2){
+       x.innerText="오늘의 추천 메뉴는 커피 2잔 입니다."; 
+   }
+   
+};
+
+
+</script>
 <style type="text/css">
 .buttons {
 	padding: 0px 200px;
@@ -48,7 +76,13 @@
 	top: 200px;
 	align: center;
 }
+.randplay{
+ position: absolute;
+        left: 300px;
+        top: 50px;
+        align:center;
 }
+
 </style>
 </head>
 <%
@@ -67,6 +101,17 @@
 					width="100px" height="100px" onclick="location.href='main.jsp'">
 			</button>
 		</div>
+		<div class="randplay">
+      
+      <img id = "introImg" width="200px" height="150px" border="0" 
+      src="randimg/Q.png"
+      >
+      <button onclick="funccc()">클릭~</button>
+      <p>
+         <span class="quiz-text">버튼을 클릭하세요.</span>
+    </p>
+      </div>
+		
 	</div>
 	<br />
 
