@@ -18,6 +18,10 @@
 		FROM REVIEW
 		WHERE SEQ=#{seq}
 	</select>
+	
+	<delete id="delboard" parameterType="String">
+		DELETE FROM Review WHERE SEQ=#{seq}
+	</delete>
 
 </mapper>
 

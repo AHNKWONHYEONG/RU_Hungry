@@ -67,6 +67,15 @@ response.setContentType("text/html; charset=UTF-8");
 	List<ReviewDto> list=dao.getBoardList();
 
 %>
+<script type="text/javascript">
+	//전체 체크박스 기능
+	function allSel(bool){//bool은 체크여부를 받는다(true/false)
+		var chks=document.getElementsByName("chk");//chks[chk,chk,chk,chk..]
+		for (var i = 0; i < chks.length; i++) {
+			chks[i].checked=bool;//각각의 체크박스에 체크여부(true/false)를 적용
+		}
+	}
+</script>
 <body>
 	<div class="header">
 		<div class="home">
@@ -95,7 +104,7 @@ response.setContentType("text/html; charset=UTF-8");
 		</div>
 		<div class="buttons">
 
-			<form action="HkController.do" method="post">
+			<form action="ReviewController.do" method="post">
 				<input type="hidden" name="command" value="muldel" />
 				<table border="1">
 					<col width="70px">

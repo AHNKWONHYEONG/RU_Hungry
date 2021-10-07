@@ -1,6 +1,7 @@
 package com.ruh.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,7 +24,12 @@ public class ReviewController extends HttpServlet {
 		String command=request.getParameter("command");
 		ReviewDao dao=new ReviewDao();
 		
-		if(command.equals("detail")) {
+		if(command.equals("reviewlist")) {
+			response.sendRedirect("choice.jsp");
+		}
+		
+		
+		else if(command.equals("detail")) {
 			String seq = request.getParameter("seq");
 			int sseq = Integer.parseInt(seq);
 			ReviewDto dto=dao.searchBoard(sseq);
@@ -56,9 +62,31 @@ public class ReviewController extends HttpServlet {
 				dispatch.forward(request, response);
 			}
 		}
+		
+		else if(command.equals("muldel")){
+			String[] seqs=request.getParameterValues("chk");
+			
+			boolean isS=dao.mulDel(seqs);
+			
+			if(isS){
+			String jsTag="<script type='text/javascript'>"
+					+	"alert('글을 삭제합니다.');"
+					+	"location.href='ReviewController.do?command=reviewlist';"
+					+ "</script>";
+			PrintWriter pw =response.getWriter();
+			pw.print(jsTag);
+					
+			}else{
+				request.setAttribute("msg", "글삭제 실패");
+//				pageContext.forward("error.jsp");
+				RequestDispatcher dispatch = request.getRequestDispatcher("error.jsp");
+				dispatch.forward(request, response);
+			}
+		}
+	
+	
 	}
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		doGet(request, response);

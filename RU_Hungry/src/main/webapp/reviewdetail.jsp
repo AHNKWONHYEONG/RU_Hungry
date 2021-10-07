@@ -58,9 +58,13 @@
 
 </style>
 </head>
+<script type="text/javascript">
+//  function delBoard(){
+<%--  	location.href="ReviewController.do?command=muldel&chk=<%=dto.getSeq()%>"; --%>
+//  }
+</script>
 <%
 	ReviewDto dto=(ReviewDto)request.getAttribute("dto");
-	
 	UsersDto udto = (UsersDto)session.getAttribute("ruhDto");
 	
 	if(udto==null){

@@ -8,7 +8,7 @@
 	<typeAliases>
 		<typeAlias type="com.ruh.dtos.UsersDto" alias="ruhDto"/>
 		<typeAlias type="com.ruh.dtos.ReviewDto" alias="reviewDto"/>
-				<typeAlias type="com.ruh.dtos.FoodDto" alias="foodDto"/>
+		<typeAlias type="com.ruh.dtos.ReviewDto" alias="foodDto"/>
 	</typeAliases>
 	
 <!-- 	DB접속 정보 셋팅 -->

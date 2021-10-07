@@ -154,25 +154,25 @@ public class ReviewDao extends SqlMapConfig {
 		// delete from hkboard where seq=5
 		// delete from hkboard where seq=6
 
-//		public boolean mulDel(String[] seqs) {
-//			int count=0;
-//			SqlSession sqlSession=null;
-//			
-//			try {
-//				//openSession(false): autocommit을 false설정 ->rollback가능
-//				sqlSession=getSqlSessionFactory().openSession(false);
-//				for (int i = 0; i < seqs.length; i++) {
-//					String seq=seqs[i];
-//					sqlSession.delete(namespace+"delboard", seq);
-//				}
-//				count=1;
-//				sqlSession.commit();//commit실행: db에 반영
-//			} catch (Exception e) {
-//				sqlSession.rollback();
-//				e.printStackTrace();
-//			}finally {
-//				sqlSession.close();
-//			}
-//			return count>0?true:false;
-//		}
+		public boolean mulDel(String[] seqs) {
+			int count=0;
+			SqlSession sqlSession=null;
+			
+			try {
+				//openSession(false): autocommit을 false설정 ->rollback가능
+				sqlSession=getSqlSessionFactory().openSession(false);
+				for (int i = 0; i < seqs.length; i++) {
+					String seq=seqs[i];
+					sqlSession.delete(namespace+"delboard", seq);
+				}
+				count=1;
+				sqlSession.commit();//commit실행: db에 반영
+			} catch (Exception e) {
+				sqlSession.rollback();
+				e.printStackTrace();
+			}finally {
+				sqlSession.close();
+			}
+			return count>0?true:false;
+		}
 }
