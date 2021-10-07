@@ -27,6 +27,14 @@ public class ReviewDto {
 		this.regdate = regdate;
 	}
 
+	public ReviewDto(String category, String title, String id, String content) {
+		super();
+		this.category = category;
+		this.title = title;
+		this.id = id;
+		this.content = content;
+	}
+
 	public int getSeq() {
 		return seq;
 	}

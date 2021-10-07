@@ -1,14 +1,7 @@
-<%@page import="com.ruh.daos.ReviewDao"%>
-<%@page import="java.util.List"%>
-<%@page import="com.ruh.dtos.ReviewDto"%>
 <%@page import="com.ruh.dtos.UsersDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%
-request.setCharacterEncoding("utf-8");
-%>
-<%
-response.setContentType("text/html; charset=UTF-8");
-%>
+<%request.setCharacterEncoding("utf-8"); %>
+<%response.setContentType("text/html; charset=UTF-8"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +9,7 @@ response.setContentType("text/html; charset=UTF-8");
 <title></title>
 <style type="text/css">
 .buttons {
-	padding: 50px 130px;
+	padding: 0px 200px;
 	width: 900px;
 }
 
@@ -55,6 +48,13 @@ response.setContentType("text/html; charset=UTF-8");
 	top: 200px;
 	align: center;
 }
+.randplay{
+ position: absolute;
+        left: 300px;
+        top: 50px;
+        align:center;
+}
+
 </style>
 </head>
 <%
@@ -63,12 +63,9 @@ response.setContentType("text/html; charset=UTF-8");
 	if(udto==null){
 		pageContext.forward("index.jsp");
 	}
-	ReviewDao dao=new ReviewDao();
-	List<ReviewDto> list=dao.getBoardList();
-
 %>
 <body>
-	<div class="header">
+<div class="header">
 		<div class="home">
 			<button type="button">
 				<img
@@ -76,6 +73,17 @@ response.setContentType("text/html; charset=UTF-8");
 					width="100px" height="100px" onclick="location.href='main.jsp'">
 			</button>
 		</div>
+		<div class="randplay">
+      
+      <img id = "introImg" width="200px" height="150px" border="0" 
+      src="randimg/Q.png"
+      >
+      <button onclick="funccc()">클릭~</button>
+      <p>
+         <span class="quiz-text">버튼을 클릭하세요.</span>
+    </p>
+      </div>
+		
 	</div>
 	<br />
 
@@ -86,65 +94,54 @@ response.setContentType("text/html; charset=UTF-8");
 				width="50px" height="50px"> <br />
 			<button type="button" class="infoo">위치설정</button>
 			<br />
-			<button type="button" class="infoo">???</button>
+			<button type="button" class="infoo">선호 초기화</button>
 			<br />
 			<button type="button" class="infoo"
 				onclick="location.href='index.jsp'">로그아웃</button>
 			<br />
-	<span><%=udto.getId()%></span>님 반갑습니다(아이디:<%=udto.getId()%>)	
+			<div>
+	<span><%=udto.getId()%></span>님 반갑습니다(아이디:<%=udto.getId()%>)
+</div>
+			
 		</div>
+		
 		<div class="buttons">
-
-			<form action="HkController.do" method="post">
-				<input type="hidden" name="command" value="muldel" />
+			<form action="ReviewController.do" method="post">
+				<input type="hidden" name="command" value="addreview" />
 				<table border="1">
-					<col width="70px">
-					<col width="50px">
-					<col width="300px">
-					<col width="100px">
-					<col width="200px">
 					<tr>
-						<th><input type="checkbox" name="all"
-							onclick="allSel(this.checked)" />번호</th>
 						<th>카테고리</th>
-						<th>제목</th>
-						<th>아이디</th>
-						<th>작성일</th>
+						<td><input type="text" name="category" /></td>
 					</tr>
-						<%
-							for(int i=0; i<list.size(); i++){
-								ReviewDto dto=list.get(i);//list[dto,dto,dto....]->순차적으로 하나씩 꺼냄
-								%>
-								<tr>
-									<td><input type="checkbox" name="chk" value="<%=dto.getSeq()%>"/><%=dto.getSeq()%></td>
-									<td><%=dto.getCategory()%></td>
-									<td><a href="ReviewController.do?command=detail&seq=<%=dto.getSeq()%>"><%=dto.getTitle()%></a></td>
-									<td><%=dto.getId()%></td>
-									<td><%=dto.getRegdate()%></td>
-								</tr>				
-								<%
-							}
-						%>
 					<tr>
-						<td colspan="7">
-							<a href="ReviewController.do?command=insert">
-							<button type="button">글쓰기</button></a> 
-							<input type="submit" value="글삭제" />
-						<a href="UsersController.do?command=usermain"><button type="button">메인</button></a>
+						<th>제목</th>
+						<td><input type="text" name="title" /></td>
+					</tr>
+					<tr>
+						<th>작성자</th>
+						<td><input type="text" name="id" value="<%=udto.getId()%>" readonly="readonly"/></td>
+					</tr>
+					<tr>
+						<th>내용</th>
+						<td><textarea rows="10" cols="60" name="content"></textarea></td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<input type="submit" value="등록" />
+							<input type="button" value="목록" onclick="boardList()" />
 						</td>
 					</tr>
 				</table>
 			</form>
-
 		</div>
 		<div class="chk">
 			<form action='a.jsp'>음식<br> 
-			<input type='checkbox' name='food' value='korean' />한식<br> 
-			<input type='checkbox' name='food' value='chineese' />중식<br> 
-			<input type='checkbox' name='food' value='japanese' />일식<br> 
+			<input type='checkbox' name='food' value='korean' />한식<br>
+			<input type='checkbox' name='food' value='chineese' />중식<br>
+			<input type='checkbox' name='food' value='japanese' />일식<br>
 			<input type='checkbox' name='food' value='boonsik' />분식 <br>
-			<input type='checkbox' name='food' value='yangsik' />양식 <br> 
-			<input type='checkbox' name='food' value='fastfood' />패스트푸드 <br> 
+			<input type='checkbox' name='food' value='yangsik' />양식 <br>
+			<input type='checkbox' name='food' value='fastfood' />패스트푸드 <br>
 			<input type='submit'>
 			</form>
 		</div>

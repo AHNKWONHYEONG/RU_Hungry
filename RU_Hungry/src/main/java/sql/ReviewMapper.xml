@@ -3,10 +3,10 @@
 
 <mapper namespace="com.ruh.review">
 
-<!-- 	<insert id="review" parameterType="reviewDto"> -->
-<!-- 		INSERT INTO REVIEW  -->
-<!-- 		VALUES(RUH_SEQ.nextval,#{category},#{title},#{id},#{content},SYSDATE) -->
-<!-- 	</insert> -->
+	<insert id="review" parameterType="reviewDto">
+		INSERT INTO REVIEW 
+		VALUES(RUH_SEQ.nextval,#{category},#{title},#{id},#{content},SYSDATE)
+	</insert>
 	
 	<select id="reviewboard"  resultType="reviewDto">
 		SELECT SEQ ,CATEGORY ,TITLE ,ID ,CONTENT ,REGDATE 

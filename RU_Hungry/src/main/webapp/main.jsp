@@ -104,8 +104,7 @@ function funccc(){
 		<div class="randplay">
       
       <img id = "introImg" width="200px" height="150px" border="0" 
-      src="randimg/Q.png"
-      >
+      src="randimg/Q.png">
       <button onclick="funccc()">클릭~</button>
       <p>
          <span class="quiz-text">버튼을 클릭하세요.</span>
