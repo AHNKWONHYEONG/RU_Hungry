@@ -29,6 +29,10 @@
 		SELECT FOODNAME FROM FOOD WHERE SEQ=1 AND ID=#{id}
 	</select>
 	
+	<select id="selectrest" parameterType="map" resultType="restDto">
+		SELECT * FROM RESLIST WHERE FOODNAME=#{foodname} 
+	</select>
+	
 </mapper>
 
 

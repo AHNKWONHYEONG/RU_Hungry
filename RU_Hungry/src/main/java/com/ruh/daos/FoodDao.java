@@ -1,12 +1,15 @@
 package com.ruh.daos;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.ruh.config.SqlMapConfig;
 import com.ruh.dtos.FoodDto;
+import com.ruh.dtos.ResListDto;
 import com.ruh.dtos.UsersDto;
 
 public class FoodDao extends SqlMapConfig{
@@ -26,6 +29,19 @@ public class FoodDao extends SqlMapConfig{
 		}finally {
 			sqlSession.close();
 		}
+		return dto;
+	}
+
+	public List<ResListDto> selectRest(String foodname) {
+			List<ResListDto> dto=null;
+			SqlSession sqlSession=null;
+			
+			Map<String, String>map=new HashMap<>();
+			map.put("foodname", foodname);
+			sqlSession=getSqlSessionFactory().openSession(true);
+			
+			dto=sqlSession.selectList(namespace+"selectrest", map); //쿼리 id 는 selectrest
+			
 		return dto;
 	}
 	

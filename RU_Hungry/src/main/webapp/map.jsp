@@ -9,6 +9,18 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="jquery-3.6.0.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCePJSFCOeZEfNI7b31h51yWJw4HXTgDT8&callback=initMap&region=kr"></script>
+  <script>
+    function initMap() {
+      var seoul = { lat: 37.5642135 ,lng: 127.0016985 };
+      var map = new google.maps.Map(
+        document.getElementById('map'), {
+          zoom: 12,
+          center: seoul
+        });
+      
+    }
+  </script>
 </head>
 <%
 	UsersDto udto = (UsersDto)session.getAttribute("ruhDto");
@@ -36,7 +48,7 @@
 		
 		<div style=" height: 20px;"></div>
 		<div style=" width: 300px; height: 140px; border: 1px solid red;">
-			<a href="main.jsp" >추천다시받기</a>
+			<button onclick="chooseRest()">음식이 맘에들어~</button>
 		</div>
 		<div style="height: 20px;"></div>
 		<div style=" width: 300px; height: 140px; border: 1px solid red;">
@@ -45,9 +57,7 @@
 	</td>
 
 <td style="position:absolute ; left: 330px ;   width: 1100px; height: 810px;">
-	<div style=" width: 1000px; height: 400px; border: 1px solid red;">
-		<a href="main.jsp" >지도사진</a>
-	</div>
+		<div style=" width: 1000px; height: 400px; border: 1px solid red;" id="map" ></div>
 	<div style="height: 40px;"></div>
 	<div style="width: 1000px; height: 400px; border: 1px solid red;">
 		<a href="main.jsp" >식당리스트</a>
@@ -64,7 +74,7 @@
 </table>
 
 <script type="text/javascript">
-
+ var foodname;
  function selectFood() {
 	$.ajax({
 		url: "MapController.do",
@@ -75,12 +85,31 @@
 			var doc=document.getElementById("rcmimg");
 // 		 	String foodname=val.toString();
 		doc.src="img/"+val+".jpg";
-		console.log(val);
+		foodname=val;
 		}
 	})
-	
 }
+ 
+ //37.525606,126.8840023 양평역5호선
+ var map;
+function chooseRest() {
+	location.href="MapController.do?command=chooserest&foodname="+foodname; //커맨드랑 음식이름을 보내줌
+	
+	//ㅂ다기
+}
+ function initMap() {
+   var rest1 = { lat: 37.525606 ,lng: 126.8840023 };
+   map = new google.maps.Map( document.getElementById('map'), {
+       zoom: 12,
+       center: rest1
+     });
 
+   new google.maps.Marker({
+     position: rest1,
+     map: map,
+     label: "식당 좌표"
+   });
+ }
 </script>
 
 </body>

@@ -4,171 +4,131 @@ public class ResListDto {
 
 	private int seq;
 	private String name;
-	private String cate;
-	private String addr;
-	private String call;
-	private String start;
-	private String end;
-	private String rest_start;
-	private String rest_end;
-	private String parking;
+	private String foodname;
+	private String address;
+	private String phone;
+	private String breakstart;
+	private String breakend;
 	private String open;
-	private String chk;
-	private String comment;
-	private int x;
-	private int y;
-	
+	private String close;
+	private String parking;
+	private String si;
+	private String gu;
+	private int lat;
+	private int ing;
 	public ResListDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	public ResListDto(int seq, String name, String cate, String addr, String call, String start, String end,
-			String rest_start, String rest_end, String parking, String open, String chk, String comment, int x, int y) {
+	public ResListDto(int seq, String name, String foodname, String address, String phone, String breakstart,
+			String breakend, String open, String close, String parking, String si, String gu, int lat, int ing) {
 		super();
 		this.seq = seq;
 		this.name = name;
-		this.cate = cate;
-		this.addr = addr;
-		this.call = call;
-		this.start = start;
-		this.end = end;
-		this.rest_start = rest_start;
-		this.rest_end = rest_end;
-		this.parking = parking;
+		this.foodname = foodname;
+		this.address = address;
+		this.phone = phone;
+		this.breakstart = breakstart;
+		this.breakend = breakend;
 		this.open = open;
-		this.chk = chk;
-		this.comment = comment;
-		this.x = x;
-		this.y = y;
+		this.close = close;
+		this.parking = parking;
+		this.si = si;
+		this.gu = gu;
+		this.lat = lat;
+		this.ing = ing;
 	}
-
 	public int getSeq() {
 		return seq;
 	}
-
 	public void setSeq(int seq) {
 		this.seq = seq;
 	}
-
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public String getCate() {
-		return cate;
+	public String getFoodname() {
+		return foodname;
 	}
-
-	public void setCate(String cate) {
-		this.cate = cate;
+	public void setFoodname(String foodname) {
+		this.foodname = foodname;
 	}
-
-	public String getAddr() {
-		return addr;
+	public String getAddress() {
+		return address;
 	}
-
-	public void setAddr(String addr) {
-		this.addr = addr;
+	public void setAddress(String address) {
+		this.address = address;
 	}
-
-	public String getCall() {
-		return call;
+	public String getPhone() {
+		return phone;
 	}
-
-	public void setCall(String call) {
-		this.call = call;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
-
-	public String getStart() {
-		return start;
+	public String getBreakstart() {
+		return breakstart;
 	}
-
-	public void setStart(String start) {
-		this.start = start;
+	public void setBreakstart(String breakstart) {
+		this.breakstart = breakstart;
 	}
-
-	public String getEnd() {
-		return end;
+	public String getBreakend() {
+		return breakend;
 	}
-
-	public void setEnd(String end) {
-		this.end = end;
+	public void setBreakend(String breakend) {
+		this.breakend = breakend;
 	}
-
-	public String getRest_start() {
-		return rest_start;
-	}
-
-	public void setRest_start(String rest_start) {
-		this.rest_start = rest_start;
-	}
-
-	public String getRest_end() {
-		return rest_end;
-	}
-
-	public void setRest_end(String rest_end) {
-		this.rest_end = rest_end;
-	}
-
-	public String getParking() {
-		return parking;
-	}
-
-	public void setParking(String parking) {
-		this.parking = parking;
-	}
-
 	public String getOpen() {
 		return open;
 	}
-
 	public void setOpen(String open) {
 		this.open = open;
 	}
-
-	public String getChk() {
-		return chk;
+	public String getClose() {
+		return close;
 	}
-
-	public void setChk(String chk) {
-		this.chk = chk;
+	public void setClose(String close) {
+		this.close = close;
 	}
-
-	public String getComment() {
-		return comment;
+	public String getParking() {
+		return parking;
 	}
-
-	public void setComment(String comment) {
-		this.comment = comment;
+	public void setParking(String parking) {
+		this.parking = parking;
 	}
-
-	public int getX() {
-		return x;
+	public String getSi() {
+		return si;
 	}
-
-	public void setX(int x) {
-		this.x = x;
+	public void setSi(String si) {
+		this.si = si;
 	}
-
-	public int getY() {
-		return y;
+	public String getGu() {
+		return gu;
 	}
-
-	public void setY(int y) {
-		this.y = y;
+	public void setGu(String gu) {
+		this.gu = gu;
 	}
-
+	public int getLat() {
+		return lat;
+	}
+	public void setLat(int lat) {
+		this.lat = lat;
+	}
+	public int getIng() {
+		return ing;
+	}
+	public void setIng(int ing) {
+		this.ing = ing;
+	}
 	@Override
 	public String toString() {
-		return "ResListDto [seq=" + seq + ", name=" + name + ", cate=" + cate + ", addr=" + addr + ", call=" + call
-				+ ", start=" + start + ", end=" + end + ", rest_start=" + rest_start + ", rest_end=" + rest_end
-				+ ", parking=" + parking + ", open=" + open + ", chk=" + chk + ", comment=" + comment + ", x=" + x
-				+ ", y=" + y + "]";
+		return "ResListDto [seq=" + seq + ", name=" + name + ", foodname=" + foodname + ", address=" + address
+				+ ", phone=" + phone + ", breakstart=" + breakstart + ", breakend=" + breakend + ", open=" + open
+				+ ", close=" + close + ", parking=" + parking + ", si=" + si + ", gu=" + gu + ", lat=" + lat + ", ing="
+				+ ing + "]";
 	}
+
 	
 }
