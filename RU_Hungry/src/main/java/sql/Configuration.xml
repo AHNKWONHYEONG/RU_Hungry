@@ -7,7 +7,7 @@
 <!-- 	변수설정 -->
 	<typeAliases>
 		<typeAlias type="com.ruh.dtos.UsersDto" alias="ruhDto"/>
-
+		<typeAlias type="com.ruh.dtos.ReviewDto" alias="reviewDto"/>
 
 	</typeAliases>
 	
