@@ -5,8 +5,13 @@
 
 	<insert id="review">
 		INSERT INTO REVIEW 
-		VALUES(RUH_SEQ.nextval,#{category},#{title},#{id},#{content},SYSDATE);
+		VALUES(RUH_SEQ.nextval,#{category},#{title},#{id},#{content},SYSDATE)
 	</insert>
+	
+	<select id="reviewboard"  resultType="reviewDto">
+		SELECT SEQ ,CATEGORY ,TITLE ,ID ,CONTENT ,REGDATE 
+		FROM REVIEW
+	</select>
 
 </mapper>
 
