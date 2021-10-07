@@ -78,7 +78,7 @@ public class ReviewDao extends SqlMapConfig {
 				sqlSession=getSqlSessionFactory().openSession(true);
 				count=sqlSession.insert(namespace+"review", dto);
 			} catch (Exception e) {
-				System.out.println("JDBC실패:insertBoard():"+getClass());
+				System.out.println("JDBC실패:review:"+getClass());
 				e.printStackTrace();
 			}finally {
 				sqlSession.close();

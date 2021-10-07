@@ -1,3 +1,4 @@
+<%@page import="com.ruh.dtos.UsersDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%
 request.setCharacterEncoding("utf-8");
@@ -53,6 +54,13 @@ response.setContentType("text/html; charset=UTF-8");
 }
 </style>
 </head>
+<%
+	UsersDto udto = (UsersDto)session.getAttribute("ruhDto");
+
+	if(udto==null){
+		pageContext.forward("index.jsp");
+	}
+%>
 <body>
 	<div class="header">
 		<div class="home">
@@ -77,6 +85,7 @@ response.setContentType("text/html; charset=UTF-8");
 			<button type="button" class="infoo"
 				onclick="location.href='index.jsp'">로그아웃</button>
 			<br />
+	<span><%=udto.getId()%></span>님 반갑습니다(아이디:<%=udto.getId()%>)	
 		</div>
 		<div class="buttons">
 
