@@ -70,13 +70,13 @@ public class ReviewDao extends SqlMapConfig {
 		//2. 글추가: 페이지에서 입력된 값을 받아서 DB에 추가한다.
 		//			insert문 실행: 반환값???결과값 없다. ->대신 추가된 행의 개수를 반환한다.
 		//			파라미터 정의: id, title, content
-//		public boolean insertBoard(ReviewDto dto) {//hkDto-> id title content 담을 수 있다.
+//		public boolean insertBoard(int seq) {//hkDto-> id title content 담을 수 있다.
 //			int count=0;//insert문에 추가되는 행의 개수를 저장할 변수
 //			SqlSession sqlSession=null;
 //					
 //			try {
 //				sqlSession=getSqlSessionFactory().openSession(true);
-//				count=sqlSession.insert(namespace+"review", dto);
+//				count=sqlSession.insert(namespace+"review", seq);
 //			} catch (Exception e) {
 //				System.out.println("JDBC실패:review:"+getClass());
 //				e.printStackTrace();
@@ -88,22 +88,22 @@ public class ReviewDao extends SqlMapConfig {
 //		}
 		//3. 글상세조회 select, 파라미터 받기 -> dbeaver에서 쿼리 작성하면 알 수 있다.
 		//	반환타입: 글하나의 대한 정보 조회-> 1row를 반환 -> 1row를 저장하는 객체 Dto
-//		public HkDto searchBoard(int seq){
-//			HkDto dto=new HkDto();
-//			SqlSession sqlSession=null;
-//			
-//			try {
-//				sqlSession=getSqlSessionFactory().openSession(true);
-//				dto=sqlSession.selectOne(namespace+"getboard",seq);
-//			} catch (Exception e) {
-//				System.out.println("JDBC실패:searchBoard():"+getClass());
-//				e.printStackTrace();
-//			}finally {
-//				sqlSession.close();
-//			}
-//			
-//			return dto;
-//		}
+		public ReviewDto searchBoard(int seq){
+			ReviewDto dto=new ReviewDto();
+			SqlSession sqlSession=null;
+			
+			try {
+				sqlSession=getSqlSessionFactory().openSession(true);
+				dto=sqlSession.selectOne(namespace+"getboard",seq);
+			} catch (Exception e) {
+				System.out.println("JDBC실패:searchBoard():"+getClass());
+				e.printStackTrace();
+			}finally {
+				sqlSession.close();
+			}
+			
+			return dto;
+		}
 		//4. 글수정 update 파라미터 받기
 		//수정할 컬럼: 제목, 내용, 작성일
 		//파라미터받을 목록 seq, 제목, 내용

@@ -111,22 +111,20 @@ response.setContentType("text/html; charset=UTF-8");
 						<th>아이디</th>
 						<th>작성일</th>
 					</tr>
-	<%
-		for(int i=0; i<list.size(); i++){
-			ReviewDto dto=list.get(i);//list[dto,dto,dto....]->순차적으로 하나씩 꺼냄
-			%>
-			<tr>
-				<td><%=dto.getSeq()%></td>
-				<td><%=dto.getCategory()%></td>
-				<td><a href="ReviewController.do?command=detail&seq=<%=dto.getSeq()%>"><%=dto.getTitle()%></a></td>
-				<td><%=dto.getId()%></td>
-				<td><%=dto.getRegdate()%></td>
-			</tr>				
-			<%
-		}
-	%>
-	
-		
+						<%
+							for(int i=0; i<list.size(); i++){
+								ReviewDto dto=list.get(i);//list[dto,dto,dto....]->순차적으로 하나씩 꺼냄
+								%>
+								<tr>
+									<td><%=dto.getSeq()%></td>
+									<td><%=dto.getCategory()%></td>
+									<td><a href="ReviewController.do?command=detail&seq=<%=dto.getSeq()%>"><%=dto.getTitle()%></a></td>
+									<td><%=dto.getId()%></td>
+									<td><%=dto.getRegdate()%></td>
+								</tr>				
+								<%
+							}
+						%>
 					<tr>
 						<td colspan="7">
 							<a href="HkController.do?command=insertform">

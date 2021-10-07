@@ -43,7 +43,8 @@ public class UsersController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command=request.getParameter("command");
-		
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=UTF-8");
 		UsersDao dao=new UsersDao();
 		HttpSession session=request.getSession();//session객체 구함
 		
