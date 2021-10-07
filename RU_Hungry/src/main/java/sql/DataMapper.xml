@@ -25,6 +25,10 @@
 		WHERE ID=#{id} AND PW=#{pw} AND DELFLAG='n'
 	</select>
 	
+	<select id="selectone" parameterType="map" resultType="foodDto">
+		SELECT FOODNAME FROM FOOD WHERE SEQ=1 AND ID=#{id}
+	</select>
+	
 </mapper>
 
 
