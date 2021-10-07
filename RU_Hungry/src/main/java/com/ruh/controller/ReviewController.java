@@ -19,7 +19,7 @@ public class ReviewController extends HttpServlet {
 		
 		ReviewDao dao=new ReviewDao();
 		
-		if(command.equals("")) {
+		if(command.equals("detail")) {
 			
 		}
 	}
