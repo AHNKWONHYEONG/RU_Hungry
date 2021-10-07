@@ -16,30 +16,30 @@ public class ReviewDao extends SqlMapConfig {
 	private String namespace="com.ruh.review.";
 	
 	//1. 글목록 조회: select문 - 결과는 여러행 반환 -> list를 반환
-//		public List<HkDto> getBoardList(String pnum){
-//			List<HkDto> list=new ArrayList<HkDto>();
-//			SqlSession sqlSession=null;
-//			try {
-//				//SqlSessionFactory객체 구함
-//				SqlSessionFactory sqlSessionFactory=getSqlSessionFactory();
-//				
-//				//SqlSessionFactory객체로 부터 SqlSession객체를 구해온다.
-//				//이때 openSession(true)로 실행하면 autocommit->true로 설정
-//				sqlSession=sqlSessionFactory.openSession(true);
-//				//selectList(쿼리id)실행하면 결과를 List로 반환해 준다.
-//				list=sqlSession.selectList(namespace+"boardlist", pnum);
-//				
-////				sqlSession=getSqlSessionFactory().openSession(true);
-////				count=sqlSession.insert(nameSpace+"insertboard", dto);
-//			} catch (Exception e) {
-//				System.out.println("JDBC실패:getBoardList():"+getClass());
-//				e.printStackTrace();
-//			}finally {
-//				sqlSession.close();
-//			}
-//					
-//			return list;
-//		}
+		public List<ReviewDto> getBoardList(){
+			List<ReviewDto> list=new ArrayList<ReviewDto>();
+			SqlSession sqlSession=null;
+			try {
+				//SqlSessionFactory객체 구함
+				SqlSessionFactory sqlSessionFactory=getSqlSessionFactory();
+				
+				//SqlSessionFactory객체로 부터 SqlSession객체를 구해온다.
+				//이때 openSession(true)로 실행하면 autocommit->true로 설정
+				sqlSession=sqlSessionFactory.openSession(true);
+				//selectList(쿼리id)실행하면 결과를 List로 반환해 준다.
+				list=sqlSession.selectList(namespace+"reviewboard");
+				
+//				sqlSession=getSqlSessionFactory().openSession(true);
+//				count=sqlSession.insert(nameSpace+"insertboard", dto);
+			} catch (Exception e) {
+				System.out.println("JDBC실패:reviewboard:"+getClass());
+				e.printStackTrace();
+			}finally {
+				sqlSession.close();
+			}
+					
+			return list;
+		}
 		
 		//글목록의 페이지수 구하기
 //		public int getPCount(){
@@ -70,22 +70,22 @@ public class ReviewDao extends SqlMapConfig {
 		//2. 글추가: 페이지에서 입력된 값을 받아서 DB에 추가한다.
 		//			insert문 실행: 반환값???결과값 없다. ->대신 추가된 행의 개수를 반환한다.
 		//			파라미터 정의: id, title, content
-		public boolean insertBoard(ReviewDto dto) {//hkDto-> id title content 담을 수 있다.
-			int count=0;//insert문에 추가되는 행의 개수를 저장할 변수
-			SqlSession sqlSession=null;
-					
-			try {
-				sqlSession=getSqlSessionFactory().openSession(true);
-				count=sqlSession.insert(namespace+"review", dto);
-			} catch (Exception e) {
-				System.out.println("JDBC실패:review:"+getClass());
-				e.printStackTrace();
-			}finally {
-				sqlSession.close();
-			}
-			
-			return count>0?true:false;//삼항연산자 활용
-		}
+//		public boolean insertBoard(ReviewDto dto) {//hkDto-> id title content 담을 수 있다.
+//			int count=0;//insert문에 추가되는 행의 개수를 저장할 변수
+//			SqlSession sqlSession=null;
+//					
+//			try {
+//				sqlSession=getSqlSessionFactory().openSession(true);
+//				count=sqlSession.insert(namespace+"review", dto);
+//			} catch (Exception e) {
+//				System.out.println("JDBC실패:review:"+getClass());
+//				e.printStackTrace();
+//			}finally {
+//				sqlSession.close();
+//			}
+//			
+//			return count>0?true:false;//삼항연산자 활용
+//		}
 		//3. 글상세조회 select, 파라미터 받기 -> dbeaver에서 쿼리 작성하면 알 수 있다.
 		//	반환타입: 글하나의 대한 정보 조회-> 1row를 반환 -> 1row를 저장하는 객체 Dto
 //		public HkDto searchBoard(int seq){

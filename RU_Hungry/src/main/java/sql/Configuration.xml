@@ -26,6 +26,7 @@
 	
 	<mappers>
 		<mapper resource="sql/DataMapper.xml"/>
+		<mapper resource="sql/ReviewMapper.xml"/>
 <!-- 		<mapper resource="sql/DataMapper2.xml"/> -->
 <!-- 		<mapper resource="sql/DataMapper3.xml"/> -->
 	</mappers>

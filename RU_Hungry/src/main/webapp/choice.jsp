@@ -1,3 +1,6 @@
+<%@page import="com.ruh.daos.ReviewDao"%>
+<%@page import="java.util.List"%>
+<%@page import="com.ruh.dtos.ReviewDto"%>
 <%@page import="com.ruh.dtos.UsersDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%
@@ -60,6 +63,9 @@ response.setContentType("text/html; charset=UTF-8");
 	if(udto==null){
 		pageContext.forward("index.jsp");
 	}
+	ReviewDao dao=new ReviewDao();
+	List<ReviewDto> list=dao.getBoardList();
+
 %>
 <body>
 	<div class="header">
@@ -107,9 +113,26 @@ response.setContentType("text/html; charset=UTF-8");
 						<th>내용</th>
 						<th>작성일</th>
 					</tr>
-
+	<%
+		for(int i=0; i<list.size(); i++){
+			ReviewDto dto=list.get(i);//list[dto,dto,dto....]->순차적으로 하나씩 꺼냄
+			%>
+			<tr>
+				<td><%=dto.getSeq()%></td>
+				<td><%=dto.getCategory()%></td>
+				<td><%=dto.getTitle()%></td>
+<%-- 				<td><a href="detailboard.jsp?seq=<%=dto.getSeq()%>"><%=dto.getTitle()%></a></td> --%>
+				<td><%=dto.getId()%></td>
+				<td><%=dto.getContent()%></td>
+				<td><%=dto.getRegdate()%></td>
+			</tr>				
+			<%
+		}
+	%>
+	
+		
 					<tr>
-						<td colspan="5">
+						<td colspan="7">
 							<a href="HkController.do?command=insertform">
 							<button type="button">글쓰기</button></a> 
 							<input type="submit" value="글삭제" />
