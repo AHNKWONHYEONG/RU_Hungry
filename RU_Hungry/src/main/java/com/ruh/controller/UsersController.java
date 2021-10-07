@@ -69,6 +69,8 @@ public class UsersController extends HttpServlet {
 								+"</script>";
 					PrintWriter pwr=response.getWriter();
 					pwr.print(jsTag);
+				}else {
+//					회원가입실패코드
 				}
 
 			} catch (ParseException e) {
@@ -85,7 +87,7 @@ public class UsersController extends HttpServlet {
 		}
 		
 		else if(command.equals("login")) {
-			session.removeAttribute("readcount");
+//			session.removeAttribute("readcount");
 			
 			String id=request.getParameter("id");
 			String pw=request.getParameter("pw");
@@ -99,7 +101,7 @@ public class UsersController extends HttpServlet {
 			}else {
 				String jsTag="<script type='text/javascript'>"
 						+	"alert('로그인이 필요합니다..');"
-						+	"location.href = 'UsersController.do?command=index';"
+						+	"location.href='UsersController.do?command=index';"
 						+"</script>";
 				PrintWriter pwr=response.getWriter();
 				pwr.print(jsTag);
