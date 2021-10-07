@@ -116,7 +116,7 @@ response.setContentType("text/html; charset=UTF-8");
 								ReviewDto dto=list.get(i);//list[dto,dto,dto....]->순차적으로 하나씩 꺼냄
 								%>
 								<tr>
-									<td><%=dto.getSeq()%></td>
+									<td><input type="checkbox" name="chk" value="<%=dto.getSeq()%>"/><%=dto.getSeq()%></td>
 									<td><%=dto.getCategory()%></td>
 									<td><a href="ReviewController.do?command=detail&seq=<%=dto.getSeq()%>"><%=dto.getTitle()%></a></td>
 									<td><%=dto.getId()%></td>
@@ -127,10 +127,10 @@ response.setContentType("text/html; charset=UTF-8");
 						%>
 					<tr>
 						<td colspan="7">
-							<a href="HkController.do?command=insertform">
+							<a href="UsersController.do?command=insert">
 							<button type="button">글쓰기</button></a> 
 							<input type="submit" value="글삭제" />
-						<a href="HkController.do?command=main"><button type="button">메인</button></a>
+						<a href="UsersController.do?command=usermain"><button type="button">메인</button></a>
 						</td>
 					</tr>
 				</table>

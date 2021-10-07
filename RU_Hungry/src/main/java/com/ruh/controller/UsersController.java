@@ -114,6 +114,13 @@ public class UsersController extends HttpServlet {
 		else if(command.equals("worldcup")) {
 			response.sendRedirect("worldcup.jsp");
 		}
+		else if(command.equals("choice")) {
+			String jsTag="<script type='text/javascript'>"
+					+	"location.href='choice.jsp';"
+					+"</script>";
+			PrintWriter pwr=response.getWriter();
+			pwr.print(jsTag);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
