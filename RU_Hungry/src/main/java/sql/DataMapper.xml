@@ -26,7 +26,7 @@
 	</select>
 	
 	<select id="selectone" parameterType="map" resultType="foodDto">
-		SELECT FOODNAME FROM FOOD WHERE SEQ=1 AND ID=#{id}
+			SELECT FOODNAME FROM( SELECT * FROM FOOD WHERE ID=#{id} ORDER BY DBMS_RANDOM.RANDOM) WHERE ROWNUM=1
 	</select>
 	
 	<select id="selectrest" parameterType="map" resultType="restDto">

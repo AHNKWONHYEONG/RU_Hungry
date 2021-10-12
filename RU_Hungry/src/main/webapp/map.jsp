@@ -77,6 +77,7 @@
 					<th>주소</th>
 					<th>상세보기</th>
 				</tr>
+			</table>
 	</div>
 </td >
 
