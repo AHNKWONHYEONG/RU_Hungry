@@ -63,6 +63,7 @@ response.setContentType("text/html; charset=UTF-8");
 	if(udto==null){
 		pageContext.forward("index.jsp");
 	}
+	
 	ReviewDao dao=new ReviewDao();
 	List<ReviewDto> list=dao.getBoardList();
 

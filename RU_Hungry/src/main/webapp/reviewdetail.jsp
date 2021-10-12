@@ -58,11 +58,7 @@
 
 </style>
 </head>
-<script type="text/javascript">
-//  function delBoard(){
-<%--  	location.href="ReviewController.do?command=muldel&chk=<%=dto.getSeq()%>"; --%>
-//  }
-</script>
+
 <%
 	ReviewDto dto=(ReviewDto)request.getAttribute("dto");
 	UsersDto udto = (UsersDto)session.getAttribute("ruhDto");
@@ -134,7 +130,7 @@
 				<tr>
 					<td colspan="2">
 						<button onclick="updateBoard()" title="수정폼이동">수정</button>
-						<button onclick="delBoard()">삭제</button>
+						<button onclick="location.href='ReviewController.do?command=muldel&chk=<%=dto.getSeq()%>'";>삭제</button>
 						<button onclick="location.href='UsersController.do?command=choice'">목록</button>
 					</td>
 				</tr>
