@@ -3,12 +3,10 @@
 <%@page import="com.ruh.dtos.ReviewDto"%>
 <%@page import="com.ruh.dtos.UsersDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%
-request.setCharacterEncoding("utf-8");
-%>
-<%
-response.setContentType("text/html; charset=UTF-8");
-%>
+<%request.setCharacterEncoding("utf-8");%>
+<%response.setContentType("text/html; charset=UTF-8");%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,6 +64,7 @@ response.setContentType("text/html; charset=UTF-8");
 	
 	ReviewDao dao=new ReviewDao();
 	List<ReviewDto> list=dao.getBoardList();
+	request.setAttribute("list", list);
 
 %>
 <script type="text/javascript">
@@ -78,6 +77,11 @@ response.setContentType("text/html; charset=UTF-8");
 	}
 </script>
 <body>
+<c:set var="lists" value="${list}" />
+<c:if test="${empty lists}">
+<%-- 	<c:redirect url="index.jsp"/> --%>
+	<jsp:forward page="index.jsp"/>
+</c:if>
 	<div class="header">
 		<div class="home">
 			<button type="button">
@@ -121,20 +125,24 @@ response.setContentType("text/html; charset=UTF-8");
 						<th>아이디</th>
 						<th>작성일</th>
 					</tr>
-						<%
-							for(int i=0; i<list.size(); i++){
-								ReviewDto dto=list.get(i);//list[dto,dto,dto....]->순차적으로 하나씩 꺼냄
-								%>
+						<c:choose>
+							<c:when test="${empty lists}">
 								<tr>
-									<td><input type="checkbox" name="chk" value="<%=dto.getSeq()%>"/><%=dto.getSeq()%></td>
-									<td><%=dto.getCategory()%></td>
-									<td><a href="ReviewController.do?command=detail&seq=<%=dto.getSeq()%>"><%=dto.getTitle()%></a></td>
-									<td><%=dto.getId()%></td>
-									<td><%=dto.getRegdate()%></td>
-								</tr>				
-								<%
-							}
-						%>
+									<td colspan="5">----글이 없습니다.----</td>
+								</tr>
+							</c:when>
+							<c:otherwise>
+								<c:forEach var="dto" items="${list}">
+									<tr>
+										<td><input type="checkbox" name="chk" value="${dto.seq}"/>${dto.seq}</td>
+										<td>${dto.category}</td>
+										<td><a href="ReviewController.do?command=detail&seq=${dto.seq}">${dto.title}</a></td>										
+										<td>${dto.id}</td>
+										<td><fmt:formatDate value="${dto.regdate}" pattern="yyyy.MM.dd" /></td>
+									</tr>
+								</c:forEach>		
+							</c:otherwise>
+						</c:choose>
 					<tr>
 						<td colspan="7">
 							<a href="ReviewController.do?command=insert">

@@ -128,7 +128,7 @@
 					<tr>
 						<td colspan="2">
 							<input type="submit" value="등록" />
-							<input type="button" value="목록" onclick="boardList()" />
+							<input type="button" value="목록" onclick="location.href='UsersController.do?command=choice'" />
 						</td>
 					</tr>
 				</table>
