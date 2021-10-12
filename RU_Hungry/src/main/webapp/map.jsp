@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="com.ruh.dtos.ResListDto"%>
 <%@page import="com.ruh.dtos.UsersDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%request.setCharacterEncoding("utf-8"); %>
@@ -59,8 +61,22 @@
 <td style="position:absolute ; left: 330px ;   width: 1100px; height: 810px;">
 		<div style=" width: 1000px; height: 400px; border: 1px solid red;" id="map" ></div>
 	<div style="height: 40px;"></div>
-	<div style="width: 1000px; height: 400px; border: 1px solid red;">
-		<a href="main.jsp" >식당리스트</a>
+	<div  style="width: 1000px; height: 400px; border: 1px solid red;">
+			<table id="reslist"  border="1">
+				<col width="50px">
+				<col width="140px">
+				<col width="100px">
+				<col width="340px">
+				<col width="200px">
+				<col width="140px">
+				<tr>
+					<th>번호</th>
+					<th>식당이름</th>
+					<th>음식</th>
+					<th>영업시간</th>
+					<th>주소</th>
+					<th>상세보기</th>
+				</tr>
 	</div>
 </td >
 
@@ -93,23 +109,68 @@
  //37.525606,126.8840023 양평역5호선
  var map;
 function chooseRest() {
-	location.href="MapController.do?command=chooserest&foodname="+foodname; //커맨드랑 음식이름을 보내줌
+// 	location.href="MapController.do?command=chooserest&foodname="+foodname; //커맨드랑 음식이름을 보내줌
+	$.ajax({
+		url: "MapController.do",
+		data: {"command": "chooserest", "foodname":foodname},
+		method:"POST",
+		dataType: "JSON",
+		success: function(map) { //val은 db에서 select한 json
+			var doc=document.getElementById("reslist");
 	
+			for (var i = 0; i < map["restlist"].length; i++) {
+				var name=map["restlist"][i]["name"];
+				var foodname=map["restlist"][i]["foodname"];
+				var address=map["restlist"][i]["address"];
+				var phone=map["restlist"][i]["phone"];
+				var breakstart=map["restlist"][i]["breakstart"];
+				var breakend=map["restlist"][i]["breakend"];
+				var open=map["restlist"][i]["open"];
+				var close=map["restlist"][i]["close"];
+				var parking=map["restlist"][i]["parking"];
+				var si=map["restlist"][i]["si"];
+				var gu=map["restlist"][i]["gu"];
+				var lat=map["restlist"][i]["lat"];
+				var ing=map["restlist"][i]["ing"];
+			
+				doc.innerHTML += "<tr><th>"+i +"</th><th>"+name +"</th><th>"+foodname +"</th><th>"+open+"~"+close +"</th><th>"+address +"</th><th><a href='index.jsp'>더보기</a></th></tr>"
+				makemark(i,lat,ing);
+	
+			}
+		}
+	})
 	//ㅂ다기
 }
- function initMap() {
-   var rest1 = { lat: 37.525606 ,lng: 126.8840023 };
-   map = new google.maps.Map( document.getElementById('map'), {
-       zoom: 12,
-       center: rest1
-     });
 
-   new google.maps.Marker({
-     position: rest1,
-     map: map,
-     label: "식당 좌표"
+$(function initmap() {
+	 //37.525617, 126.886316 양평
+ var myposi = { lat: 37.525617 ,lng: 126.886316 };
+ map = new google.maps.Map( document.getElementById('map'), {
+     zoom: 15,
+     center: myposi
    });
- }
+})
+
+// function initMap() {
+// 	 //37.525617, 126.886316 양평
+//    var myposi = { lat: 37.525617 ,lng: 126.886316 };
+//    map = new google.maps.Map( document.getElementById('map'), {
+//        zoom: 15,
+//        center: myposi
+//      });
+//  }
+ function makemark(i,x,y) {
+	 var markposi={ lat: x ,lng: y };
+	 console.log(x);
+	 console.log(y);
+	 
+	 new google.maps.Marker({
+	     position: markposi,
+	     map: map,
+	     label: i.toString()
+	   });
+}
+ 
 </script>
 
 </body>

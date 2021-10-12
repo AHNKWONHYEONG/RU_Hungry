@@ -3,8 +3,11 @@ package com.ruh.controller;
 import java.io.Console;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,10 +16,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
+
 import com.ruh.daos.FoodDao;
 import com.ruh.dtos.FoodDto;
 import com.ruh.dtos.ResListDto;
 import com.ruh.dtos.UsersDto;
+
+import net.sf.json.JSONObject;
 
 
 
@@ -58,27 +64,23 @@ public class MapController extends HttpServlet {
 			String foodname;
 			foodname=request.getParameter("foodname");
 //			System.out.println(foodname);
-			List<ResListDto> dto=dao.selectRest(foodname);
-		//	일단 주석
-//			String name=dto.getName();
-//			String address=dto.getAddress();
-//			String phone=dto.getPhone();
-//			String breakstart=dto.getBreakstart();
-//			String breakend=dto.getBreakend();
-//			String open=dto.getOpen();
-//			String close=dto.getClose();
-//			String parking=dto.getParking();
-//			String si=dto.getSi();
-//			String gu=dto.getGu();
-//			int lat=dto.getLat();
-//			int ing=dto.getIng();
-//			
-			
-			//request 로 보내고  map에서 getpara로 받아쓰기       10월8일
+			List<ResListDto> restlist=dao.selectRest(foodname);
+	
+			Map<String, List<ResListDto>> map=new HashMap<>(); //자바 map = js json
+			map.put("restlist", restlist);
+			JSONObject jo=JSONObject.fromObject(map);	//map -> json 변환
+		PrintWriter pwr=response.getWriter();
+		jo.write(pwr);
+	
+		
+
+
 		}
 			
 			 
 	}
+
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);

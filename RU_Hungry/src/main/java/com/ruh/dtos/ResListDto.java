@@ -14,14 +14,14 @@ public class ResListDto {
 	private String parking;
 	private String si;
 	private String gu;
-	private int lat;
-	private int ing;
+	private float lat;
+	private float ing;
 	public ResListDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public ResListDto(int seq, String name, String foodname, String address, String phone, String breakstart,
-			String breakend, String open, String close, String parking, String si, String gu, int lat, int ing) {
+			String breakend, String open, String close, String parking, String si, String gu, float lat, float ing) {
 		super();
 		this.seq = seq;
 		this.name = name;
@@ -110,16 +110,16 @@ public class ResListDto {
 	public void setGu(String gu) {
 		this.gu = gu;
 	}
-	public int getLat() {
+	public float getLat() {
 		return lat;
 	}
-	public void setLat(int lat) {
+	public void setLat(float lat) {
 		this.lat = lat;
 	}
-	public int getIng() {
+	public float getIng() {
 		return ing;
 	}
-	public void setIng(int ing) {
+	public void setIng(float ing) {
 		this.ing = ing;
 	}
 	@Override
@@ -129,6 +129,6 @@ public class ResListDto {
 				+ ", close=" + close + ", parking=" + parking + ", si=" + si + ", gu=" + gu + ", lat=" + lat + ", ing="
 				+ ing + "]";
 	}
-
+	
 	
 }
