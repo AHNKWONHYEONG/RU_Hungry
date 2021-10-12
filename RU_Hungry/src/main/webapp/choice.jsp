@@ -138,7 +138,7 @@
 										<td>${dto.category}</td>
 										<td><a href="ReviewController.do?command=detail&seq=${dto.seq}">${dto.title}</a></td>										
 										<td>${dto.id}</td>
-										<td><fmt:formatDate value="${dto.regdate}" pattern="yyyy.MM.dd" /></td>
+										<td><fmt:formatDate value="${dto.regdate}" pattern="yyyy.MM.dd hh시:mm분" /></td>
 									</tr>
 								</c:forEach>		
 							</c:otherwise>
