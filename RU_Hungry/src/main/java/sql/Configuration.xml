@@ -8,7 +8,7 @@
 	<typeAliases>
 		<typeAlias type="com.ruh.dtos.UsersDto" alias="ruhDto"/>
 		<typeAlias type="com.ruh.dtos.ReviewDto" alias="reviewDto"/>
-		<typeAlias type="com.ruh.dtos.ReviewDto" alias="foodDto"/>
+		<typeAlias type="com.ruh.dtos.FoodDto" alias="foodDto"/>
 		<typeAlias type="com.ruh.dtos.ResListDto" alias="restDto"/>
 	</typeAliases>
 	
