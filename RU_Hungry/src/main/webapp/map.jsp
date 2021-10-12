@@ -141,14 +141,14 @@ function chooseRest() {
 	foodname=null;
 }
 
-$(function initmap() {
+$(document).ready(function initmap() {
 	 //37.525617, 126.886316 양평
- var myposi = { lat: 37.525617 ,lng: 126.886316 };
- map = new google.maps.Map( document.getElementById('map'), {
-     zoom: 15,
-     center: myposi
-   });
-})
+	 var myposi = { lat: 37.525617 ,lng: 126.886316 };
+	 map = new google.maps.Map( document.getElementById('map'), {
+	     zoom: 15,
+	     center: myposi
+	   });
+	});
 
  function makemark(i,x,y) {
 	 var markposi={ lat: x ,lng: y };
