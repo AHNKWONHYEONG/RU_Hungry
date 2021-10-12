@@ -7,13 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="jquery-3.6.0.js"></script>
 <style type="text/css">
 .buttons {
-	padding: 50px 300px;
+	padding: 20px 150px;
 	width: 900px;
 }
 
-.bigImage {
+.menu {
 	width: 200px;
 	height: 200px;
 }
@@ -47,6 +48,13 @@
 	left: 900px;
 	top: 200px;
 	align: center;
+}
+li{
+	list-style: none;	
+}
+.buttons>img{
+	width: 300px;
+	height: 300px;
 }
 
 </style>
@@ -85,13 +93,70 @@
 			<span><%=udto.getId()%></span>님 반갑습니다(아이디:<%=udto.getId()%>)
 		</div>
 		<div class="buttons">
-			<button type="button">
-				<img src="img/갈비찜.jpg"	class="bigImage" >
-			</button>
-			<b id="VS">VS</b>
-			<button type="button">
-				<img src="img/함박스테이크.png"	class="bigImage" >
-			</button>
+			<h1>메뉴 월드컵</h1>
+			<p id="cal"></p>
+			<img id="image" onclick="change(0)">	
+			<img id="images" onclick="change(1)">
+			
+			<script type="text/javascript">
+				text="";
+				var images=[];
+				var sImages=[];
+			
+				var cnt=0;
+				var num=0;
+				var sNum=0;
+				var cnt2=0;
+			
+				function show() {
+			
+					for (i=0; i<16; i++) {
+						images[i] = "img/"+(i)+".jpg";
+					}
+					images.sort(function(a, b) {
+						return 0.5-Math.random()
+					});
+					showImg(num);
+				}
+			
+				show(0);
+			
+				function showImg(num) {
+					document.getElementById('image').src=images[num];
+					document.getElementById('images').src=images[num + 1];
+					cnt2++;
+				}
+			
+				function change(n) {
+					if (cnt2<20) {
+						cnt++;
+						if (n==0)
+							sImages[sNum++]=images[num];
+						else
+							sImages[sNum++]=images[num + 1];
+						num+=2;
+			
+						showImg(num);
+			
+						if (cnt==images.length/2) {
+							for (i=0; i<sImages.length; i++) {
+								images[i]=sImages[i];
+								sImages[i]=null;
+							}
+							images.splice(cnt);
+							cnt=0;
+							num=0;
+							sNum=0;
+							showImg(num);
+						}
+					}
+			
+				}
+			
+				document.getElementById('cal').innerHTML=text;
+			</script>
+			
+				
 		</div>
 		<div class="chk">
 			<form action='a.jsp'>

@@ -23,6 +23,11 @@
 		DELETE FROM Review WHERE SEQ=#{seq}
 	</delete>
 
+	<update id="updateboard" parameterType="reviewDto">
+		UPDATE REVIEW
+		SET TITLE=#{title}, CONTENT=#{content}, REGDATE=SYSDATE
+		WHERE SEQ=#{seq}
+	</update>
 </mapper>
 
 

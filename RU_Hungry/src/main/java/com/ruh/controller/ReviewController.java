@@ -83,6 +83,32 @@ public class ReviewController extends HttpServlet {
 				dispatch.forward(request, response);
 			}
 		}
+		
+		else if(command.equals("updateform")) {
+			String seq = request.getParameter("seq");
+			ReviewDto dto=dao.searchBoard(Integer.parseInt(seq));
+			request.setAttribute("dto", dto);
+			
+			RequestDispatcher dispatch=request.getRequestDispatcher("update.jsp");
+			dispatch.forward(request, response);
+		}
+		
+		else if(command.equals("updateboard")) {
+			String seq = request.getParameter("seq");
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			
+			int sseq = Integer.parseInt(seq);
+			boolean isS=dao.upBoard(new ReviewDto(sseq,title,content));
+			
+			if(isS) {
+				response.sendRedirect("ReviewController.do?command=detail&seq="+seq);
+			}else {
+				request.setAttribute("msg", "글수정실패");
+				RequestDispatcher dispatch=request.getRequestDispatcher("update.jsp");
+				dispatch.forward(request, response);
+			}
+		}
 	
 	
 	}

@@ -112,8 +112,8 @@
 		<div class="buttons">
 			<table border="1">
 				<tr>
-					<th>글번호</th>
-					<td><%=dto.getSeq()%></td>
+					<th>카테고리</th>
+					<td><%=dto.getCategory()%></td>
 				</tr>
 				<tr>
 					<th>작성자</th>
@@ -148,5 +148,10 @@
 			</form>
 		</div>
 	</div>
+	<script type="text/javascript">
+	function updateBoard(){
+		location.href="ReviewController.do?command=updateform&seq=<%=dto.getSeq()%>";
+	}
+	</script>
 </body>
 </html>
