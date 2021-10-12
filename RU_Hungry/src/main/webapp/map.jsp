@@ -42,7 +42,7 @@
 		<div style=" height: 40px;"></div>
 		<div style=" width: 300px; height: 300px; border: 1px solid red;">
 			<div style="width: 300px; height: 260px; border: 1px solid red; ">
-			<img  id="rcmimg" alt="추천이미지" src="img/간장치킨.jpg" style="width: 300px; height: 260px;">
+			<img  id="rcmimg" alt="추천이미지" src=" img/추천해주세요.png" style="width: 300px; height: 260px;">
 			</div>
 			<button style="position: relative;  : 1px;" onclick="selectFood()" >추천받기 (받으면 사진띄움)</button>
 		</div>
@@ -106,40 +106,39 @@
 	})
 }
  
- //37.525606,126.8840023 양평역5호선
  var map;
 function chooseRest() {
-// 	location.href="MapController.do?command=chooserest&foodname="+foodname; //커맨드랑 음식이름을 보내줌
-	$.ajax({
-		url: "MapController.do",
-		data: {"command": "chooserest", "foodname":foodname},
-		method:"POST",
-		dataType: "JSON",
-		success: function(map) { //val은 db에서 select한 json
-			var doc=document.getElementById("reslist");
-	
-			for (var i = 0; i < map["restlist"].length; i++) {
-				var name=map["restlist"][i]["name"];
-				var foodname=map["restlist"][i]["foodname"];
-				var address=map["restlist"][i]["address"];
-				var phone=map["restlist"][i]["phone"];
-				var breakstart=map["restlist"][i]["breakstart"];
-				var breakend=map["restlist"][i]["breakend"];
-				var open=map["restlist"][i]["open"];
-				var close=map["restlist"][i]["close"];
-				var parking=map["restlist"][i]["parking"];
-				var si=map["restlist"][i]["si"];
-				var gu=map["restlist"][i]["gu"];
-				var lat=map["restlist"][i]["lat"];
-				var ing=map["restlist"][i]["ing"];
-			
-				doc.innerHTML += "<tr><th>"+i +"</th><th>"+name +"</th><th>"+foodname +"</th><th>"+open+"~"+close +"</th><th>"+address +"</th><th><a href='index.jsp'>더보기</a></th></tr>"
-				makemark(i,lat,ing);
-	
+	if(foodname!=null){
+		$.ajax({
+			url: "MapController.do",
+			data: {"command": "chooserest", "foodname":foodname},
+			method:"POST",
+			dataType: "JSON",
+			success: function(map) { //val은 db에서 select한 json
+				var doc=document.getElementById("reslist");
+		
+				for (var i = 0; i < map["restlist"].length; i++) {
+					var name=map["restlist"][i]["name"];
+					var foodname=map["restlist"][i]["foodname"];
+					var address=map["restlist"][i]["address"];
+					var phone=map["restlist"][i]["phone"];
+					var breakstart=map["restlist"][i]["breakstart"];
+					var breakend=map["restlist"][i]["breakend"];
+					var open=map["restlist"][i]["open"];
+					var close=map["restlist"][i]["close"];
+					var parking=map["restlist"][i]["parking"];
+					var si=map["restlist"][i]["si"];
+					var gu=map["restlist"][i]["gu"];
+					var lat=map["restlist"][i]["lat"];
+					var ing=map["restlist"][i]["ing"];
+				
+					doc.innerHTML += "<tr><th>"+i +"</th><th>"+name +"</th><th>"+foodname +"</th><th>"+open+"~"+close +"</th><th>"+address +"</th><th><a href='index.jsp'>더보기</a></th></tr>"
+					makemark(i,lat,ing);
+				}
 			}
-		}
-	})
-	//ㅂ다기
+		})
+	}
+	foodname=null;
 }
 
 $(function initmap() {
@@ -151,14 +150,6 @@ $(function initmap() {
    });
 })
 
-// function initMap() {
-// 	 //37.525617, 126.886316 양평
-//    var myposi = { lat: 37.525617 ,lng: 126.886316 };
-//    map = new google.maps.Map( document.getElementById('map'), {
-//        zoom: 15,
-//        center: myposi
-//      });
-//  }
  function makemark(i,x,y) {
 	 var markposi={ lat: x ,lng: y };
 	 console.log(x);
@@ -170,8 +161,6 @@ $(function initmap() {
 	     label: i.toString()
 	   });
 }
- 
 </script>
-
 </body>
 </html>
