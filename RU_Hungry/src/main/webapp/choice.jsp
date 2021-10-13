@@ -58,9 +58,9 @@
 <%
 	UsersDto udto = (UsersDto)session.getAttribute("ruhDto");
 
-	if(udto==null){
-		pageContext.forward("index.jsp");
-	}
+ 	if(udto==null){
+ 		pageContext.forward("index.jsp");
+ 	}
 	
 	ReviewDao dao=new ReviewDao();
 	List<ReviewDto> list=dao.getBoardList();
@@ -80,7 +80,6 @@
 <c:set var="lists" value="${list}" />
 <c:if test="${empty lists}">
 <%-- 	<c:redirect url="index.jsp"/> --%>
-	<jsp:forward page="index.jsp"/>
 </c:if>
 	<div class="header">
 		<div class="home">

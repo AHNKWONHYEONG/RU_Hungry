@@ -20,7 +20,7 @@
 	</select>
 	
 	<delete id="delboard" parameterType="String">
-		DELETE FROM Review WHERE SEQ=#{seq}
+		DELETE FROM Review WHERE SEQ=#{seq} AND ID=#{id}
 	</delete>
 
 	<update id="updateboard" parameterType="reviewDto">

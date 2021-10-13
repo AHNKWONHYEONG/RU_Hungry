@@ -134,6 +134,9 @@
 						<button onclick="location.href='UsersController.do?command=choice'">목록</button>
 					</td>
 				</tr>
+				<div>
+				
+				</div>
 			</table>
 		</div>
 		<div class="chk">
@@ -149,9 +152,9 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-	function updateBoard(){
-		location.href="ReviewController.do?command=updateform&seq=<%=dto.getSeq()%>";
-	}
+// 	function updateBoard(){
+<%-- 		location.href="ReviewController.do?command=updateform&seq=<%=dto.getSeq()%>"; --%>
+// 	}
 	</script>
 </body>
 </html>

@@ -9,9 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ruh.daos.ReviewDao;
 import com.ruh.dtos.ReviewDto;
+import com.ruh.dtos.UsersDto;
 
 @WebServlet("/ReviewController.do")
 public class ReviewController extends HttpServlet {
@@ -20,6 +22,9 @@ public class ReviewController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=UTF-8");
+		
+		HttpSession session=request.getSession();//session객체 구함
+		
 		
 		String command=request.getParameter("command");
 		ReviewDao dao=new ReviewDao();
@@ -65,8 +70,14 @@ public class ReviewController extends HttpServlet {
 		
 		else if(command.equals("muldel")){
 			String[] seqs=request.getParameterValues("chk");
+			UsersDto sess= (UsersDto)session.getAttribute("ruhDto");
 			
-			boolean isS=dao.mulDel(seqs);
+			//자기가(id) 쓴 글 만 삭제하게끔 하여 id 가져오기
+			String id= sess.getId();
+			
+			//ReviewDao에서 가져옴, id와 seqs를 둘다 쓰려고 Map을 사용
+			boolean isS=dao.mulDel(id,seqs);
+			System.out.println(isS);
 			
 			if(isS){
 			String jsTag="<script type='text/javascript'>"
@@ -74,9 +85,18 @@ public class ReviewController extends HttpServlet {
 					+	"location.href='ReviewController.do?command=reviewlist';"
 					+ "</script>";
 			PrintWriter pw =response.getWriter();
-			pw.print(jsTag);
-					
-			}else{
+			pw.print(jsTag);					
+			}
+			else if(!isS){
+				String jsTag="<script type='text/javascript'>"
+						+	"alert('삭제 권한이 없습니다.');"
+						+	"location.href='ReviewController.do?command=reviewlist';"
+						+ "</script>";
+				PrintWriter pw =response.getWriter();
+				pw.print(jsTag);
+						
+				}
+			else{
 				request.setAttribute("msg", "글삭제 실패");
 //				pageContext.forward("error.jsp");
 				RequestDispatcher dispatch = request.getRequestDispatcher("error.jsp");

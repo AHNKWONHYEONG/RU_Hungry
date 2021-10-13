@@ -1,7 +1,9 @@
 package com.ruh.daos;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -154,18 +156,24 @@ public class ReviewDao extends SqlMapConfig {
 		// delete from hkboard where seq=5
 		// delete from hkboard where seq=6
 
-		public boolean mulDel(String[] seqs) {
+		public boolean mulDel(String id,String[] seqs) {
 			int count=0;
 			SqlSession sqlSession=null;
 			
 			try {
 				//openSession(false): autocommit을 false설정 ->rollback가능
 				sqlSession=getSqlSessionFactory().openSession(false);
+				
+				//한 파라미터에 2개 넣을때 map을 사용해서 param에 2개 넣어놓고 사용함
+				Map<String, Object> param = new HashMap<>(); 
+				
 				for (int i = 0; i < seqs.length; i++) {
 					String seq=seqs[i];
-					sqlSession.delete(namespace+"delboard", seq);
+					param.put("id", id); 
+					param.put("seq",seqs[i]);
+					count=sqlSession.delete(namespace+"delboard", param);				
 				}
-				count=1;
+				
 				sqlSession.commit();//commit실행: db에 반영
 			} catch (Exception e) {
 				sqlSession.rollback();
