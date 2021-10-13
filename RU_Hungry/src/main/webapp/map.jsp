@@ -12,17 +12,21 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="jquery-3.6.0.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCePJSFCOeZEfNI7b31h51yWJw4HXTgDT8&callback=initMap&region=kr"></script>
-  <script>
-    function initMap() {
-      var seoul = { lat: 37.5642135 ,lng: 127.0016985 };
-      var map = new google.maps.Map(
-        document.getElementById('map'), {
-          zoom: 12,
-          center: seoul
-        });
-      
+<script type="text/javascript">
+var map;
+var initFlag=0;
+function initMap() {
+    if(initFlag==0){
+	var seoul = { lat: 37.5642135 ,lng: 127.0016985 };
+    var map = new google.maps.Map(
+      document.getElementById('map'), {
+        zoom: 12,
+        center: seoul
+      });
+    initFlag=1;
     }
-  </script>
+  }
+</script>
 </head>
 <%
 	UsersDto udto = (UsersDto)session.getAttribute("ruhDto");
@@ -69,7 +73,8 @@
 				<col width="340px">
 				<col width="200px">
 				<col width="140px">
-				<tr>
+				<thead>
+				<tr id="trlist">
 					<th>번호</th>
 					<th>식당이름</th>
 					<th>음식</th>
@@ -77,6 +82,8 @@
 					<th>주소</th>
 					<th>상세보기</th>
 				</tr>
+				</thead>
+				<tbody></tbody>
 			</table>
 	</div>
 </td >
@@ -92,7 +99,13 @@
 
 <script type="text/javascript">
  var foodname;
+ var sameFood;		//중복체크 
+ 
+ var map;
+ var markers=[];
+ 
  function selectFood() {
+// 	 init();
 	$.ajax({
 		url: "MapController.do",
 		data: {"command": "selectfood"},
@@ -107,17 +120,21 @@
 	})
 }
  
- var map;
+
 function chooseRest() {
-	if(foodname!=null){
+	
+	if(foodname!=null && foodname != sameFood){
+		deleteMarkers();
+// 		clearElements();
 		$.ajax({
 			url: "MapController.do",
 			data: {"command": "chooserest", "foodname":foodname},
 			method:"POST",
 			dataType: "JSON",
 			success: function(map) { //val은 db에서 select한 json
-				var doc=document.getElementById("reslist");
-		
+// 				var doc=document.getElementById("reslist");
+				var doc=document.querySelectorAll("#reslist tbody")[0];
+				doc.innerHTML="";
 				for (var i = 0; i < map["restlist"].length; i++) {
 					var name=map["restlist"][i]["name"];
 					var foodname=map["restlist"][i]["foodname"];
@@ -136,13 +153,41 @@ function chooseRest() {
 					doc.innerHTML += "<tr><th>"+i +"</th><th>"+name +"</th><th>"+foodname +"</th><th>"+open+"~"+close +"</th><th>"+address +"</th><th><a href='index.jsp'>더보기</a></th></tr>"
 					makemark(i,lat,ing);
 				}
+				setMarkOnMap(map);
 			}
 		})
 	}
+	sameFood=foodname;
 	foodname=null;
 }
 
-$(document).ready(function initmap() {
+ function makemark(i,x,y) {
+	 var markposi={ lat: x ,lng: y };
+	 
+	 var marker=new google.maps.Marker({
+	     position: markposi,
+	     map: map,
+	     label: i.toString()
+	   });
+	 markers.push(marker);	
+}
+ 
+ function setMarkOnMap(map) {
+	for (var i = 0; i < markers.length; i++) {
+		markers[i].setMap(map);
+	}
+}
+ 
+ function clearMarkers(){  //마커를 지운다 하지만 마커 배열에 는 유지된다
+	 setMarkOnMap(null);
+ }
+ 
+ function deleteMarkers() { // 마커를 지우고 배열도 비운다
+	clearMarkers();
+ 	markers=[];
+}
+
+ $(document).ready(function initmap() {
 	 //37.525617, 126.886316 양평
 	 var myposi = { lat: 37.525617 ,lng: 126.886316 };
 	 map = new google.maps.Map( document.getElementById('map'), {
@@ -150,18 +195,7 @@ $(document).ready(function initmap() {
 	     center: myposi
 	   });
 	});
-
- function makemark(i,x,y) {
-	 var markposi={ lat: x ,lng: y };
-	 console.log(x);
-	 console.log(y);
-	 
-	 new google.maps.Marker({
-	     position: markposi,
-	     map: map,
-	     label: i.toString()
-	   });
-}
+ 	
 </script>
 </body>
 </html>
