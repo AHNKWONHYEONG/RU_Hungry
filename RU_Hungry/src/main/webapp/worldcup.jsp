@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%request.setCharacterEncoding("utf-8"); %>
 <%response.setContentType("text/html; charset=UTF-8"); %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,7 +57,12 @@ li{
 	width: 300px;
 	height: 300px;
 }
-
+#vs{
+	font-size: 30px;
+}
+#resultMenu{
+	 border: 1px solid black;
+}
 </style>
 </head>
 <%
@@ -85,7 +91,7 @@ li{
 				width="50px" height="50px"> <br />
 			<button type="button" class="infoo">위치설정</button>
 			<br />
-			<button type="button" class="infoo">메뉴 월드컵 다시하기</button>
+			<button type="button" class="infoo" onclick="window.location.reload()">메뉴 월드컵 다시하기</button>
 			<br />
 			<button type="button" class="infoo"
 				onclick="location.href='index.jsp'">로그아웃</button>
@@ -94,11 +100,11 @@ li{
 		</div>
 		<div class="buttons">
 			<h1>메뉴 월드컵</h1>
-			<p id="cal"></p>
+			<div ><b id="vs">16강</b><input type="submit" value="전송"/></div>
 			<img id="image" onclick="change(0)">	
 			<img id="images" onclick="change(1)">
 			
-			<script type="text/javascript">
+			<script type="text/javascript">		
 				text="";
 				var images=[];
 				var sImages=[];
@@ -109,13 +115,12 @@ li{
 				var cnt2=0;
 			
 				function show() {
-			
 					for (i=0; i<16; i++) {
-						images[i] = "img/"+(i)+".jpg";
+						images[i] = "img/wimg/"+(i)+".jpg";
 					}
-					images.sort(function(a, b) {
-						return 0.5-Math.random()
-					});
+// 					images.sort(function(a, b) {
+// 						return 0.5-Math.random()
+// 					}); 잠시 주석
 					showImg(num);
 				}
 			
@@ -125,6 +130,10 @@ li{
 					document.getElementById('image').src=images[num];
 					document.getElementById('images').src=images[num + 1];
 					cnt2++;
+					console.log("cnt2:"+cnt2);
+					console.log("cnt:"+cnt);
+					console.log("num:"+num);
+					console.log("snum:"+sNum);
 				}
 			
 				function change(n) {
@@ -135,13 +144,26 @@ li{
 						else
 							sImages[sNum++]=images[num + 1];
 						num+=2;
-			
 						showImg(num);
-			
 						if (cnt==images.length/2) {
 							for (i=0; i<sImages.length; i++) {
 								images[i]=sImages[i];
 								sImages[i]=null;
+							}
+							document.getElementById('vs').innerHTML=cnt+"강";
+							if(cnt==2){
+								document.getElementById('vs').innerHTML="결승";
+							}else if(cnt==1){
+								document.getElementById('vs').innerHTML="우승";
+								$("#images").hide();
+								$("#image").show(function(){
+									$(this).animate({
+										"width":500+"px",
+										"height":500+"px"
+									},2000,);									
+								});
+								console.log(images[0]);
+								
 							}
 							images.splice(cnt);
 							cnt=0;
@@ -150,13 +172,11 @@ li{
 							showImg(num);
 						}
 					}
-			
 				}
-			
-				document.getElementById('cal').innerHTML=text;
+				
+				
 			</script>
 			
-				
 		</div>
 		<div class="chk">
 			<form action='a.jsp'>
