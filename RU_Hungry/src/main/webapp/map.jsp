@@ -105,7 +105,7 @@ function initMap() {
  var markers=[];
  
  function selectFood() {
-// 	 init();
+	 initMap();
 	$.ajax({
 		url: "MapController.do",
 		data: {"command": "selectfood"},
@@ -114,7 +114,7 @@ function initMap() {
 		success: function(val) { //val은 db에서 select한 foodname
 			var doc=document.getElementById("rcmimg");
 // 		 	String foodname=val.toString();
-		doc.src="img/"+val+".jpg";
+		doc.src="img/"+val+".JPG";
 		foodname=val;
 		}
 	})
