@@ -30,6 +30,11 @@ public class FoodDto {
 		this.cold = cold;
 		this.category = category;
 	}
+	
+	public FoodDto(String id) {
+		super();
+		this.id = id;
+	}
 	public int getSeq() {
 		return seq;
 	}
