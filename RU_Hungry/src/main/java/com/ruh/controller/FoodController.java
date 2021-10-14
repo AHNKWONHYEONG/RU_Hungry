@@ -31,7 +31,7 @@ public class FoodController extends HttpServlet {
 			String id = request.getParameter("id");
 			String img=request.getParameter("img");
 			
-			if(img.equals("http://localhost:8088/RU_Hungry/img/wimg/0.jpg")) {
+			if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/0.jpg")) {
 				boolean isS=dao.insertFood0(new FoodDto(id));
 				if(isS) {
 					response.sendRedirect("UsersController.do?command=worldcup");
