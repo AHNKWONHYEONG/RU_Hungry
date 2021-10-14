@@ -27,6 +27,20 @@ imgArray[2] = "randimg/2.jpg";
 imgArray[3] = "randimg/3.jpg";
 imgArray[4] = "randimg/4.jpg";
 imgArray[5] = "randimg/5.jpg";
+imgArray[6] = "randimg/6.jpg";
+imgArray[7] = "randimg/7.jpg";
+imgArray[8] = "randimg/8.jpg";
+imgArray[9] = "randimg/9.jpg";
+imgArray[10] = "randimg/10.jpg";
+imgArray[11] = "randimg/11.jpg";
+imgArray[12] = "randimg/12.jpg";
+imgArray[13] = "randimg/13.jpg";
+imgArray[14] = "randimg/14.jpg";
+imgArray[15] = "randimg/15.jpg";
+imgArray[16] = "randimg/16.jpg";
+imgArray[17] = "randimg/17.jpg";
+imgArray[18] = "randimg/18.jpg";
+imgArray[19] = "randimg/19.jpg";
 
 function funccc(){
    var imgNum = Math.round(Math.random()*2);
@@ -40,8 +54,42 @@ function funccc(){
        x.innerText="오늘의 추천 메뉴는 에스프레소 입니다."; 
    }else if(imgNum==2){
        x.innerText="오늘의 추천 메뉴는 커피 2잔 입니다."; 
+   }else if(imgNum==3){
+       x.innerText="오늘의 추천 메뉴는 샐러드 입니다."; 
+   }else if(imgNum==4){
+       x.innerText="오늘의 추천 메뉴는 사탕 입니다."; 
+   }else if(imgNum==5){
+       x.innerText="오늘의 추천 메뉴는 햄버거 입니다."; 
+   }else if(imgNum==6){
+       x.innerText="오늘의 추천 메뉴는 도넛 입니다."; 
+   }else if(imgNum==7){
+       x.innerText="오늘의 추천 메뉴는 샌드위치 입니다."; 
+   }else if(imgNum==8){
+       x.innerText="오늘의 추천 메뉴는 연어 스테이크 입니다."; 
+   }else if(imgNum==9){
+       x.innerText="오늘의 추천 메뉴는 모르겠음 입니다."; 
+   }else if(imgNum==10){
+       x.innerText="오늘의 추천 메뉴는 피자 입니다."; 
+   }else if(imgNum==11){
+       x.innerText="오늘의 추천 메뉴는 파스타 입니다."; 
+   }else if(imgNum==12){
+       x.innerText="오늘의 추천 메뉴는 파프리카 입니다."; 
+   }else if(imgNum==13){
+       x.innerText="오늘의 추천 메뉴는 토마토 입니다."; 
+   }else if(imgNum==14){
+       x.innerText="오늘의 추천 메뉴는 아정아 토마토가 여러개인데? 입니다."; 
+   }else if(imgNum==15){
+       x.innerText="오늘의 추천 메뉴는 ??? 입니다."; 
+   }else if(imgNum==16){
+       x.innerText="오늘의 추천 메뉴는 야채피자?? 입니다."; 
+   }else if(imgNum==17){
+       x.innerText="오늘의 추천 메뉴는 ??? 입니다."; 
+   }else if(imgNum==18){
+       x.innerText="오늘의 추천 메뉴는 ??? 입니다."; 
+   }else if(imgNum==19){
+       x.innerText="오늘의 추천 메뉴는 ??? 입니다."; 
    }
-   
+
 };
 
 

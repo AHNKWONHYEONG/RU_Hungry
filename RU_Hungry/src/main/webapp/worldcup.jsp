@@ -100,6 +100,8 @@ li{
 		</div>
 		<div class="buttons">
 			<h1>메뉴 월드컵</h1>
+			<form action="FoodController.do" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="command" value="upload"/>
 			<div ><b id="vs">16강</b><input type="submit" value="전송"/></div>
 			<img id="image" onclick="change(0)">	
 			<img id="images" onclick="change(1)">
