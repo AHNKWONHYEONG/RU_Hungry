@@ -106,7 +106,6 @@ function funccc(){
 
 
 
-출처: https://devnauts.tistory.com/17 [devnauts]
 
 </style>
 </head>
