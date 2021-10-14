@@ -57,13 +57,7 @@ function funccc(){
 	height: 200px;
 }
 
-.home {
-	width: 150px;
-}
 
-.header {
-	height: 120px;
-}
 
 .bbody {
 	height: 400px;
@@ -104,11 +98,13 @@ function funccc(){
 	}
 %>
 <body>
-  <main class="main" id="top">
+  <main xclass="main" id="top">
       <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" data-navbar-on-scroll="data-navbar-on-scroll">
+      
         <div class="container"><a class="navbar-brand d-inline-flex" href="main.jsp"><img class="d-inline-block" src="assets/img/gallery/logo.svg" alt="logo" /><span class="text-1000 fs-3 fw-bold ms-2 text-gradient">RU Hungry</span></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"> </span></button>
           <div class="collapse navbar-collapse border-top border-lg-0 my-2 mt-lg-0" id="navbarSupportedContent">
+          
             <div class="mx-auto pt-5 pt-lg-0 d-block d-lg-none d-xl-block">
               <p class="mb-0 fw-bold text-lg-center">Deliver to: <i class="fas fa-map-marker-alt text-warning mx-2"></i><span class="fw-normal">Current Location </span><span>Mirpur 1 Bus Stand, Dhaka</span></p>
             </div>
@@ -121,24 +117,8 @@ function funccc(){
           </div>
         </div>
       </nav>
-      </main>
-	<div class="header">
-		
-		<div class="randplay">
-      
-      <img id = "introImg" width="200px" height="150px" border="0" 
-      src="randimg/Q.png">
-      <button onclick="funccc()">클릭~</button>
-      <p>
-         <span class="quiz-text">버튼을 클릭하세요.</span>
-    </p>
-      </div>
-		
-	</div>
-	<br />
-
-	<div class="bbody">
-		<div class="info">
+		  <section class="py-5 overflow-hidden bg-primary" id="home">	<!-- 배경색 노랑-->>
+		    <div class="info">
 			<img
 				src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFGMboZCO9t-ZUJA9cIEJaLXfp67qJmS2hHRcvDldP2L8eCedaRVpI05anMy8TANCPk6w&usqp=CAU"
 				width="50px" height="50px"> <br />
@@ -154,6 +134,68 @@ function funccc(){
 </div>
 			
 		</div>
+		    <div class="container">
+          <div class="row flex-center">
+            <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0"></div>
+            <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
+              <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">Are you starving?</h1>
+              <h1 class="text-800 mb-5 fs-4">Within a few clicks, find meals that<br class="d-none d-xxl-block" />are accessible near you</h1>
+              <div class="card w-xxl-75">
+                <div class="card-body">
+                  <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                      <button class="nav-link active mb-3" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fas fa-motorcycle me-2"></i>Delivery</button>
+                      <button class="nav-link mb-3" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fas fa-shopping-bag me-2"></i>Pickup</button>
+                    </div>
+                  </nav>
+                  <div class="tab-content mt-3" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                      <form class="row gx-2 gy-2 align-items-center">
+                        <div class="col">
+                          <div class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
+                            <label class="visually-hidden" for="inputDelivery">Address</label>
+                            <input class="form-control input-box form-foodwagon-control" id="inputDelivery" type="text" placeholder="Enter Your Address" />
+                          </div>
+                        </div>
+                        <div class="d-grid gap-3 col-sm-auto">
+                          <button class="btn btn-danger" type="submit">Find Food</button>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                      <form class="row gx-4 gy-2 align-items-center">
+                        <div class="col">
+                          <div class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
+                            <label class="visually-hidden" for="inputPickup">Address</label>
+                            <input class="form-control input-box form-foodwagon-control" id="inputPickup" type="text" placeholder="Enter Your Address" />
+                          </div>
+                        </div>
+                        <div class="d-grid gap-3 col-sm-auto">
+                          <button class="btn btn-danger" type="submit">Find Food</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+		<div class="randplay">
+      
+      <img id = "introImg" width="200px" height="150px" border="0" 
+      src="randimg/Q.png">
+      <button onclick="funccc()">클릭~</button>
+      <p>
+         <span class="quiz-text">버튼을 클릭하세요.</span>
+    </p>
+      </div>
+		
+	<br />
+
+	<div class="bbody">
+		
+	</section>
 		
 		<div class="buttons">
 
@@ -188,6 +230,7 @@ function funccc(){
 			</form>
 		</div>
 	</div>
+      </main>
 	<script src="vendors/@popperjs/popper.min.js"></script>
     <script src="vendors/bootstrap/bootstrap.min.js"></script>
     <script src="vendors/is/is.min.js"></script>
