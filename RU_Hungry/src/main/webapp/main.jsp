@@ -122,12 +122,12 @@ function funccc(){
 			<img
 				src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFGMboZCO9t-ZUJA9cIEJaLXfp67qJmS2hHRcvDldP2L8eCedaRVpI05anMy8TANCPk6w&usqp=CAU"
 				width="50px" height="50px"> <br />
-			<button type="button" class="infoo">위치설정</button>
+			  <button class="btn1" type="submit">Location</button>
+				<br />
+			<button class="btn1" type="submit">Reset</button>
 			<br />
-			<button type="button" class="infoo">선호 초기화</button>
-			<br />
-			<button type="button" class="infoo"
-				onclick="location.href='index.jsp'">로그아웃</button>
+			
+			<button class="btn1" type="submit" onclick="location.href='index.jsp'">LogOut</button>
 			<br />
 			<div>
 	<span><%=udto.getId()%></span>님 반갑습니다(아이디:<%=udto.getId()%>)

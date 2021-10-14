@@ -3489,6 +3489,35 @@ textarea.form-control-lg {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
 
+.btn1 {
+	color: #FFFEFE;
+  background-color: #F17228;
+  border-color: #F17228;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  padding: 5px 22px;
+  margin:5px 10px;
+  font-size: 10px;
+  border-radius: 20px 20px 20px 20px;
+}
+
+.btn-danger {
+	
+  color: #FFFEFE;
+  background-color: #F17228;
+  border-color: #F17228;
+}
+
+.btn1:hover {
+  color: #FFFEFE;
+  background-color: #cd6122;
+  border-color: #c15b20;
+}
+
+
 @media (prefers-reduced-motion: reduce) {
   .btn {
     -webkit-transition: none;
@@ -3719,6 +3748,7 @@ fieldset:disabled .btn {
 }
 
 .btn-danger {
+	
   color: #FFFEFE;
   background-color: #F17228;
   border-color: #F17228;
