@@ -57,19 +57,22 @@ function funccc(){
 	height: 200px;
 }
 
-.home {
-	width: 150px;
-}
 
-.header {
-	height: 120px;
-}
 
 .bbody {
-	height: 400px;
+/* 	height: 100px; */
+/* 	width:600px; */
+	background-color: white;
+/* 	position: absolute; */
+/* 	left: 200px; */
+/* 	top: 300px; */
+	
 }
 
 .info {
+	position:absolute;
+	left:50px;
+	top:100px;
 	width: 100px;
 	height: 130px;
 	text-align: center;
@@ -88,11 +91,21 @@ function funccc(){
 	align: center;
 }
 .randplay{
- position: absolute;
-        left: 300px;
+ 		position: absolute;
+        left: 500px;
         top: 50px;
         align:center;
 }
+.btnbg{
+	background-color:transparent;
+	border: 0;
+	outline: 0;
+	
+}
+
+
+
+
 
 </style>
 </head>
@@ -106,9 +119,11 @@ function funccc(){
 <body>
   <main class="main" id="top">
       <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" data-navbar-on-scroll="data-navbar-on-scroll">
+      
         <div class="container"><a class="navbar-brand d-inline-flex" href="main.jsp"><img class="d-inline-block" src="assets/img/gallery/logo.svg" alt="logo" /><span class="text-1000 fs-3 fw-bold ms-2 text-gradient">RU Hungry</span></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"> </span></button>
           <div class="collapse navbar-collapse border-top border-lg-0 my-2 mt-lg-0" id="navbarSupportedContent">
+          
             <div class="mx-auto pt-5 pt-lg-0 d-block d-lg-none d-xl-block">
               <p class="mb-0 fw-bold text-lg-center">Deliver to: <i class="fas fa-map-marker-alt text-warning mx-2"></i><span class="fw-normal">Current Location </span><span>Mirpur 1 Bus Stand, Dhaka</span></p>
             </div>
@@ -121,8 +136,22 @@ function funccc(){
           </div>
         </div>
       </nav>
-      </main>
-	<div class="header">
+		  <section class="py-5 overflow-hidden bg-primary" id="home">	<!-- 배경색 노랑-->>
+		    <div class="info">
+			<img
+				src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFGMboZCO9t-ZUJA9cIEJaLXfp67qJmS2hHRcvDldP2L8eCedaRVpI05anMy8TANCPk6w&usqp=CAU"
+				width="50px" height="50px"> <br />
+				<h1 class="text-800 mb-5 fs-4">ID:<%=udto.getId()%></h1>
+			  <button class="btn1" type="submit">Location</button>
+				<br />
+			<button class="btn1" type="submit">Reset</button>
+			<br />
+			
+			<button class="btn1" type="submit" onclick="location.href='index.jsp'">LogOut</button>
+			<br />
+				
+			
+		</div>
 		
 		<div class="randplay">
       
@@ -134,48 +163,45 @@ function funccc(){
     </p>
       </div>
 		
-	</div>
 	<br />
 
 	<div class="bbody">
-		<div class="info">
-			<img
-				src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFGMboZCO9t-ZUJA9cIEJaLXfp67qJmS2hHRcvDldP2L8eCedaRVpI05anMy8TANCPk6w&usqp=CAU"
-				width="50px" height="50px"> <br />
-			<button type="button" class="infoo">위치설정</button>
-			<br />
-			<button type="button" class="infoo">선호 초기화</button>
-			<br />
-			<button type="button" class="infoo"
-				onclick="location.href='index.jsp'">로그아웃</button>
-			<br />
-			<div>
-	<span><%=udto.getId()%></span>님 반갑습니다(아이디:<%=udto.getId()%>)
-</div>
-			
-		</div>
 		
-		<div class="buttons">
-
-			<button type="button">
-				<img
-					src="https://e7.pngegg.com/pngimages/42/565/png-clipart-trophy-computer-icons-award-medal-award.png"
-					class="bigImage" onclick="location.href='worldcup.jsp'">
+		<section class="py-0 bg-primary-gradient">
+		<div class="container">
+          <div class="row justify-content-center g-0">
+            <div class="col-xl-9">
+            
+              <div class="row">
+              <div class="col-sm-6 col-md-3 mb-6">
+                  <div class="text-center">
+			<button type="button" class="btnbg">
+				<img class="shadow-icon" src="assets/img/gallery/meals.png" height="112" alt="..."  onclick="location.href='worldcup.jsp'"/>
 			</button>
-
-			<button type="button">
-				<img
-					src="https://png.pngtree.com/png-vector/20191030/ourlarge/pngtree-maps-icon-outline-style-png-image_1922190.jpg"
-					class="bigImage" onclick="location.href='choice.jsp'">
+			</div>
+			</div>
+			<div class="col-sm-6 col-md-3 mb-6">
+                  <div class="text-center">
+			<button type="button" class="btnbg">
+				<img class="shadow-icon" src="assets/img/gallery/order.png" height="112" alt="..."  onclick="location.href='choice.jsp'"/>
 			</button>
-
-			<button type="button">
-				<img
-					src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAdVBMVEX///8AAADLy8tFRUX19fXFxcVaWlry8vL6+vqrq6vu7u5nZ2c0NDTIyMjOzs6zs7OSkpIICAguLi7g4OA5OTlfX19TU1NxcXGTk5Pi4uKAgIC5ubkbGxsRERE/Pz/a2tpJSUl6enqcnJyJiYkiIiIYGBikpKQkpEjSAAAEd0lEQVR4nO3diVbiQBAF0ERAIiJoEMWVRcb//8QxRCQkvaUTp+bVefcLqk6g0kt1J0mIiIiIiIiIiIiIiIiIiP65bLRbvuf7fPD4OZOO5RcM55u06nqUSYfUq+HtXVqXX0lH1aP5WyO/Q44X0oH1ZHhpzK/wLB1bL55erQmm6WAoHV53a0d+xS91Ih1gV4tmiTk3BX+KmesnWtpIx9iNvcicQJebl4AE03QtHWa84Z+gDO+l44y3C0owTefSgcbKwh4h8EMM+xcWUOcaIYW09CgdaqTgBNNUOtQ4Fy0yxHxhXLXIELOabltk+CEdbJSHFhleSgcbZdAiw3fpYKPct8gQ852v/xkuW2T4IB1slI8WGWLOEectMsRcO20zphlJBxtl3CLDJ+lg47TIUDrUSOEvxFw61Ejb4AyvpUONFLpMk6Yr6VAjjYIzfJEONdIkOEPQUpoMzduGBmPpUGOFzhAH0oFG2wZmiLrUFl5MUUtpkswCM8QclRaeAjNcSAcaLcuDEtzDltLQYopbSpPkOShD3FIauvuEOcEvhRVT5NaoLChD6JaaoF1g6SA7uQ5IEHOt9OgzIEPcMVshZBKMOv0thUyCUae/3wIylA6xI/+4DXPb6cS/PbOVDrEjf7vCTjrEjjwtwiluP9SRv5hCj9m+ZO+eBHPwLmj/uG0pHWBnt54MMXuFqnzjNuwxW8FXTDF79qo85xHegNfZjtzFdCodXg+2zgxRd3+r3G01yOtsR+71thvp8PrgzBB+RFNw7gRLB9eLR0eCmL3Bda59Uux1tiPXuA1/zFZwdfChTw5LrnGbkmsH7O3Q2Av6J/b1Nszm5yb7PqmGMVthYc0Qf3JYmth2Ee90lNIvG0uG6Av6J7Zxm4bJYcm2tP8pHVhvbFNEFZPDA9vSPvjeaJV53PYmHVaPzOfWN9Jh9cg8RbyVDqtH5nGbjslhyVxqFBUay3qbdFC9MrVkIDfONpmmiPg7h1WmpX0tk8OSqWtfy+SwZFpvU7BzWNUsNboKjWkXEblD36TZSove7VXXbFhA7/aqa47bVI3ZCtNagqgH1O3qS/s6dg6r6lNEHTuHVfVdRNxTlTb1cRvuqUqrWobS4fyC86V9PQv6J6uzDHVNDkvnC9/6Ck1y3qS4lw7mV6y1P8LqK1HXAkbFpGzcHyh8F/6YzEYX6iYVRERERET/nWwxW6tpKm0Yvhy7MAcrXfu/pfF5s8JG3Sy/+YHApa5fq/FUvqIdxMxyh4uexjbrR4O0NAk7rlXQ8V90HQTeSAfXC+cVnxpeGu6LMTTsQXnuwsJ/ZfguGcI/oOe7vQW/vc17nRn8C8N7+yX8Nob3m0jwEynvZx6R79g90P8MXbdiHMBXGt/XA17h2719F17j9yj6vj2u4KSs5+Z5+L+hb2CqomPfWU0VPEL3J4OUHEmwfyYQv5B+s904MIV/F/4wp6gowSS5MfwXVZTRk/G2ll+uZ8H7aFHNcXql5A6smpvV8n6fD7Zz+Hk9EREREREREREREREREUH6C66xKeXSJ+kcAAAAAElFTkSuQmCC"
-					class="bigImage" onclick="location.href='map.jsp'">
+			</div>
+			</div>
+			  <div class="row">
+			<div class="col-sm-6 col-md-3 mb-6">
+			  <div class="text-center">
+			<button type="button" class="btnbg">
+				<img class="shadow-icon" src="assets/img/gallery/location.png" height="112" alt="..." onclick="location.href='map.jsp'"/>
 			</button>
-
+			</div>
+			</div>
+			</div>
 		</div>
+	</div>
+	</div>
+	</div>
+	</section>
+	</div>
 		<div class="chk">
 			<form action='a.jsp'>음식<br> 
 			<input type='checkbox' name='food' value='korean' />한식<br>
@@ -187,7 +213,8 @@ function funccc(){
 			<input type='submit'>
 			</form>
 		</div>
-	</div>
+	</section>
+      </main>
 	<script src="vendors/@popperjs/popper.min.js"></script>
     <script src="vendors/bootstrap/bootstrap.min.js"></script>
     <script src="vendors/is/is.min.js"></script>
