@@ -60,7 +60,7 @@ function funccc(){
 
 
 .bbody {
-/* 	height: 100px; */
+ 	height: 480px; 
 /* 	width:600px; */
 	background-color: white;
 /* 	position: absolute; */
@@ -96,16 +96,34 @@ function funccc(){
         top: 50px;
         align:center;
 }
-.btnbg{
+.btnbg1{
 	background-color:transparent;
 	border: 0;
 	outline: 0;
-	
+	position: absolute;
+	left: 150px;
+	top: 300px;
 }
 
-
-
-
+.btnbg2{
+	background-color:transparent;
+	border: 0;
+	outline: 0;
+	position: absolute;
+	left: 400px;
+	top: 300px;
+}
+.btnbg3{
+	background-color:transparent;
+	border: 0;
+	outline: 0;
+	position: absolute;
+	left: 650px;
+	top: 300px;
+}
+.resp_td{
+	
+}
 
 </style>
 </head>
@@ -153,20 +171,27 @@ function funccc(){
 			
 		</div>
 		
-		<div class="randplay">
+<!-- 		<div class="randplay"> -->
       
-      <img id = "introImg" width="200px" height="150px" border="0" 
-      src="randimg/Q.png">
-      <button onclick="funccc()">클릭~</button>
-      <p>
-         <span class="quiz-text">버튼을 클릭하세요.</span>
-    </p>
-      </div>
+<!--       <img id = "introImg" width="200px" height="150px" border="0"  -->
+<!--       src="randimg/Q.png"> -->
+<!--       <button onclick="funccc()">클릭~</button> -->
+<!--       <p> -->
+<!--          <span class="quiz-text">버튼을 클릭하세요.</span> -->
+<!--     </p> -->
+<!--       </div> -->
 		
 	<br />
 
 	<div class="bbody">
-		
+	<div class="resp">
+	<table class="resp_td">
+	<tr>
+	<td>dd</td>
+	<td>dd</td>
+	</tr>
+	</table>
+	</div>
 		<section class="py-0 bg-primary-gradient">
 		<div class="container">
           <div class="row justify-content-center g-0">
@@ -175,14 +200,14 @@ function funccc(){
               <div class="row">
               <div class="col-sm-6 col-md-3 mb-6">
                   <div class="text-center">
-			<button type="button" class="btnbg">
+			<button type="button" class="btnbg1">
 				<img class="shadow-icon" src="assets/img/gallery/meals.png" height="112" alt="..."  onclick="location.href='worldcup.jsp'"/>
 			</button>
 			</div>
 			</div>
 			<div class="col-sm-6 col-md-3 mb-6">
                   <div class="text-center">
-			<button type="button" class="btnbg">
+			<button type="button" class="btnbg2">
 				<img class="shadow-icon" src="assets/img/gallery/order.png" height="112" alt="..."  onclick="location.href='choice.jsp'"/>
 			</button>
 			</div>
@@ -190,7 +215,7 @@ function funccc(){
 			  <div class="row">
 			<div class="col-sm-6 col-md-3 mb-6">
 			  <div class="text-center">
-			<button type="button" class="btnbg">
+			<button type="button" class="btnbg3">
 				<img class="shadow-icon" src="assets/img/gallery/location.png" height="112" alt="..." onclick="location.href='map.jsp'"/>
 			</button>
 			</div>
