@@ -50,19 +50,21 @@ public class UsersController extends HttpServlet {
 		
 		if(command.equals("register")) {  //예시
 		
-			String id=request.getParameter("id");
+			String id=request.getParameter("idchk");
 			String pw=request.getParameter("pw");
 			 String name=request.getParameter("name");
 			 String nickname=request.getParameter("nickname");
 			 String sex=request.getParameter("sexchk");
 			 String birth=request.getParameter("birth");
 			 String email=request.getParameter("email");
+			 String si=request.getParameter("si");
+			 String gu=request.getParameter("gu");
 			 
 			
 			 SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 			try {
-				boolean isS= dao.Regist(new UsersDto(0, id, pw, name, nickname, null, null, sex, transFormat.parse(birth), email) );
+				boolean isS= dao.Regist(new UsersDto(0, id, pw, name, nickname, null, null, sex, transFormat.parse(birth), email,si,gu) );
 				if (isS) {
 					String jsTag="<script type='text/javascript'>"
 								+	"alert('회원가입을 축하드립니다.');"
@@ -120,19 +122,21 @@ public class UsersController extends HttpServlet {
 					+"</script>";
 			PrintWriter pwr=response.getWriter();
 			pwr.print(jsTag);
-		}else if(command.equals("idChk")) {
-			var id = request.getParameter("id");
-			UsersDto dto = null;
-			
-			int count = dao.idChk(id);
-			
-			
-				PrintWriter pwr = response.getWriter();
-				pwr.print(count);
-			
-			
-
 		}
+		
+//		else if(command.equals("idChk")) {
+//			var id = request.getParameter("id");
+//			UsersDto dto = null;
+//			
+//			int count = dao.idChk(id);
+//			
+//			
+//				PrintWriter pwr = response.getWriter();
+//				pwr.print(count);
+//			
+//			
+//
+//		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

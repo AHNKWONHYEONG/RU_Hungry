@@ -187,14 +187,14 @@ span {
 		
 		
 		<form id="register" action="UsersController.do?command=register"  method="post" class="input-group">
-			<input type="text" name="id" class="input-field" placeholder="ID를 입력하세요" required="required">
+			<input type="text" name="idchk" class="input-field" placeholder="ID를 입력하세요" required="required">
 <!-- 			<button type = "button" value="ID중복체크" onclick ="idChk()"/> -->
 			<button type="button" onclick="idChk()">id중복체크</button>
 			<input type="password" name="pw" class="input-field" placeholder="PW를 입력하세요" required="required"> 
 			<input type="text" name="name" class="input-field" placeholder="이름을 입력하세요" required="required">
 			<input type="text" name="nickname" class="input-field" placeholder="별명을 입력하세요" required="required">
 			<input type="text" name="si" class="input-field" placeholder="'시'를 입력하세요" required="required">
-			<input type="text" name="nickname" class="input-field" placeholder="'구'를 입력하세요" required="required">
+			<input type="text" name="gu" class="input-field" placeholder="'구'를 입력하세요" required="required">
 			
 			<input type="radio" name="sexchk"  value="m" /><label>남</label>
 			<input type="radio" name="sexchk"  value="w" /><label>여</label>
@@ -210,7 +210,7 @@ span {
 			<button type="submit" class="submit" >회원가입</button>
 		</form>
 	</div>
-	<script>
+	<script type="text/javascript">
 		var x = document.getElementById("login");
 		var y = document.getElementById("register");
 		var z = document.getElementById("btn");
@@ -227,6 +227,19 @@ span {
 			z.style.left = "110px";
 			
 		}
+		
+		function idChk(){
+			var id=document.getElementsByName("idchk")[0].value;//입력된 아이디 구함
+			console.log(id);
+			if(id==null||id==""||id==undefined){
+				alert("반드시 아이디를 입력하세요");
+				document.document.getElementsByName("id")[0].focus();
+			}else{
+				open("idchk.jsp?id="+id,"중복체크","width=300px, height=300px,");	
+			}
+		}
+		
+		
 	</script>
 </body>
 </html>
