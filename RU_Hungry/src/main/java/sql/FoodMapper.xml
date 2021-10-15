@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ruh.food">
+
+	<insert id="0" parameterType="foodDto">
+		INSERT INTO FOOD 
+		VALUES(RUH_SEQ.nextval,#{id},'LA갈비',0,1,0,1,1,0,'한식')
+	</insert>
+<!-- 	<select id="boardlist" resultType="ansdto" parameterType="Map"> -->
+<!--   		SELECT SEQ ,ID ,TITLE ,CONTENT ,REGDATE ,REFER ,STEP -->
+<!-- 		DEP ,READCOUNT ,DELFLAG  -->
+<!-- 		FROM ANSWERBOARD  -->
+<!-- 		<where> -->
+<!-- 			<if test="seq!=null"> -->
+<!-- 				 SEQ=#{seq}		 -->
+<!-- 			</if>		 -->
+<!-- 		</where> -->
+<!-- 		ORDER BY REFER DESC, STEP -->
+<!--   	</select> -->
+	
+</mapper>
+
+
+
+
+
+
+
+

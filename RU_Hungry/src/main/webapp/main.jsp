@@ -91,6 +91,10 @@ function funccc(){
    }
 
 };
+function showPopup() {
+	alert("hi");
+	window.open("location.jsp", "위치설정 팝업", "width=600, height=500, left=100, top=50");
+};
 
 
 </script>
@@ -108,7 +112,7 @@ function funccc(){
 
 
 .bbody {
-/* 	height: 100px; */
+ 	height: 480px; 
 /* 	width:600px; */
 	background-color: white;
 /* 	position: absolute; */
@@ -144,16 +148,48 @@ function funccc(){
         top: 50px;
         align:center;
 }
-.btnbg{
+.btnbg1{
 	background-color:transparent;
 	border: 0;
 	outline: 0;
-	
+	position: absolute;
+	left: 150px;
+	top: 300px;
 }
 
-
-
-
+.btnbg2{
+	background-color:transparent;
+	border: 0;
+	outline: 0;
+	position: absolute;
+	left: 400px;
+	top: 300px;
+}
+.btnbg3{
+	background-color:transparent;
+	border: 0;
+	outline: 0;
+	position: absolute;
+	left: 650px;
+	top: 300px;
+}
+.resp_table{
+	position:absolute;
+	left:290px;
+	top:140px;
+/* 	border: 1px solid black; */
+	width: 500px;
+	height:200px;
+	border-radius: 10px;
+}
+.td1{
+	width:200px;
+	padding:10px;
+	}
+	
+.td2{
+	width:300px;
+	}
 
 </style>
 </head>
@@ -190,7 +226,7 @@ function funccc(){
 				src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFGMboZCO9t-ZUJA9cIEJaLXfp67qJmS2hHRcvDldP2L8eCedaRVpI05anMy8TANCPk6w&usqp=CAU"
 				width="50px" height="50px"> <br />
 				<h1 class="text-800 mb-5 fs-4">ID:<%=udto.getId()%></h1>
-			  <button class="btn1" type="submit">Location</button>
+			 <button class="btn1" type="button" onclick="showPopup()" >location</button>
 				<br />
 			<button class="btn1" type="submit">Reset</button>
 			<br />
@@ -201,20 +237,33 @@ function funccc(){
 			
 		</div>
 		
-		<div class="randplay">
+<!-- 		<div class="randplay"> -->
       
-      <img id = "introImg" width="200px" height="150px" border="0" 
-      src="randimg/Q.png">
-      <button onclick="funccc()">클릭~</button>
-      <p>
-         <span class="quiz-text">버튼을 클릭하세요.</span>
-    </p>
-      </div>
+<!--       <img id = "introImg" width="200px" height="150px" border="0"  -->
+<!--       src="randimg/Q.png"> -->
+<!--       <button onclick="funccc()">클릭~</button> -->
+<!--       <p> -->
+<!--          <span class="quiz-text">버튼을 클릭하세요.</span> -->
+<!--     </p> -->
+<!--       </div> -->
 		
 	<br />
 
 	<div class="bbody">
-		
+	<div class="resp">
+	<table class="resp_table shadow-lg">
+	<tr>
+	<td class="td1">
+	<h4 class="card-title mt-xl-5 mb-4"> Today Food recommendations<span class="text-primary"> for you!</span></h4>
+	<div class="d-grid bottom-0"><button class="btn btn-lg btn-primary mt-xl-6" onclick="funccc()">Click!</button></div>
+	</td>
+	<td class="td2">
+	<img class=" rounded-top rounded-md-end rounded-md-top-0" id = "introImg" width="300px" height="205px" border="0" 
+      src="randimg/Q.png">
+	</td>
+	</tr>
+	</table>
+	</div>
 		<section class="py-0 bg-primary-gradient">
 		<div class="container">
           <div class="row justify-content-center g-0">
@@ -223,14 +272,14 @@ function funccc(){
               <div class="row">
               <div class="col-sm-6 col-md-3 mb-6">
                   <div class="text-center">
-			<button type="button" class="btnbg">
+			<button type="button" class="btnbg1">
 				<img class="shadow-icon" src="assets/img/gallery/meals.png" height="112" alt="..."  onclick="location.href='worldcup.jsp'"/>
 			</button>
 			</div>
 			</div>
 			<div class="col-sm-6 col-md-3 mb-6">
                   <div class="text-center">
-			<button type="button" class="btnbg">
+			<button type="button" class="btnbg2">
 				<img class="shadow-icon" src="assets/img/gallery/order.png" height="112" alt="..."  onclick="location.href='choice.jsp'"/>
 			</button>
 			</div>
@@ -238,7 +287,7 @@ function funccc(){
 			  <div class="row">
 			<div class="col-sm-6 col-md-3 mb-6">
 			  <div class="text-center">
-			<button type="button" class="btnbg">
+			<button type="button" class="btnbg3">
 				<img class="shadow-icon" src="assets/img/gallery/location.png" height="112" alt="..." onclick="location.href='map.jsp'"/>
 			</button>
 			</div>

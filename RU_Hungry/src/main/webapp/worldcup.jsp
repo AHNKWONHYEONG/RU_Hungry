@@ -103,19 +103,21 @@ li{
 			<script type="text/javascript">		
 			<form action="FoodController.do" method="post">
 				<input type="hidden" name="command" value="submit"/>
-				<input type="hidden" name="img" value="image"/>	
+				<input type="hidden" name="id" value="<%=udto.getId()%>"/>
+				<input id="simage" type="hidden" name="img" value="image"/>	
 				<div >
 					<b id="vs">16강</b>
 					<input type="submit" value="등록" />
 				</div>
 				<img id="image"  onclick="change(0)">
 				<img id="images" onclick="change(1)">
+				
 			</form>
 			<script type="text/javascript">				
 				text="";
 				var images=[];
 				var sImages=[];
-			
+				
 				var cnt=0;
 				var num=0;
 				var sNum=0;
@@ -123,7 +125,7 @@ li{
 			
 				function show() {
 					for (i=0; i<16; i++) {
-						images[i] = "img/wimg/"+[i]+".jpg";
+						images[i] = "img/wimg/"+[i]+".jpg";// img/wimg/0.jpg
 					}
 // 					images.sort(function(a, b) {
 // 						return 0.5-Math.random()
@@ -132,16 +134,19 @@ li{
 				}
 			
 				show(0);
-			
+				
 				function showImg(num) {
 					document.getElementById('image').src=images[num];
 					document.getElementById('images').src=images[num + 1];
 					cnt2++;
-					console.log("cnt2:"+cnt2);
-					console.log("cnt:"+cnt);
-					console.log("num:"+num);
-					console.log("snum:"+sNum);
-					console.log("src="+src2);
+// 					console.log("cnt2:"+cnt2);
+// 					console.log("cnt:"+cnt);
+// 					console.log("num:"+num);
+// 					console.log("snum:"+sNum);
+					var test=document.getElementById('image').src;
+					console.log("src="+test);
+					var test2=document.getElementById("simage").value=test;
+					console.log("src2="+test2);
 				}
 			
 				function change(n) {

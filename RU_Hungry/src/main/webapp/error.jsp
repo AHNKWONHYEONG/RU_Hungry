@@ -14,6 +14,6 @@
 <h1>내부 오류 발생</h1>
 <p>내부 오류로 페이지 로딩에 실패하였습니다.</p>
 <p>오류 내용:(<%=msg %>)</p>
-<a href="HkController.do?command=main">메인으로 돌아가기</a>
+<a href="UsersController.do?command=usermain">메인으로 돌아가기</a>
 </body>
 </html>
