@@ -1,3 +1,8 @@
+<%
+ response.setHeader("Cache-Control","no-cache");
+ response.setHeader("Pragma","no-cache");
+ response.setDateHeader("Expires",0);
+%>
 <%@page import="com.ruh.dtos.UsersDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%request.setCharacterEncoding("utf-8"); %>
@@ -123,12 +128,15 @@ li{
 				var cnt2=0;
 			
 				function show() {
+					
 					for (i=0; i<16; i++) {
-						images[i] = "img/wimg/"+[i]+".jpg";// img/wimg/0.jpg
+						images[i] = "img/wimg/"+[i]+".jpg";
 					}
-// 					images.sort(function(a, b) {
-// 						return 0.5-Math.random()
-// 					}); 잠시 주석
+
+
+					images.sort(function(a, b) {
+						return 0.5-Math.random()
+					});
 					showImg(num);
 				}
 			
