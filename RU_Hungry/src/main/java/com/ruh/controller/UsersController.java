@@ -122,20 +122,6 @@ public class UsersController extends HttpServlet {
 					+"</script>";
 			PrintWriter pwr=response.getWriter();
 			pwr.print(jsTag);
-		}else if(command.equals("idChk")) {
-			var id = request.getParameter("id");
-			UsersDto dto = null;
-			
-			int count = dao.idChk(id);
-			String idC="";
-			if(count==0) {
-				idC="성공";
-			}else if(count>=1) {
-				idC="중복";
-			}
-			PrintWriter pwr = response.getWriter();
-			pwr.print(idC);
-
 		}
 		
 //		else if(command.equals("idChk")) {

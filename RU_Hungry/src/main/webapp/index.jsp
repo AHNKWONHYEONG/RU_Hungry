@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="jquery-3.6.0.js" ></script>
 <style type="text/css">
 * {
 	margin: 0;
@@ -117,29 +116,23 @@ span {
 }
 </style>
 <script type="text/javascript">
-//아이디체크여부 확인 중복일 경우 = 0 , 중복 아닐 경우 =1
-//	var idChk=0;
-	function idChk1(){
-		var id = $("#id").val(); //id를 param
+	function idChk(){
+		var id = document.getElementsByName("id")[0].value;
 		$.ajax({
 			url:"UsersController.do",
 			data:{"command":"idChk","id":id},
 			method:"POST",
-			dataType:"Text",
+			dataType:"Text"
 			success : function(data){ //data= 컨트롤러에서보낸 count이다.
-				if(data=="성공"){
-					alert("성공 입니다.");
+				if(data==1){
+					alert("중복아이디 입니다.");
 					//중복 아이디일시 아이디 칸을 공백으로 바꾸기.
-				}else if(data=="중복"){
-					alert("중복입니다");
-					
-					//아이디가 중복이 안되면 idck=1
-					//idck=1; 
+				}
+				else if(data==0){
+					alert("사용가능 합니다");
 				}
 			}
 		})
-		
-	}	
 // 		var id = document.getElementsByName("")[0].value; //입력된 아이디 구하기
 // 		if(id==null || id==""|| id == undefined){
 // 			alert("반드시 아이디를 입력하세요.");
@@ -196,7 +189,7 @@ span {
 		<form id="register" action="UsersController.do?command=register"  method="post" class="input-group">
 			<input type="text" name="idchk" class="input-field" placeholder="ID를 입력하세요" required="required">
 <!-- 			<button type = "button" value="ID중복체크" onclick ="idChk()"/> -->
-			<button type="button" onclick="idChk1()">id중복체크</button>
+			<button type="button" onclick="idChk()">id중복체크</button>
 			<input type="password" name="pw" class="input-field" placeholder="PW를 입력하세요" required="required"> 
 			<input type="text" name="name" class="input-field" placeholder="이름을 입력하세요" required="required">
 			<input type="text" name="nickname" class="input-field" placeholder="별명을 입력하세요" required="required">
@@ -245,7 +238,6 @@ span {
 				open("idchk.jsp?id="+id,"중복체크","width=300px, height=300px,");	
 			}
 		}
-		
 		
 	</script>
 </body>
