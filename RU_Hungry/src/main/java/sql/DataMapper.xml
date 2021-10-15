@@ -33,6 +33,13 @@
 		SELECT * FROM RESLIST WHERE FOODNAME=#{foodname} 
 	</select>
 	
+	<update id="updatelocation" parameterType="map" >
+		UPDATE ADDRESS SET SI=#{si}, GU=#{gu} WHERE ID=#{id}
+	</update>
+	
+	<select id="selectlocation" parameterType="map" resultType="AddressDto">
+		SELECT * FROM ADDRESS WHERE ID=#{id}
+	</select>
 </mapper>
 
 
