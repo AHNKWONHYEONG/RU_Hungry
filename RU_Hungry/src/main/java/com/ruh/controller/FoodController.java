@@ -45,80 +45,215 @@ public class FoodController extends HttpServlet {
 				
 			}
 			
-//			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/1.jpg")) {
-//				
-//				
-//			}
-//			
-//			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/2.jpg")) {
-//				
-//				
-//			}
-//			
-//			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/3.jpg")) {
-//				
-//				
-//			}
-//			
-//			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/4.jpg")) {
-//				
-//				
-//			}
-//			
-//			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/5.jpg")) {
-//				
-//				
-//			}
-//			
-//			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/6.jpg")) {
-//				
-//				
-//			}
-//			
-//			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/7.jpg")) {
-//				
-//				
-//			}
-//			
-//			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/8.jpg")) {
-//				
-//				
-//			}
-//			
-//			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/9.jpg")) {
-//				
-//				
-//			}
-//			
-//			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/10.jpg")) {
-//				
-//				
-//			}
-//			
-//			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/11.jpg")) {
-//				
-//				
-//			}
-//			
-//			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/12.jpg")) {
-//				
-//				
-//			}
-//			
-//			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/13.jpg")) {
-//				
-//				
-//			}
-//			
-//			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/14.jpg")) {
-//				
-//				
-//			}
-//			
-//			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/15.jpg")) {
-//				
-//				
-//			}
+			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/1.jpg")) {
+				boolean isS=dao.insertFood1(new FoodDto(id));
+				if(isS) {
+					response.sendRedirect("UsersController.do?command=worldcup");
+				}else {
+					request.setAttribute("msg", "글추가실패");
+//					pageContext.forward("error.jsp");
+//					request.getRequestDispatcher("error.jsp").forward(request, response);
+					RequestDispatcher dispatch=request.getRequestDispatcher("error.jsp");
+					dispatch.forward(request, response);
+				}
+				
+			}
+			
+			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/2.jpg")) {
+				boolean isS=dao.insertFood2(new FoodDto(id));
+				if(isS) {
+					response.sendRedirect("UsersController.do?command=worldcup");
+				}else {
+					request.setAttribute("msg", "글추가실패");
+//					pageContext.forward("error.jsp");
+//					request.getRequestDispatcher("error.jsp").forward(request, response);
+					RequestDispatcher dispatch=request.getRequestDispatcher("error.jsp");
+					dispatch.forward(request, response);
+				}
+				
+			}
+			
+			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/3.jpg")) {
+				boolean isS=dao.insertFood3(new FoodDto(id));
+				if(isS) {
+					response.sendRedirect("UsersController.do?command=worldcup");
+				}else {
+					request.setAttribute("msg", "글추가실패");
+//					pageContext.forward("error.jsp");
+//					request.getRequestDispatcher("error.jsp").forward(request, response);
+					RequestDispatcher dispatch=request.getRequestDispatcher("error.jsp");
+					dispatch.forward(request, response);
+				}
+				
+			}
+			
+			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/4.jpg")) {
+				boolean isS=dao.insertFood4(new FoodDto(id));
+				if(isS) {
+					response.sendRedirect("UsersController.do?command=worldcup");
+				}else {
+					request.setAttribute("msg", "글추가실패");
+//					pageContext.forward("error.jsp");
+//					request.getRequestDispatcher("error.jsp").forward(request, response);
+					RequestDispatcher dispatch=request.getRequestDispatcher("error.jsp");
+					dispatch.forward(request, response);
+				}
+				
+			}
+			
+			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/5.jpg")) {
+				boolean isS=dao.insertFood5(new FoodDto(id));
+				if(isS) {
+					response.sendRedirect("UsersController.do?command=worldcup");
+				}else {
+					request.setAttribute("msg", "글추가실패");
+//					pageContext.forward("error.jsp");
+//					request.getRequestDispatcher("error.jsp").forward(request, response);
+					RequestDispatcher dispatch=request.getRequestDispatcher("error.jsp");
+					dispatch.forward(request, response);
+				}
+				
+			}
+			
+			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/6.jpg")) {
+				boolean isS=dao.insertFood6(new FoodDto(id));
+				if(isS) {
+					response.sendRedirect("UsersController.do?command=worldcup");
+				}else {
+					request.setAttribute("msg", "글추가실패");
+//					pageContext.forward("error.jsp");
+//					request.getRequestDispatcher("error.jsp").forward(request, response);
+					RequestDispatcher dispatch=request.getRequestDispatcher("error.jsp");
+					dispatch.forward(request, response);
+				}
+				
+			}
+			
+			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/7.jpg")) {
+				boolean isS=dao.insertFood7(new FoodDto(id));
+				if(isS) {
+					response.sendRedirect("UsersController.do?command=worldcup");
+				}else {
+					request.setAttribute("msg", "글추가실패");
+//					pageContext.forward("error.jsp");
+//					request.getRequestDispatcher("error.jsp").forward(request, response);
+					RequestDispatcher dispatch=request.getRequestDispatcher("error.jsp");
+					dispatch.forward(request, response);
+				}
+				
+			}
+			
+			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/8.jpg")) {
+				boolean isS=dao.insertFood8(new FoodDto(id));
+				if(isS) {
+					response.sendRedirect("UsersController.do?command=worldcup");
+				}else {
+					request.setAttribute("msg", "글추가실패");
+//					pageContext.forward("error.jsp");
+//					request.getRequestDispatcher("error.jsp").forward(request, response);
+					RequestDispatcher dispatch=request.getRequestDispatcher("error.jsp");
+					dispatch.forward(request, response);
+				}
+				
+			}
+			
+			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/9.jpg")) {
+				boolean isS=dao.insertFood9(new FoodDto(id));
+				if(isS) {
+					response.sendRedirect("UsersController.do?command=worldcup");
+				}else {
+					request.setAttribute("msg", "글추가실패");
+//					pageContext.forward("error.jsp");
+//					request.getRequestDispatcher("error.jsp").forward(request, response);
+					RequestDispatcher dispatch=request.getRequestDispatcher("error.jsp");
+					dispatch.forward(request, response);
+				}
+				
+			}
+			
+			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/10.jpg")) {
+				boolean isS=dao.insertFood10(new FoodDto(id));
+				if(isS) {
+					response.sendRedirect("UsersController.do?command=worldcup");
+				}else {
+					request.setAttribute("msg", "글추가실패");
+//					pageContext.forward("error.jsp");
+//					request.getRequestDispatcher("error.jsp").forward(request, response);
+					RequestDispatcher dispatch=request.getRequestDispatcher("error.jsp");
+					dispatch.forward(request, response);
+				}
+				
+			}
+			
+			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/11.jpg")) {
+				boolean isS=dao.insertFood11(new FoodDto(id));
+				if(isS) {
+					response.sendRedirect("UsersController.do?command=worldcup");
+				}else {
+					request.setAttribute("msg", "글추가실패");
+//					pageContext.forward("error.jsp");
+//					request.getRequestDispatcher("error.jsp").forward(request, response);
+					RequestDispatcher dispatch=request.getRequestDispatcher("error.jsp");
+					dispatch.forward(request, response);
+				}
+				
+			}
+			
+			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/12.jpg")) {
+				boolean isS=dao.insertFood12(new FoodDto(id));
+				if(isS) {
+					response.sendRedirect("UsersController.do?command=worldcup");
+				}else {
+					request.setAttribute("msg", "글추가실패");
+//					pageContext.forward("error.jsp");
+//					request.getRequestDispatcher("error.jsp").forward(request, response);
+					RequestDispatcher dispatch=request.getRequestDispatcher("error.jsp");
+					dispatch.forward(request, response);
+				}
+				
+			}
+			
+			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/13.jpg")) {
+				boolean isS=dao.insertFood13(new FoodDto(id));
+				if(isS) {
+					response.sendRedirect("UsersController.do?command=worldcup");
+				}else {
+					request.setAttribute("msg", "글추가실패");
+//					pageContext.forward("error.jsp");
+//					request.getRequestDispatcher("error.jsp").forward(request, response);
+					RequestDispatcher dispatch=request.getRequestDispatcher("error.jsp");
+					dispatch.forward(request, response);
+				}
+				
+			}
+			
+			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/14.jpg")) {
+				boolean isS=dao.insertFood14(new FoodDto(id));
+				if(isS) {
+					response.sendRedirect("UsersController.do?command=worldcup");
+				}else {
+					request.setAttribute("msg", "글추가실패");
+//					pageContext.forward("error.jsp");
+//					request.getRequestDispatcher("error.jsp").forward(request, response);
+					RequestDispatcher dispatch=request.getRequestDispatcher("error.jsp");
+					dispatch.forward(request, response);
+				}
+				
+			}
+			
+			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/15.jpg")) {
+				boolean isS=dao.insertFood15(new FoodDto(id));
+				if(isS) {
+					response.sendRedirect("UsersController.do?command=worldcup");
+				}else {
+					request.setAttribute("msg", "글추가실패");
+//					pageContext.forward("error.jsp");
+//					request.getRequestDispatcher("error.jsp").forward(request, response);
+					RequestDispatcher dispatch=request.getRequestDispatcher("error.jsp");
+					dispatch.forward(request, response);
+				}
+				
+			}
 
 		}
 	}
