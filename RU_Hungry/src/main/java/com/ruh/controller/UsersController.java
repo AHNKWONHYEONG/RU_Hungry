@@ -125,12 +125,14 @@ public class UsersController extends HttpServlet {
 			UsersDto dto = null;
 			
 			int count = dao.idChk(id);
-			
-			
-				PrintWriter pwr = response.getWriter();
-				pwr.print(count);
-			
-			
+			String idC="";
+			if(count==0) {
+				idC="성공";
+			}else if(count>=1) {
+				idC="중복";
+			}
+			PrintWriter pwr = response.getWriter();
+			pwr.print(idC);
 
 		}
 	}
