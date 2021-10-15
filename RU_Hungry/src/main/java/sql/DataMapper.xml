@@ -11,8 +11,14 @@
 <!-- 			 ) -->
 <!-- 		WHERE CEIL(RN/5)=#{pnum} -->
 <!-- 	</select> -->
+	<select id="idchk" parameterType="String" resultType="String">
+	SELECT ID 
+	FROM USERS WHERE ID=#{id}
+	</select>
+
 	<insert id="register"  parameterType="ruhDto">
-			INSERT INTO USERS VALUES(RUH_SEQ.nextval, #{id}, #{pw} , #{name},#{nickname},SYSDATE, 'n' , #{sex} ,#{birth},#{email})		
+			INSERT INTO USERS VALUES(RUH_SEQ.nextval, #{id}, #{pw} , #{name},
+			#{nickname},SYSDATE, 'n' , #{sex} ,#{birth},#{email},#{si},#{gu})		
 	</insert>
 	
 	<select id="getlogin" parameterType="map" resultType="ruhDto">

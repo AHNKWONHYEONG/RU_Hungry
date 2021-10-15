@@ -11,10 +11,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
 <title></title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicons/favicon.ico">
+    <link rel="manifest" href="assets/img/favicons/manifest.json">
+    <meta name="msapplication-TileImage" content="assets/img/favicons/mstile-150x150.png">
+    <meta name="theme-color" content="#ffffff">
+      <link href="assets/css/theme.css" rel="stylesheet" />
 <style type="text/css">
 .buttons {
-	padding: 50px 130px;
+	padding: 0px 200px;
 	width: 900px;
 }
 
@@ -23,21 +35,33 @@
 	height: 200px;
 }
 
-.home {
-	width: 150px;
-}
-
-.header {
-	height: 120px;
+.abody {
+ 	height:30px; 
+/* 	width:600px; */
+	background-color: #FFB30E;
+/* 	position: absolute; */
+/* 	left: 200px; */
+/*  	top: 400px;  */
+	
 }
 
 .bbody {
-	height: 400px;
+ 	height: 800px; 
+/* 	width:600px; */
+	background-color: white;
+/* 	position: absolute; */
+/* 	left: 200px; */
+/*  	top: 400px;  */
+	
 }
 
+
 .info {
-	width: 100px;
-	height: 130px;
+	position:absolute;
+	left:50px;
+	top:150px;
+	width: 300px;
+	height: 500px;
 	text-align: center;
 }
 
@@ -49,9 +73,39 @@
 
 .chk {
 	position: absolute;
-	left: 900px;
+	left: 1300px;
 	top: 200px;
 	align: center;
+}
+
+
+.resp{
+	position: absolute;
+ 	left: 450px; 
+ 	top: 220px; 
+	align: center;
+}
+.resp_table{
+	position:absolute;
+/* 	left:450px; */
+/* 	top:220px; */
+/* 	border: 1px solid black; */
+	width: 800px;
+/* 	height:350px; */
+	border-radius: 10px;
+}
+
+.nav1{
+	position: absolute;
+	left:330px;
+	top:500px;
+}
+.btndeco{
+	border-radius: 10px;
+	background-color:  #FFB30E;
+	border-color: white;
+	color:white;
+	opacity: 0.7;
 }
 </style>
 </head>
@@ -75,49 +129,66 @@
 			chks[i].checked=bool;//각각의 체크박스에 체크여부(true/false)를 적용
 		}
 	}
+	
 </script>
 <body>
 <c:set var="lists" value="${list}" />
 <c:if test="${empty lists}">
 <%-- 	<c:redirect url="index.jsp"/> --%>
 </c:if>
-	<div class="header">
-		<div class="home">
-			<button type="button">
+
+  <main class="main" id="top">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" data-navbar-on-scroll="data-navbar-on-scroll">
+      
+        <div class="container"><a class="navbar-brand d-inline-flex" href="main.jsp"><img class="d-inline-block" src="assets/img/gallery/logo.svg" alt="logo" /><span class="text-1000 fs-3 fw-bold ms-2 text-gradient">RU Hungry</span></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"> </span></button>
+          <div class="collapse navbar-collapse border-top border-lg-0 my-2 mt-lg-0" id="navbarSupportedContent">
+          
+            <div class="mx-auto pt-5 pt-lg-0 d-block d-lg-none d-xl-block">
+              <p class="mb-0 fw-bold text-lg-center">Deliver to: <i class="fas fa-map-marker-alt text-warning mx-2"></i><span class="fw-normal">Current Location </span><span>Mirpur 1 Bus Stand, Dhaka</span></p>
+            </div>
+            <form class="d-flex mt-4 mt-lg-0 ms-lg-auto ms-xl-0">
+              <div class="input-group-icon pe-2"><i class="fas fa-search input-box-icon text-primary"></i>
+                <input class="form-control border-0 input-box bg-100" type="search" placeholder="Search Food" aria-label="Search" />
+              </div>
+              <button class="btn btn-white shadow-warning text-warning" type="submit"> <i class="fas fa-user me-2"></i>Login</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      
+		<section class="py-5 overflow-hidden bg-primary" id="home">
+			<!-- 배경색 노랑-->
+			
+			<div class="info">
 				<img
-					src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAYFBMVEX///8AAADi4uI+Pj6Ghoa0tLQwMDDo6OilpaXKysotLS3y8vKWlpbr6+sWFhbu7u4oKCgiIiIbGxv39/cuLi5SUlJLS0vCwsKAgIBbW1sRERHW1tY1NTVqamrNzc16enpx7ABkAAAEgklEQVR4nO2c63aqMBBGpTeLHMRqtTfbvv9bHqsil0wgGXKZsL79s1oXezGT+dJUFgsAAAAAAAAAAAAABg+xL8Azu32238W+CJ/sDlmWHWasuDtmfxxnq1htsgubKval+KFcZTWrMvbF+OB2B+d6F4t11mZdxL4g15SbrMtmZoXa6sF59mLxoghm2cuMCrVaE4KnXpzNcrNUS/RaqMvYl+aGSid4UpzFXSzoEr0W6gx6saQWmdZyk/yKSoyJXqEmrlj0B73KJulC1YyJXi8mvNwoUU1zF5MtVLIHn4mfpdqLxZaQyRc58dNtkr1YUj2Yn16gFNcJ3kUyquXnlyjF9AJcRS0y+fVFSjG1XT8Z1fLby2ShJtWLZFTLW2+gFFMKcOSYyDtvoRRfk1Ekd/R5703kXUykUMmo1hfU9GISyw0Z1VRBzYqaQKEa9GANORfFK2qiGk2KAa60EdQoir6LFiV6IbVCHYxqNGkFuJGoRpNSgDMeE13SGRrWPViTSi8aRTWaNAKcYVSjSSHADezoTZC/6ycPX8wFNYqC7iJrTHSRPTRGd/QmSN71s8dEF7lDgxHVaKQGuEljoovMocGMajQSA5yjHqyR14sTohqNtADnsAdrZPXixKhGIynATY5qNHICnIOoRiMlwDmJajQyApzjMdFFwtAg/0/GlaBm9ActVA9jokvsoeE0qtHEDXBee7AmZi9aHb7wiXdsY3n4wifWsU2QEr0Qp1Cd7ehNiLHr9xbVaMIHOI9RjSZ0gCtfAwuG/r8b5zt6E0Lu+r1HNZpwAW4ZchVtQ66oHnb9AedgnzBzMfCY6BJiaASLajT+A1zEEr3gu1CDRjUavwEuag/W+OzFADt6E/zt+qP3YI2vXowS1Wj8BLhIUY3GR4DzcvjCx/2xjafDFz6uj23IMfHm7noZvFGFyu5F+kvKdy4v2Jo76pK4u37Nl5QFGjKHhu5LyhINWcc22i8pizRkDA39l5RlGloHuIEHBQg1tOxF8vBFuKHVsQ25oxdvaLHrH36WhVxD40Ild/RJGBru+gefJ2NmmD/zMEi8w4ZGAW45/DwZI8P3kY/Q8T7ZMHsZ32l8jF2GgeED09Dg2aZjhtnH6EcQXfgp1vBT+QiTTtz1Fb8OYg0PX31BoweHFsfOL+WLe7GG970t8dFw6FdtxdP6Jtmwo3g0jt+tjdPfAi7asKVos4Xa1anmPKFkG94UV1YP770W6mUECze8KpqX6FXx6SYo3vCs+GS9BT4NjTpEiTc8KZqNiS7VLSXKN1zk0/7ynYDhRCYafv/T8z0Lw8eBdz7CsA8MecBQAYYNMFSAIQ8YKsCwAYYKMOQBQwUYNsBQAYY8YKgAwwYYKsCQBwwVYNgAQwUY8oChAgwbYKgAQx4wVIBhAwwVYMgDhgowbIChAgx5wFABhg0wVIAhDxgqwLABhgow5AFDhcQNf8rlCNUv0/C3Gvvo8ieAoTXmhtbAEIYwhCEMYQhDGMIQhnMy3K+eJrAdNNxO+ejV3pEhAAAAAAAAAAAAAAAAAABACP4DkSlRlcOCV/AAAAAASUVORK5CYII="
-					width="100px" height="100px" onclick="location.href='main.jsp'">
-			</button>
-		</div>
-	</div>
-	<br />
+					src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFGMboZCO9t-ZUJA9cIEJaLXfp67qJmS2hHRcvDldP2L8eCedaRVpI05anMy8TANCPk6w&usqp=CAU"
+					width="150px" height="150px"> <br />
+				<h1 class="text-800 mb-5 fs-4">
+					ID:<%=udto.getId()%></h1>
+				<button class="btn1" type="button" onclick="showPopup()">location</button>
+				<br />
+				<button class="btn1" type="submit">Reset</button>
+				<br />
 
-	<div class="bbody">
-		<div class="info">
-			<img
-				src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFGMboZCO9t-ZUJA9cIEJaLXfp67qJmS2hHRcvDldP2L8eCedaRVpI05anMy8TANCPk6w&usqp=CAU"
-				width="50px" height="50px"> <br />
-			<button type="button" class="infoo">위치설정</button>
-			<br />
-			<button type="button" class="infoo">???</button>
-			<br />
-			<button type="button" class="infoo"
-				onclick="location.href='index.jsp'">로그아웃</button>
-			<br />
-	<span><%=udto.getId()%></span>님 반갑습니다(아이디:<%=udto.getId()%>)	
-		</div>
-		<div class="buttons">
-
+				<button class="btn1" type="submit"
+					onclick="location.href='index.jsp'">LogOut</button>
+				<br />
+				</div>
+			<div class="abody"></div>
+			<div class="bbody">
+			<div class="resp">
 			<form action="ReviewController.do" method="post">
 				<input type="hidden" name="command" value="muldel" />
-				<table border="1">
-					<col width="70px">
-					<col width="50px">
-					<col width="300px">
-					<col width="100px">
-					<col width="200px">
+				<div class="container">
+				<table class="resp_table table table-striped" id="review" >
+<%-- 					<col width="70px"> --%>
+<%-- 					<col width="50px"> --%>
+<%-- 					<col width="300px"> --%>
+<%-- 					<col width="100px"> --%>
+<%-- 					<col width="200px"> --%>
 					<tr>
-						<th><input type="checkbox" name="all"
+						<th style="width:70px;"><input type="checkbox" name="all"
 							onclick="allSel(this.checked)" />번호</th>
 						<th>카테고리</th>
 						<th>제목</th>
@@ -145,15 +216,26 @@
 					<tr>
 						<td colspan="7">
 							<a href="ReviewController.do?command=insert">
-							<button type="button">글쓰기</button></a> 
-							<input type="submit" value="글삭제" />
-						<a href="UsersController.do?command=usermain"><button type="button">메인</button></a>
+							<button type="button" class="btndeco">글쓰기</button></a> 
+							<input type="submit" class="btndeco" value="글삭제" />
+						<a href="UsersController.do?command=usermain"><button class="btndeco" type="button">메인</button></a>
 						</td>
 					</tr>
 				</table>
-			</form>
+				</div>
+				<nav class="nav1"> 
+				<ul class="pagination justify-content-center"> 
+				<li class="page-item"><a class="page-link" href="">◀</a></li> 
+				<li class="page-item"><a class="page-link" href="">1</a></li> 
+				<li class="page-item"><a class="page-link" href="">2</a></li> 
+				<li class="page-item"><a class="page-link" href="">3</a></li> 
+				<li class="page-item"><a class="page-link" href="">▶</a></li> 
+				</ul> 
+				</nav>
 
-		</div>
+			</form>
+			</div>
+			</div>
 		<div class="chk">
 			<form action='a.jsp'>음식<br> 
 			<input type='checkbox' name='food' value='korean' />한식<br> 
@@ -165,6 +247,18 @@
 			<input type='submit'>
 			</form>
 		</div>
-	</div>
+		</section>
+		</main>
+		
+		
+	<script src="vendors/@popperjs/popper.min.js"></script>
+    <script src="vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="vendors/is/is.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+    <script src="vendors/fontawesome/all.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&amp;display=swap" rel="stylesheet">
 </body>
 </html>

@@ -49,26 +49,20 @@ public class UsersDao extends SqlMapConfig{
 	}
 	
 	//아이디 중복체크: 가입할 아이디가 기존 DB에 존재하는 여부 체크-select문실행, 파리미터 : 가입할 ID
-		public int idChk(String id) {
+		public String idChk(String id) {
 			SqlSession sqlSession = null;
-			UsersDto dto = null;
-			int result = 0;
-			StringBuffer sb=new StringBuffer();
-			sb.append(" SELECT COUNT(*)");
-			sb.append(" FROM USERS WHERE ID=? ");
+			String idchk=null;
 			
 			try {
-				Map<String, String> map = new HashMap<>();
-				map.put("id", id);
-				sqlSession = getSqlSessionFactory().openSession(true);
-				result=sqlSession.selectOne(namespace+"idChk",map);
+				sqlSession=getSqlSessionFactory().openSession(true);
+				idchk=sqlSession.selectOne(namespace+"idchk", id);
 			} catch (Exception e) {
-				System.out.println("JDBC실패:idChk():"+getClass());
 				e.printStackTrace();
 			}finally {
 				sqlSession.close();
 			}
-			return result;
+			
+			return idchk;
 		}
 
 	
