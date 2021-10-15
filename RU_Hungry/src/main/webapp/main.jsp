@@ -29,17 +29,19 @@ imgArray[4] = "randimg/4.jpg";
 imgArray[5] = "randimg/5.jpg";
 
 function funccc(){
+	
+	
    var imgNum = Math.round(Math.random()*2);
    var objImg = document.getElementById("introImg");
    objImg.src = imgArray[imgNum];
    let x = document.getElementsByClassName("quiz-text")[0];
       x.innerText="Javascript"; 
    if(imgNum==0){
-       x.innerText="오늘의 추천 메뉴는 스무디입니다."; 
+       x.innerText="오늘의 추천 메뉴: 스무디"; 
    }else if(imgNum==1){
-       x.innerText="오늘의 추천 메뉴는 에스프레소 입니다."; 
+       x.innerText="오늘의 추천 메뉴: 에스프레소"; 
    }else if(imgNum==2){
-       x.innerText="오늘의 추천 메뉴는 커피 2잔 입니다."; 
+       x.innerText="오늘의 추천 메뉴: 커피2잔"; 
    }
    
 };
@@ -64,7 +66,7 @@ function showPopup() {
 
 
 .bbody {
- 	height: 480px; 
+ 	height: 800px; 
 /* 	width:600px; */
 	background-color: white;
 /* 	position: absolute; */
@@ -76,9 +78,9 @@ function showPopup() {
 .info {
 	position:absolute;
 	left:50px;
-	top:100px;
-	width: 100px;
-	height: 130px;
+	top:150px;
+	width: 300px;
+	height: 500px;
 	text-align: center;
 }
 
@@ -90,7 +92,7 @@ function showPopup() {
 
 .chk {
 	position: absolute;
-	left: 900px;
+	left: 1400px;
 	top: 200px;
 	align: center;
 }
@@ -105,8 +107,8 @@ function showPopup() {
 	border: 0;
 	outline: 0;
 	position: absolute;
-	left: 150px;
-	top: 300px;
+	left: 290px;
+	top: 550px;
 }
 
 .btnbg2{
@@ -114,33 +116,33 @@ function showPopup() {
 	border: 0;
 	outline: 0;
 	position: absolute;
-	left: 400px;
-	top: 300px;
+	left: 640px;
+	top: 550px;
 }
 .btnbg3{
 	background-color:transparent;
 	border: 0;
 	outline: 0;
 	position: absolute;
-	left: 650px;
-	top: 300px;
+	left: 1000px;
+	top: 550px;
 }
 .resp_table{
 	position:absolute;
-	left:290px;
-	top:140px;
+	left:450px;
+	top:220px;
 /* 	border: 1px solid black; */
-	width: 500px;
-	height:200px;
+	width: 800px;
+	height:350px;
 	border-radius: 10px;
 }
 .td1{
-	width:200px;
-	padding:10px;
+	width:300px;
+	padding:20px;
 	}
 	
 .td2{
-	width:300px;
+	width:500px;
 	}
 
 </style>
@@ -176,7 +178,7 @@ function showPopup() {
 		    <div class="info">
 			<img
 				src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFGMboZCO9t-ZUJA9cIEJaLXfp67qJmS2hHRcvDldP2L8eCedaRVpI05anMy8TANCPk6w&usqp=CAU"
-				width="50px" height="50px"> <br />
+				width="150px" height="150px"> <br />
 				<h1 class="text-800 mb-5 fs-4">ID:<%=udto.getId()%></h1>
 			 <button class="btn1" type="button" onclick="showPopup()" >location</button>
 				<br />
@@ -206,11 +208,13 @@ function showPopup() {
 	<table class="resp_table shadow-lg">
 	<tr>
 	<td class="td1">
-	<h4 class="card-title mt-xl-5 mb-4"> Today Food recommendations<span class="text-primary"> for you!</span></h4>
-	<div class="d-grid bottom-0"><button class="btn btn-lg btn-primary mt-xl-6" onclick="funccc()">Click!</button></div>
+	<h3 class="card-title mt-xl-5 mb-4"> Today Food recommendations<span class="text-primary"> for you!</span></h3>
+	<h6><span class="quiz-text"></span></h6>
+	<div class="d-grid bottom-0"><button class="btn btn-lg btn-primary mt-xl-4" onclick="funccc()">Click!</button></div>
+	<div class="d-grid bottom-0"><button class="btn btn-lg btn-primary mt-xl-2" >I like it!</button></div>
 	</td>
 	<td class="td2">
-	<img class=" rounded-top rounded-md-end rounded-md-top-0" id = "introImg" width="300px" height="205px" border="0" 
+	<img class=" rounded-top rounded-md-end rounded-md-top-0" id = "introImg" width="500px" height="350px" border="0" 
       src="randimg/Q.png">
 	</td>
 	</tr>
@@ -225,14 +229,14 @@ function showPopup() {
               <div class="col-sm-6 col-md-3 mb-6">
                   <div class="text-center">
 			<button type="button" class="btnbg1">
-				<img class="shadow-icon" src="assets/img/gallery/meals.png" height="112" alt="..."  onclick="location.href='worldcup.jsp'"/>
+				<img class="shadow-icon" src="assets/img/gallery/meals.png" height="180" alt="..."  onclick="location.href='worldcup.jsp'"/>
 			</button>
 			</div>
 			</div>
 			<div class="col-sm-6 col-md-3 mb-6">
                   <div class="text-center">
 			<button type="button" class="btnbg2">
-				<img class="shadow-icon" src="assets/img/gallery/order.png" height="112" alt="..."  onclick="location.href='choice.jsp'"/>
+				<img class="shadow-icon" src="assets/img/gallery/order.png" height="180" alt="..."  onclick="location.href='choice.jsp'"/>
 			</button>
 			</div>
 			</div>
@@ -240,7 +244,7 @@ function showPopup() {
 			<div class="col-sm-6 col-md-3 mb-6">
 			  <div class="text-center">
 			<button type="button" class="btnbg3">
-				<img class="shadow-icon" src="assets/img/gallery/location.png" height="112" alt="..." onclick="location.href='map.jsp'"/>
+				<img class="shadow-icon" src="assets/img/gallery/location.png" height="180" alt="..." onclick="location.href='map.jsp'"/>
 			</button>
 			</div>
 			</div>
