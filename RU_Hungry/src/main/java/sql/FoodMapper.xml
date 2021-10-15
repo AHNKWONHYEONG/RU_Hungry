@@ -7,6 +7,66 @@
 		INSERT INTO FOOD 
 		VALUES(RUH_SEQ.nextval,#{id},'LA갈비',0,1,0,1,1,0,'한식')
 	</insert>
+	<insert id="1" parameterType="foodDto">
+		INSERT INTO FOOD 
+		VALUES(RUH_SEQ.nextval,#{id},'치킨',0,1,0,1,1,0,'패스트푸드')
+	</insert>
+	<insert id="2" parameterType="foodDto">
+		INSERT INTO FOOD 
+		VALUES(RUH_SEQ.nextval,#{id},'갈비찜',0,1,0,1,1,0,'한식')
+	</insert>
+	<insert id="3" parameterType="foodDto">
+		INSERT INTO FOOD 
+		VALUES(RUH_SEQ.nextval,#{id},'삼겹살',0,0,0,0,1,0,'한식')
+	</insert>
+	<insert id="4" parameterType="foodDto">
+		INSERT INTO FOOD 
+		VALUES(RUH_SEQ.nextval,#{id},'김치찌개',1,0,0,0,1,0,'한식')
+	</insert>
+	<insert id="5" parameterType="foodDto">
+		INSERT INTO FOOD 
+		VALUES(RUH_SEQ.nextval,#{id},'나베',0,1,0,1,1,0,'일식')
+	</insert>
+	<insert id="6" parameterType="foodDto">
+		INSERT INTO FOOD 
+		VALUES(RUH_SEQ.nextval,#{id},'돈까스',0,0,0,0,1,0,'일식')
+	</insert>
+	<insert id="7" parameterType="foodDto">
+		INSERT INTO FOOD 
+		VALUES(RUH_SEQ.nextval,#{id},'짜장면',0,1,0,0,1,0,'중식')
+	</insert>
+	<insert id="8" parameterType="foodDto">
+		INSERT INTO FOOD 
+		VALUES(RUH_SEQ.nextval,#{id},'칼국수',1,0,0,0,1,0,'한식')
+	</insert>
+	<insert id="9" parameterType="foodDto">
+		INSERT INTO FOOD 
+		VALUES(RUH_SEQ.nextval,#{id},'피자',0,1,0,1,1,0,'패스트푸드')
+	</insert>
+	<insert id="10" parameterType="foodDto">
+		INSERT INTO FOOD 
+		VALUES(RUH_SEQ.nextval,#{id},'파스타',0,1,0,1,1,0,'양식')
+	</insert>
+	<insert id="11" parameterType="foodDto">
+		INSERT INTO FOOD 
+		VALUES(RUH_SEQ.nextval,#{id},'쭈꾸미',1,1,0,0,1,0,'야식')
+	</insert>
+	<insert id="12" parameterType="foodDto">
+		INSERT INTO FOOD 
+		VALUES(RUH_SEQ.nextval,#{id},'초밥',0,0,1,1,0,1,'일식')
+	</insert>
+	<insert id="13" parameterType="foodDto">
+		INSERT INTO FOOD 
+		VALUES(RUH_SEQ.nextval,#{id},'햄버거',0,1,0,0,1,0,'패스트푸드')
+	</insert>
+	<insert id="14" parameterType="foodDto">
+		INSERT INTO FOOD 
+		VALUES(RUH_SEQ.nextval,#{id},'족발',0,0,0,1,1,0,'야식')
+	</insert>
+	<insert id="15" parameterType="foodDto">
+		INSERT INTO FOOD 
+		VALUES(RUH_SEQ.nextval,#{id},'스테이크',0,1,0,0,1,0,'양식')
+	</insert>
 <!-- 	<select id="boardlist" resultType="ansdto" parameterType="Map"> -->
 <!--   		SELECT SEQ ,ID ,TITLE ,CONTENT ,REGDATE ,REFER ,STEP -->
 <!-- 		DEP ,READCOUNT ,DELFLAG  -->
