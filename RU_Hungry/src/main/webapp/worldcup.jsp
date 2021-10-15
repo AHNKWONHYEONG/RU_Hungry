@@ -53,7 +53,7 @@
 li{
 	list-style: none;	
 }
-.buttons>img{
+.buttons>form>img{
 	width: 300px;
 	height: 300px;
 }
@@ -99,14 +99,19 @@ li{
 			<span><%=udto.getId()%></span>님 반갑습니다(아이디:<%=udto.getId()%>)
 		</div>
 		<div class="buttons">
-			<h1>메뉴 월드컵</h1>
-			<form action="FoodController.do" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="command" value="upload"/>
-			<div ><b id="vs">16강</b><input type="submit" value="전송"/></div>
-			<img id="image" onclick="change(0)">	
-			<img id="images" onclick="change(1)">
-			
+			<h1>메뉴 월드컵</h1>">			
 			<script type="text/javascript">		
+			<form action="FoodController.do" method="post">
+				<input type="hidden" name="command" value="submit"/>
+				<input type="hidden" name="img" value="image"/>	
+				<div >
+					<b id="vs">16강</b>
+					<input type="submit" value="등록" />
+				</div>
+				<img id="image"  onclick="change(0)">
+				<img id="images" onclick="change(1)">
+			</form>
+			<script type="text/javascript">				
 				text="";
 				var images=[];
 				var sImages=[];
@@ -118,7 +123,7 @@ li{
 			
 				function show() {
 					for (i=0; i<16; i++) {
-						images[i] = "img/wimg/"+(i)+".jpg";
+						images[i] = "img/wimg/"+[i]+".jpg";
 					}
 // 					images.sort(function(a, b) {
 // 						return 0.5-Math.random()
@@ -136,6 +141,7 @@ li{
 					console.log("cnt:"+cnt);
 					console.log("num:"+num);
 					console.log("snum:"+sNum);
+					console.log("src="+src2);
 				}
 			
 				function change(n) {
