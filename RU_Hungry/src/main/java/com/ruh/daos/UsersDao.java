@@ -46,4 +46,6 @@ public class UsersDao extends SqlMapConfig{
 		
 		return count>0? true:false;
 	}
+
+	
 }

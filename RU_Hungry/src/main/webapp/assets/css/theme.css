@@ -3490,6 +3490,7 @@ textarea.form-control-lg {
 }
 
 .btn1 {
+	width:200px;
 	color: #FFFEFE;
   background-color: #F17228;
   border-color: #F17228;
@@ -3498,9 +3499,9 @@ textarea.form-control-lg {
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
-  padding: 5px 22px;
-  margin:5px 10px;
-  font-size: 10px;
+  padding: 10px 44px;
+  margin:10px 20px;
+  font-size: 30px;
   border-radius: 20px 20px 20px 20px;
 }
 
@@ -8585,7 +8586,7 @@ fieldset:disabled .btn {
 }
 
 .mb-4 {
-  margin-bottom: 1.8rem !important;
+  margin-bottom: 0.3rem !important;
 }
 
 .mb-5 {
