@@ -115,6 +115,48 @@ span {
 	left: 450px;
 }
 </style>
+<script type="text/javascript">
+	function idChk(){
+		var id = document.getElementsByName("id")[0].value;
+		$.ajax({
+			url:"UsersController.do",
+			data:{"command":"idChk","id":id},
+			method:"POST",
+			dataType:"Text"
+			success : function(data){ //data= 컨트롤러에서보낸 count이다.
+				if(data==1){
+					alert("중복아이디 입니다.");
+					//중복 아이디일시 아이디 칸을 공백으로 바꾸기.
+				}
+				else if(data==0){
+					alert("사용가능 합니다");
+				}
+			}
+		})
+// 		var id = document.getElementsByName("")[0].value; //입력된 아이디 구하기
+// 		if(id==null || id==""|| id == undefined){
+// 			alert("반드시 아이디를 입력하세요.");
+// 			document.getElementsByName("id")[0].focus();
+// 		}
+// 		else{
+// 			open("idchk.jsp?id="+id,"중복체크","width=400px,height=400px");
+// 		}
+// 	}
+//  	$(function(){
+//  		$("input[name]").not("[name=id]").focus(function(){
+//  			var idTitle = $("input[name=id]").attr("title");
+//  			if(idTitle=="n"){
+//  				alert("아이디 중복체크를 확인하세요");
+//  				document.getElementsByName("id")[0].focus();
+//  			}
+//  		});
+		
+//  		$("input[name==id]").focus(function(){
+//  			$(this).attr("title","n");
+//  		})
+//  	})
+</script>
+
 </head>
 <body>
 	<div class="wrap">
@@ -146,9 +188,13 @@ span {
 		
 		<form id="register" action="UsersController.do?command=register"  method="post" class="input-group">
 			<input type="text" name="id" class="input-field" placeholder="ID를 입력하세요" required="required">
+<!-- 			<button type = "button" value="ID중복체크" onclick ="idChk()"/> -->
+			<button type="button" onclick="idChk()">id중복체크</button>
 			<input type="password" name="pw" class="input-field" placeholder="PW를 입력하세요" required="required"> 
 			<input type="text" name="name" class="input-field" placeholder="이름을 입력하세요" required="required">
 			<input type="text" name="nickname" class="input-field" placeholder="별명을 입력하세요" required="required">
+			<input type="text" name="si" class="input-field" placeholder="'시'를 입력하세요" required="required">
+			<input type="text" name="nickname" class="input-field" placeholder="'구'를 입력하세요" required="required">
 			
 			<input type="radio" name="sexchk"  value="m" /><label>남</label>
 			<input type="radio" name="sexchk"  value="w" /><label>여</label>

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="com.ruh.login">
-
-
 <!-- 예시	 -->
 <!-- 	<select id="boardlist" resultType="hkDto" parameterType="String"> -->
 <!-- 		SELECT SEQ,ID,TITLE,CONTENT,REGDATE -->
@@ -15,14 +12,20 @@
 <!-- 		WHERE CEIL(RN/5)=#{pnum} -->
 <!-- 	</select> -->
 	<insert id="register"  parameterType="ruhDto">
-			INSERT INTO USERS VALUES(RUH_SEQ.nextval, #{id}, #{pw} , #{name},#{nickname},SYSDATE, 'n' , #{sex} ,#{birth},#{email})
-			
+			INSERT INTO USERS VALUES(RUH_SEQ.nextval, #{id}, #{pw} , #{name},#{nickname},SYSDATE, 'n' , #{sex} ,#{birth},#{email})		
 	</insert>
 	
 	<select id="getlogin" parameterType="map" resultType="ruhDto">
 		SELECT SEQ ,ID ,PW ,NAME ,REGDATE ,DELFLAG ,SEX ,BIRTH ,EMAIL 
-		FROM USERS 
+		FROM USERS
 		WHERE ID=#{id} AND PW=#{pw} AND DELFLAG='n'
+	</select>
+	
+<!-- 	아이디 중복체크 select -->
+
+	<select id="idChk" parameterType="map" resultType="ruhDto">
+		SELECT COUNT(*) FROM USERS
+		WHERE ID=#{id}
 	</select>
 	
 	<select id="selectone" parameterType="map" resultType="foodDto">
@@ -32,20 +35,12 @@
 	<select id="selectrest" parameterType="map" resultType="restDto">
 		SELECT * FROM RESLIST WHERE FOODNAME=#{foodname} 
 	</select>
-	
+
 	<update id="updatelocation" parameterType="map" >
 		UPDATE ADDRESS SET SI=#{si}, GU=#{gu} WHERE ID=#{id}
 	</update>
-	
+
 	<select id="selectlocation" parameterType="map" resultType="AddressDto">
 		SELECT * FROM ADDRESS WHERE ID=#{id}
 	</select>
 </mapper>
-
-
-
-
-
-
-
-

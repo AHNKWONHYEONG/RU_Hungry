@@ -29,8 +29,8 @@ imgArray[4] = "randimg/4.jpg";
 imgArray[5] = "randimg/5.jpg";
 
 function funccc(){
-	
-	
+   
+   
    var imgNum = Math.round(Math.random()*2);
    var objImg = document.getElementById("introImg");
    objImg.src = imgArray[imgNum];
@@ -46,113 +46,113 @@ function funccc(){
    
 };
 function showPopup() {
-	alert("hi");
-	window.open("location.jsp", "위치설정 팝업", "width=600, height=500, left=100, top=50");
+   alert("hi");
+   window.open("location.jsp", "위치설정 팝업", "width=600, height=500, left=100, top=50");
 };
 
 
 </script>
 <style type="text/css">
 .buttons {
-	padding: 0px 200px;
-	width: 900px;
+   padding: 0px 200px;
+   width: 900px;
 }
 
 .bigImage {
-	width: 200px;
-	height: 200px;
+   width: 200px;
+   height: 200px;
 }
 
 
 
 .bbody {
- 	height: 800px; 
-/* 	width:600px; */
-	background-color: white;
-/* 	position: absolute; */
-/* 	left: 200px; */
-/* 	top: 300px; */
-	
+    height: 800px; 
+/*    width:600px; */
+   background-color: white;
+/*    position: absolute; */
+/*    left: 200px; */
+/*    top: 300px; */
+   
 }
 
 .info {
-	position:absolute;
-	left:50px;
-	top:150px;
-	width: 300px;
-	height: 500px;
-	text-align: center;
+   position:absolute;
+   left:50px;
+   top:150px;
+   width: 300px;
+   height: 500px;
+   text-align: center;
 }
 
 .infoo {
-	display: inline-block;
-	margin: 10px 0px;
-	width: 90px;
+   display: inline-block;
+   margin: 10px 0px;
+   width: 90px;
 }
 
 .chk {
-	position: absolute;
-	left: 1400px;
-	top: 200px;
-	align: center;
+   position: absolute;
+   left: 1400px;
+   top: 200px;
+   align: center;
 }
 .randplay{
- 		position: absolute;
+       position: absolute;
         left: 500px;
         top: 50px;
         align:center;
 }
 .btnbg1{
-	background-color:transparent;
-	border: 0;
-	outline: 0;
-	position: absolute;
-	left: 290px;
-	top: 550px;
+   background-color:transparent;
+   border: 0;
+   outline: 0;
+   position: absolute;
+   left: 290px;
+   top: 550px;
 }
 
 .btnbg2{
-	background-color:transparent;
-	border: 0;
-	outline: 0;
-	position: absolute;
-	left: 640px;
-	top: 550px;
+   background-color:transparent;
+   border: 0;
+   outline: 0;
+   position: absolute;
+   left: 640px;
+   top: 550px;
 }
 .btnbg3{
-	background-color:transparent;
-	border: 0;
-	outline: 0;
-	position: absolute;
-	left: 1000px;
-	top: 550px;
+   background-color:transparent;
+   border: 0;
+   outline: 0;
+   position: absolute;
+   left: 1000px;
+   top: 550px;
 }
 .resp_table{
-	position:absolute;
-	left:450px;
-	top:220px;
-/* 	border: 1px solid black; */
-	width: 800px;
-	height:350px;
-	border-radius: 10px;
+   position:absolute;
+   left:450px;
+   top:220px;
+/*    border: 1px solid black; */
+   width: 800px;
+   height:350px;
+   border-radius: 10px;
 }
 .td1{
-	width:300px;
-	padding:20px;
-	}
-	
+   width:300px;
+   padding:20px;
+   }
+   
 .td2{
-	width:500px;
-	}
+   width:500px;
+   }
 
 </style>
 </head>
 <%
-	UsersDto udto = (UsersDto)session.getAttribute("ruhDto");
+   UsersDto udto = (UsersDto)session.getAttribute("ruhDto");
 
-	if(udto==null){
-		pageContext.forward("index.jsp");
-	}
+   if(udto==null){
+      pageContext.forward("index.jsp");
+   }
 %>
 <body>
   <main class="main" id="top">
@@ -174,24 +174,24 @@ function showPopup() {
           </div>
         </div>
       </nav>
-		  <section class="py-5 overflow-hidden bg-primary" id="home">	<!-- 배경색 노랑-->>
-		    <div class="info">
-			<img
-				src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFGMboZCO9t-ZUJA9cIEJaLXfp67qJmS2hHRcvDldP2L8eCedaRVpI05anMy8TANCPk6w&usqp=CAU"
-				width="150px" height="150px"> <br />
-				<h1 class="text-800 mb-5 fs-4">ID:<%=udto.getId()%></h1>
-			 <button class="btn1" type="button" onclick="showPopup()" >location</button>
-				<br />
-			<button class="btn1" type="submit">Reset</button>
-			<br />
-			
-			<button class="btn1" type="submit" onclick="location.href='index.jsp'">LogOut</button>
-			<br />
-				
-			
-		</div>
-		
-<!-- 		<div class="randplay"> -->
+        <section class="py-5 overflow-hidden bg-primary" id="home">   <!-- 배경색 노랑-->>
+          <div class="info">
+         <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFGMboZCO9t-ZUJA9cIEJaLXfp67qJmS2hHRcvDldP2L8eCedaRVpI05anMy8TANCPk6w&usqp=CAU"
+            width="150px" height="150px"> <br />
+            <h1 class="text-800 mb-5 fs-4">ID:<%=udto.getId()%></h1>
+          <button class="btn1" type="button" onclick="showPopup()" >location</button>
+            <br />
+         <button class="btn1" type="submit">Reset</button>
+         <br />
+         
+         <button class="btn1" type="submit" onclick="location.href='index.jsp'">LogOut</button>
+         <br />
+            
+         
+      </div>
+      
+<!--       <div class="randplay"> -->
       
 <!--       <img id = "introImg" width="200px" height="150px" border="0"  -->
 <!--       src="randimg/Q.png"> -->
@@ -200,75 +200,75 @@ function showPopup() {
 <!--          <span class="quiz-text">버튼을 클릭하세요.</span> -->
 <!--     </p> -->
 <!--       </div> -->
-		
-	<br />
+      
+   <br />
 
-	<div class="bbody">
-	<div class="resp">
-	<table class="resp_table shadow-lg">
-	<tr>
-	<td class="td1">
-	<h3 class="card-title mt-xl-5 mb-4"> Today Food recommendations<span class="text-primary"> for you!</span></h3>
-	<h6><span class="quiz-text"></span></h6>
-	<div class="d-grid bottom-0"><button class="btn btn-lg btn-primary mt-xl-4" onclick="funccc()">Click!</button></div>
-	<div class="d-grid bottom-0"><button class="btn btn-lg btn-primary mt-xl-2" >I like it!</button></div>
-	</td>
-	<td class="td2">
-	<img class=" rounded-top rounded-md-end rounded-md-top-0" id = "introImg" width="500px" height="350px" border="0" 
+   <div class="bbody">
+   <div class="resp">
+   <table class="resp_table shadow-lg">
+   <tr>
+   <td class="td1">
+   <h3 class="card-title mt-xl-5 mb-4"> Today Food recommendations<span class="text-primary"> for you!</span></h3>
+   <h6><span class="quiz-text"></span></h6>
+   <div class="d-grid bottom-0"><button class="btn btn-lg btn-primary mt-xl-4" onclick="funccc()">Click!</button></div>
+   <div class="d-grid bottom-0"><button class="btn btn-lg btn-primary mt-xl-2" >I like it!</button></div>
+   </td>
+   <td class="td2">
+   <img class=" rounded-top rounded-md-end rounded-md-top-0" id = "introImg" width="500px" height="350px" border="0" 
       src="randimg/Q.png">
-	</td>
-	</tr>
-	</table>
-	</div>
-		<section class="py-0 bg-primary-gradient">
-		<div class="container">
+   </td>
+   </tr>
+   </table>
+   </div>
+      <section class="py-0 bg-primary-gradient">
+      <div class="container">
           <div class="row justify-content-center g-0">
             <div class="col-xl-9">
             
               <div class="row">
               <div class="col-sm-6 col-md-3 mb-6">
                   <div class="text-center">
-			<button type="button" class="btnbg1">
-				<img class="shadow-icon" src="assets/img/gallery/meals.png" height="180" alt="..."  onclick="location.href='worldcup.jsp'"/>
-			</button>
-			</div>
-			</div>
-			<div class="col-sm-6 col-md-3 mb-6">
+         <button type="button" class="btnbg1">
+            <img class="shadow-icon" src="assets/img/gallery/meals.png" height="180" alt="..."  onclick="location.href='worldcup.jsp'"/>
+         </button>
+         </div>
+         </div>
+         <div class="col-sm-6 col-md-3 mb-6">
                   <div class="text-center">
-			<button type="button" class="btnbg2">
-				<img class="shadow-icon" src="assets/img/gallery/order.png" height="180" alt="..."  onclick="location.href='choice.jsp'"/>
-			</button>
-			</div>
-			</div>
-			  <div class="row">
-			<div class="col-sm-6 col-md-3 mb-6">
-			  <div class="text-center">
-			<button type="button" class="btnbg3">
-				<img class="shadow-icon" src="assets/img/gallery/location.png" height="180" alt="..." onclick="location.href='map.jsp'"/>
-			</button>
-			</div>
-			</div>
-			</div>
-		</div>
-	</div>
-	</div>
-	</div>
-	</section>
-	</div>
-		<div class="chk">
-			<form action='a.jsp'>음식<br> 
-			<input type='checkbox' name='food' value='korean' />한식<br>
-			<input type='checkbox' name='food' value='chineese' />중식<br>
-			<input type='checkbox' name='food' value='japanese' />일식<br>
-			<input type='checkbox' name='food' value='boonsik' />분식 <br>
-			<input type='checkbox' name='food' value='yangsik' />양식 <br>
-			<input type='checkbox' name='food' value='fastfood' />패스트푸드 <br>
-			<input type='submit'>
-			</form>
-		</div>
-	</section>
+         <button type="button" class="btnbg2">
+            <img class="shadow-icon" src="assets/img/gallery/order.png" height="180" alt="..."  onclick="location.href='choice.jsp'"/>
+         </button>
+         </div>
+         </div>
+           <div class="row">
+         <div class="col-sm-6 col-md-3 mb-6">
+           <div class="text-center">
+         <button type="button" class="btnbg3">
+            <img class="shadow-icon" src="assets/img/gallery/location.png" height="180" alt="..." onclick="location.href='map.jsp'"/>
+         </button>
+         </div>
+         </div>
+         </div>
+      </div>
+   </div>
+   </div>
+   </div>
+   </section>
+   </div>
+      <div class="chk">
+         <form action='a.jsp'>음식<br> 
+         <input type='checkbox' name='food' value='korean' />한식<br>
+         <input type='checkbox' name='food' value='chineese' />중식<br>
+         <input type='checkbox' name='food' value='japanese' />일식<br>
+         <input type='checkbox' name='food' value='boonsik' />분식 <br>
+         <input type='checkbox' name='food' value='yangsik' />양식 <br>
+         <input type='checkbox' name='food' value='fastfood' />패스트푸드 <br>
+         <input type='submit'>
+         </form>
+      </div>
+   </section>
       </main>
-	<script src="vendors/@popperjs/popper.min.js"></script>
+   <script src="vendors/@popperjs/popper.min.js"></script>
     <script src="vendors/bootstrap/bootstrap.min.js"></script>
     <script src="vendors/is/is.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
@@ -276,6 +276,6 @@ function showPopup() {
     <script src="assets/js/theme.js"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&amp;display=swap" rel="stylesheet">
-	
+   
 </body>
 </html>

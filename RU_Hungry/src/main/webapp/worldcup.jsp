@@ -104,7 +104,8 @@ li{
 			<span><%=udto.getId()%></span>님 반갑습니다(아이디:<%=udto.getId()%>)
 		</div>
 		<div class="buttons">
-			<h1>메뉴 월드컵</h1>
+			<h1>메뉴 월드컵</h1>">			
+			<script type="text/javascript">		
 			<form action="FoodController.do" method="post">
 				<input type="hidden" name="command" value="submit"/>
 				<input type="hidden" name="id" value="<%=udto.getId()%>"/>
