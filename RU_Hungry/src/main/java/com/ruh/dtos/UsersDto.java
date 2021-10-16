@@ -1,9 +1,6 @@
 package com.ruh.dtos;
-
 import java.util.Date;
-
 public class UsersDto {
-
 	private int seq;
 	private String id;
 	private String pw;
@@ -16,14 +13,13 @@ public class UsersDto {
 	private String email;
 	private String si;
 	private String gu;
-	
+
 	public UsersDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public UsersDto(int seq, String id, String pw, String name, String nickname, Date regdate, String delflag,
-			String sex, Date birth, String email, String si, String gu) {
+	public UsersDto(int seq, String id, String pw, String name, String nickname, Date regdate, String delflag,String sex, Date birth, String email, String si, String gu) {
 		super();
 		this.seq = seq;
 		this.id = id;
@@ -142,5 +138,5 @@ public class UsersDto {
 				+ email + ", si=" + si + ", gu=" + gu + "]";
 	}
 
-	
+
 }

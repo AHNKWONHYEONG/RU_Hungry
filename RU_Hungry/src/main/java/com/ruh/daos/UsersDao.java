@@ -1,17 +1,15 @@
 package com.ruh.daos;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-
 import com.ruh.config.SqlMapConfig;
 import com.ruh.dtos.UsersDto;
-
 public class UsersDao extends SqlMapConfig{
 	private String namespace="com.ruh.login.";
 	
+	
+	//로그인
 	public UsersDto getLogin(String id, String pw) {
 		UsersDto dto=null;
 		SqlSession sqlSession=null;
@@ -30,7 +28,7 @@ public class UsersDao extends SqlMapConfig{
 		return dto;
 	}
 	
-	
+	//회원가입
 	public boolean Regist(UsersDto dto) {
 		SqlSession sqlSession=null;
 		int count=0;
@@ -47,12 +45,12 @@ public class UsersDao extends SqlMapConfig{
 		
 		return count>0? true:false;
 	}
-	
+
 	//아이디 중복체크: 가입할 아이디가 기존 DB에 존재하는 여부 체크-select문실행, 파리미터 : 가입할 ID
 		public String idChk(String id) {
 			SqlSession sqlSession = null;
 			String idchk=null;
-			
+
 			try {
 				sqlSession=getSqlSessionFactory().openSession(true);
 				idchk=sqlSession.selectOne(namespace+"idchk", id);
@@ -61,9 +59,8 @@ public class UsersDao extends SqlMapConfig{
 			}finally {
 				sqlSession.close();
 			}
-			
 			return idchk;
 		}
 
-	
+
 }

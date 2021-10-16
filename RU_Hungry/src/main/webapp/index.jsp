@@ -116,23 +116,23 @@ span {
 }
 </style>
 <script type="text/javascript">
-	function idChk(){
-		var id = document.getElementsByName("id")[0].value;
-		$.ajax({
-			url:"UsersController.do",
-			data:{"command":"idChk","id":id},
-			method:"POST",
-			dataType:"Text"
-			success : function(data){ //data= 컨트롤러에서보낸 count이다.
-				if(data==1){
-					alert("중복아이디 입니다.");
-					//중복 아이디일시 아이디 칸을 공백으로 바꾸기.
-				}
-				else if(data==0){
-					alert("사용가능 합니다");
-				}
-			}
-		})
+// 	function idChk(){
+// 		var id = document.getElementsByName("id")[0].value;
+// 		$.ajax({
+// 			url:"UsersController.do",
+// 			data:{"command":"idChk","id":id},
+// 			method:"POST",
+// 			dataType:"Text"
+// 			success : function(data){ //data= 컨트롤러에서보낸 count이다.
+// 				if(data==1){
+// 					alert("중복아이디 입니다.");
+// 					//중복 아이디일시 아이디 칸을 공백으로 바꾸기.
+// 				}
+// 				else if(data==0){
+// 					alert("사용가능 합니다");
+// 				}
+// 			}
+// 		})
 // 		var id = document.getElementsByName("")[0].value; //입력된 아이디 구하기
 // 		if(id==null || id==""|| id == undefined){
 // 			alert("반드시 아이디를 입력하세요.");
