@@ -190,6 +190,9 @@ top:100px;
 			<h1 class="title1 card-title mt-xl-5 mb-4">MENU<span class="text-primary">    WORLDCUP</span></h1>	
 					<h1 class="text-800 mb-5 fs-4 title2" id="vs">16강</h1>
 		<div class="buttons">
+
+			<h1>메뉴 월드컵</h1>">			
+				
 			<form action="FoodController.do" method="post">
 				<input type="hidden" name="command" value="submit"/>
 				<input type="hidden" name="id" value="<%=udto.getId()%>"/>

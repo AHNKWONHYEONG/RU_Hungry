@@ -18,7 +18,7 @@
 
 	<insert id="register"  parameterType="ruhDto">
 			INSERT INTO USERS VALUES(RUH_SEQ.nextval, #{id}, #{pw} , #{name},
-			#{nickname},SYSDATE, 'n' , #{sex} ,#{birth},#{email},#{si},#{gu})		
+			#{nickname},SYSDATE, 'n' , #{sex} ,#{birth},#{email})		
 	</insert>
 	
 	<select id="getlogin" parameterType="map" resultType="ruhDto">
@@ -38,9 +38,7 @@
 			SELECT FOODNAME FROM( SELECT * FROM FOOD WHERE ID=#{id} ORDER BY DBMS_RANDOM.RANDOM) WHERE ROWNUM=1
 	</select>
 	
-	<select id="selectrest" parameterType="map" resultType="restDto">
-		SELECT * FROM RESLIST WHERE FOODNAME=#{foodname} 
-	</select>
+
 
 	<update id="updatelocation" parameterType="map" >
 		UPDATE ADDRESS SET SI=#{si}, GU=#{gu} WHERE ID=#{id}
@@ -48,5 +46,11 @@
 
 	<select id="selectlocation" parameterType="map" resultType="AddressDto">
 		SELECT * FROM ADDRESS WHERE ID=#{id}
+	</select>
+	<insert id="setlocal" parameterType="AddressDto">
+		INSERT INTO ADDRESS VALUES(ADDRESS_SEQ.nextval, #{id},#{si},#{gu})
+	</insert>
+		<select id="selectrest" parameterType="map" resultType="restDto">
+		SELECT * FROM RESLIST WHERE (FOODNAME=#{foodname}) AND (GU IN  <foreach collection="gu" item="type" index="index" open="(" close=")" separator=",">#{type}</foreach>)
 	</select>
 </mapper>
