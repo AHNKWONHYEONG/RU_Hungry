@@ -142,11 +142,11 @@ span {
 			<input type="text" name="name" class="input-field" placeholder="이름을 입력하세요" required="required">
 			<input type="text" name="nickname" class="input-field" placeholder="별명을 입력하세요" required="required">
 			<select name="setsi" id="setsi" style="width: 100px;">
-				<option value="X" >시</option>
+				<option value="" >시</option>
 				<option value="서울특별시">서울특별시</option>
 			</select>
 			<select name="setgu" id="setgu">
-				<option value="X">구</option>
+				<option value="">구</option>
 				<option value="영등포구">영등포구</option>
 				<option value="양천구">양천구</option>
 				<option value="동작구">동작구</option>
@@ -156,8 +156,8 @@ span {
 			<input type="text" name="gu" id="gu" class="input-field" placeholder="'구'를 입력하세요" readonly="readonly"required="required"> 
 			<br/>
 			
-			<input type="radio" name="sexchk"  value="m" /><label>남</label>
-			<input type="radio" name="sexchk"  value="w" /><label>여</label>
+			<input type="radio" name="sexchk"  value="m" required="required" /><label>남</label>
+			<input type="radio" name="sexchk"  value="w" required="required"/><label>여</label>
 			<br/> <hr/>
 			
 			<div>
@@ -202,11 +202,17 @@ span {
 			 var gu =document.getElementById("setgu").options[document.getElementById("setgu").selectedIndex].value;
 			 var x= document.getElementById("si");
 			 var y= document.getElementById("gu");
-				 x.value=si;
-				 y.value=gu;
-			
+						
+				 if(si==null||si==""||si==undefined||gu==null||gu==""||gu==undefined){
+						alert("주소설정을 모두 완료해야합니다.");
+ 						//document.document.getElementsByName("si")[0].focus();
+					}else{
+						 x.value=si;
+						 y.value=gu;
 
-			console.log(si,gu);	 
+					}
+				 
+// 			console.log(si,gu);	 
 		}
 	</script>
 </body>
