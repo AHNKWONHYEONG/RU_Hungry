@@ -11,7 +11,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
 <title>Insert title here</title>
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicons/favicon.ico">
+    <link rel="manifest" href="assets/img/favicons/manifest.json">
+    <meta name="msapplication-TileImage" content="assets/img/favicons/mstile-150x150.png">
+    <meta name="theme-color" content="#ffffff">
+      <link href="assets/css/theme.css" rel="stylesheet" />
 <script type="text/javascript" src="jquery-3.6.0.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCePJSFCOeZEfNI7b31h51yWJw4HXTgDT8&callback=initMap&region=kr"></script>
 <%
@@ -203,40 +214,169 @@ $(document).ready(function initmap() {			//페이지를 다 띄우면 온로드
 	}
 	
 </script>
+<style type="text/css">
+.buttons {
+   padding: 0px 200px;
+   width: 900px;
+}
+
+.bigImage {
+   width: 200px;
+   height: 200px;
+}
+
+.bbody {
+    height: 830px; 
+/*    width:600px; */
+   background-color: white;
+/*    position: absolute; */
+/*    left: 200px; */
+/*    top: 300px; */
+   
+}
+
+.info {
+   position:absolute;
+   left:50px;
+   top:150px;
+   width: 300px;
+   height: 500px;
+   text-align: center;
+}
+.infoo {
+   display: inline-block;
+   margin: 10px 0px;
+   width: 90px;
+}
+.t1{
+	position: absolute;
+	left:350px;
+	top:280px;
+}
+.t2{
+	width:850px;
+	position: absolute;
+	left:780px;
+	top:100px;
+	border-radius: 10px;
+}
+.t3{
+	width:400px;
+	height:150px;
+	position: absolute;
+	left:350px;
+	top:100px;
+	text-align: center;
+}
+.t4{
+	width:850px;
+	height:312px;
+	position: absolute;
+	left:780px;
+	top:530px;
+	border-color: blue;
+	border-radius: 10px;
+}
+.td1{
+   width:400px;
+   height:310px;
+   padding:20px;
+   }
+   
+   
+.td2{
+   width:400px;
+   }
+.resp_table{
+/*    position:absolute; */
+/*    left:450px; */
+/*    top:220px; */
+/*    border: 1px solid black; */
+/*     width: 400px;  */
+/*    height:350px; */
+   border-radius: 10px;
+}   
+#rcmimg{
+	border-radius: 10px 10px 0px 0px;
+}
+.btndeco{
+	border-radius: 10px;
+	background-color: #FFB30E;
+	border-color: white;
+	color:white;
+/* 	opacity: 0.7; */
+}
+</style>
+
 </head>
 
 <body>
-<span><%=udto.getId()%></span>님 반갑습니다(아이디:<%=udto.getId()%>)
-<table style="width: 2000px; height: 2000px;"> 
-<tr style="width: 2000px; height: 2000px;">
-	<td style="position:absolute; left:10px; width: 150px;">
-		<div style="width: 140px; height: 140px; border: 1px solid red;">
-			<a href="main.jsp" >이거 로고사진</a>
-		</div>
-		<div style=" height: 40px;"></div>
-		<div style=" width: 300px; height: 300px; border: 1px solid red;">
-			<div style="width: 300px; height: 260px; border: 1px solid red; ">
-			<img  id="rcmimg" alt="추천이미지" src=" img/추천해주세요.png" style="width: 300px; height: 260px;">
-			</div>
-			<button style="position: relative;  : 1px;" onclick="selectFood()" >추천받기 (받으면 사진띄움)</button>
-		</div>
-	
-		
-		<div style=" height: 20px;"></div>
-		<div style=" width: 300px; height: 140px; border: 1px solid red;">
-			<button onclick="chooseRest()">음식이 맘에들어~</button>
-		</div>
-		<div style="height: 20px;"></div>
-		<div style=" width: 300px; height: 140px; border: 1px solid red;">
-			<a href="main.jsp" >뒤로가기</a>
-		</div>
-	</td>
-
-<td style="position:absolute ; left: 330px ;   width: 1100px; height: 810px;">
-		<div style=" width: 1000px; height: 400px; border: 1px solid red;" id="map" ></div>
-	<div style="height: 20px;"></div>
-	<div> 현재 나의 위치 <%=adto.getSi() %> - <%=adto.getGu() %></div>
-	<div>
+<main class="main" id="top">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" data-navbar-on-scroll="data-navbar-on-scroll">
+      
+        <div class="container"><a class="navbar-brand d-inline-flex" href="main.jsp"><img class="d-inline-block" src="assets/img/gallery/logo.svg" alt="logo" /><span class="text-1000 fs-3 fw-bold ms-2 text-gradient">RU Hungry</span></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"> </span></button>
+          <div class="collapse navbar-collapse border-top border-lg-0 my-2 mt-lg-0" id="navbarSupportedContent">
+          
+            <div class="mx-auto pt-5 pt-lg-0 d-block d-lg-none d-xl-block">
+              <p class="mb-0 fw-bold text-lg-center">Deliver to: <i class="fas fa-map-marker-alt text-warning mx-2"></i><span class="fw-normal">Current Location </span><span>Mirpur 1 Bus Stand, Dhaka</span></p>
+            </div>
+            <form class="d-flex mt-4 mt-lg-0 ms-lg-auto ms-xl-0">
+              <div class="input-group-icon pe-2"><i class="fas fa-search input-box-icon text-primary"></i>
+                <input class="form-control border-0 input-box bg-100" type="search" placeholder="Search Food" aria-label="Search" />
+              </div>
+              <button class="btn btn-white shadow-warning text-warning" type="submit"> <i class="fas fa-user me-2"></i>Login</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <section class="py-5 overflow-hidden bg-primary" id="home">   <!-- 배경색 노랑-->>
+          <div class="info">
+         <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFGMboZCO9t-ZUJA9cIEJaLXfp67qJmS2hHRcvDldP2L8eCedaRVpI05anMy8TANCPk6w&usqp=CAU"
+            width="150px" height="150px"> <br />
+            <h1 class="text-800 mb-5 fs-4">ID:<%=udto.getId()%></h1>
+          <button class="btn1" type="button" onclick="showPopup()" >location</button>
+            <br />
+         <button class="btn1" type="submit">Reset</button>
+         <br /> 
+         
+         <button class="btn1" type="submit" onclick="location.href='index.jsp'">LogOut</button>
+         <br />
+            </div>
+          <div class="bbody">
+          	<table class="t1 resp_table shadow-lg">
+ 			  <tr>
+ 			  <td class="td2">
+ 			  <img class=" " alt="추천이미지" id = "rcmimg" width="400px" height="250px" border="0" 
+ 			     src=" img/추천해주세요.png">
+ 			  </td>
+ 			  </tr>
+ 			  <tr>
+ 			  <td class="td1">
+ 			  <h3 class="card-title mt-xl-5 mb-4"> Today Food recommendations<span class="text-primary"> for you!</span></h3>
+ 			  <h6><span class="quiz-text"></span></h6>
+ 			  <div class="d-grid bottom-0"><button class="btn btn-lg btn-primary mt-xl-4" onclick="selectFood()">추천받기 (받으면 사진띄움)</button></div>
+ 			  <div class="d-grid bottom-0"><button class="btn btn-lg btn-primary mt-xl-2" onclick="chooseRest()">음식이 맘에들어~</button></div>
+ 			  </td>
+ 			  </tr>
+ 			  </table>
+ 			  
+ 			  
+ 			  <table class="t2 resp_table shadow-lg">
+ 			  <tr>
+ 			  <td>
+ 			  <div style="border-radius: 10px; width: 850px; height: 400px; " id="map" ></div>
+ 			  </td>
+ 			  </tr>
+ 			  </table>
+			
+			
+			<table class="t3 resp_table shadow-lg">
+			<tr>
+			<td>
+			<div><h5 class="card-title mt-xl-2 mb-4"> 현재 나의 위치: <%=adto.getSi() %> - <%=adto.getGu() %></h5></div>
+		<div>
 		<select id="selgu"  onchange="mulgu()">
 			<option value="X" id="X">구를 선택하세요(최대 3개)</option>
 			<option value="강남구"  >강남구</option>
@@ -271,18 +411,21 @@ $(document).ready(function initmap() {			//페이지를 다 띄우면 온로드
 			<option value="중구" >중구</option>
 			<option value="중량구" >중량구</option>
 		</select>
-		<button type="button" onclick="resetGu()">되돌리기</button> <b>선택 구:</b> <b id="viewgu"></b>
- </div>
-	<div  style="width: 1000px; height: 400px; border: 1px solid red;">
-			<table id="reslist"  border="1">
-				<col width="50px">
-				<col width="140px">
-				<col width="100px">
-				<col width="340px">
-				<col width="200px">
-				<col width="140px">
-				<thead>
-				<tr id="trlist">
+		<button class="btndeco" type="button" onclick="resetGu()">되돌리기</button> <br><b>선택 구:</b> <b class="text-primary" id="viewgu"></b>
+ 		</div>
+ 		</td>
+ 		</tr>
+			</table>
+			
+			<table  id="reslist" class="t4 resp_table shadow-lg table-striped">
+				<col width="40px">
+				<col width="120px">
+				<col width="80px">
+				<col width="300px">
+				<col width="190px">
+				<col width="120px">
+			<thead>
+				<tr id="trlist" style="text-align: center;">
 					<th>번호</th>
 					<th>식당이름</th>
 					<th>음식</th>
@@ -292,17 +435,23 @@ $(document).ready(function initmap() {			//페이지를 다 띄우면 온로드
 				</tr>
 				</thead>
 				<tbody></tbody>
+			
 			</table>
-	</div>
-</td >
+		</div>
+		
 
-<td style="position:absolute; left: 1410px ; width: 300px; height: 2000px;">
-	<div style="height: 80px;"></div>
-	<div style="width: 200px; height: 700px; border: 1px solid red;">
-		<a href="main.jsp" >필터체크리스트</a>
-	</div>
-</td>
-</tr>
-</table>
+
+
+</section>
+</main>
+ <script src="vendors/@popperjs/popper.min.js"></script>
+    <script src="vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="vendors/is/is.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+    <script src="vendors/fontawesome/all.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&amp;display=swap" rel="stylesheet">
+   
 </body>
 </html>
