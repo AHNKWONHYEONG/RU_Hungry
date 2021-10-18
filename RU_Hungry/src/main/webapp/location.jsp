@@ -55,6 +55,7 @@ function setLocation() {
 	}else{
 		alert("시와 구를 올바르게 설정하세요~");
 	}
+	
 }
 </script>
 </body>

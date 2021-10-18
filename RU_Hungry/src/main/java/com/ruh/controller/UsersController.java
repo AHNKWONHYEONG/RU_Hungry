@@ -60,6 +60,7 @@ public class UsersController extends HttpServlet {
 			 String si=request.getParameter("si");
 			 String gu=request.getParameter("gu");
 			 
+			 
 			
 			 SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
 

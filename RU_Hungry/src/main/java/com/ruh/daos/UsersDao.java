@@ -32,10 +32,11 @@ public class UsersDao extends SqlMapConfig{
 	public boolean Regist(UsersDto dto) {
 		SqlSession sqlSession=null;
 		int count=0;
-		
+	
 		try {
 			sqlSession=getSqlSessionFactory().openSession(true);
 			count=sqlSession.insert(namespace+"register", dto);
+		
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

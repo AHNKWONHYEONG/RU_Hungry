@@ -49,4 +49,8 @@
 	<select id="selectlocation" parameterType="map" resultType="AddressDto">
 		SELECT * FROM ADDRESS WHERE ID=#{id}
 	</select>
+	<insert id="adChk" parameterType="AddressDto">
+		INSERT INTO ADDRESS VALUES(RUH.ADDRESS_SEQ.NEXTVAL, '#{id}','#{si}','#{gu}');
+	</insert>
+	
 </mapper>
