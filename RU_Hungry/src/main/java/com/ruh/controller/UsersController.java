@@ -20,8 +20,11 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 
 import com.ruh.daos.UsersDao;
+import com.ruh.dtos.AddressDto;
 import com.ruh.dtos.UsersDto;
 import com.sun.jdi.Location;
+
+import oracle.net.jdbc.TNSAddress.Address;
 
 
 @WebServlet("/UsersController.do")
@@ -57,15 +60,19 @@ public class UsersController extends HttpServlet {
 			 String sex=request.getParameter("sexchk");
 			 String birth=request.getParameter("birth");
 			 String email=request.getParameter("email");
+
 			 String si=request.getParameter("si");
-			 String gu=request.getParameter("gu");
+			 String gu = request.getParameter("gu");
+			
 			 
 			 
 			
 			 SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 			try {
-				boolean isS= dao.Regist(new UsersDto(0, id, pw, name, nickname, null, null, sex, transFormat.parse(birth), email,si,gu) );
+				AddressDto adto=new AddressDto(0,id,si,gu);
+				boolean isS= dao.Regist(new UsersDto(0, id, pw, name, nickname, null, null, sex, transFormat.parse(birth), email) , adto);
+				
 				if (isS) {
 					String jsTag="<script type='text/javascript'>"
 								+	"alert('회원가입을 축하드립니다.');"
@@ -125,19 +132,7 @@ public class UsersController extends HttpServlet {
 			pwr.print(jsTag);
 		}
 		
-//		else if(command.equals("idChk")) {
-//			var id = request.getParameter("id");
-//			UsersDto dto = null;
-//			
-//			int count = dao.idChk(id);
-//			
-//			
-//				PrintWriter pwr = response.getWriter();
-//				pwr.print(count);
-//			
-//			
-//
-//		}
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

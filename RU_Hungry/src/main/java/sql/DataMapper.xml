@@ -18,7 +18,7 @@
 
 	<insert id="register"  parameterType="ruhDto">
 			INSERT INTO USERS VALUES(RUH_SEQ.nextval, #{id}, #{pw} , #{name},
-			#{nickname},SYSDATE, 'n' , #{sex} ,#{birth},#{email},#{si},#{gu})		
+			#{nickname},SYSDATE, 'n' , #{sex} ,#{birth},#{email})		
 	</insert>
 	
 	<select id="getlogin" parameterType="map" resultType="ruhDto">
@@ -49,8 +49,8 @@
 	<select id="selectlocation" parameterType="map" resultType="AddressDto">
 		SELECT * FROM ADDRESS WHERE ID=#{id}
 	</select>
-	<insert id="adChk" parameterType="AddressDto">
-		INSERT INTO ADDRESS VALUES(RUH.ADDRESS_SEQ.NEXTVAL, '#{id}','#{si}','#{gu}');
+	<insert id="setlocal" parameterType="AddressDto">
+		INSERT INTO ADDRESS VALUES(ADDRESS_SEQ.nextval, #{id},#{si},#{gu})
 	</insert>
 	
 </mapper>

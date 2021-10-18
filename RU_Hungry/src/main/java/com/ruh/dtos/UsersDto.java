@@ -1,25 +1,24 @@
 package com.ruh.dtos;
 import java.util.Date;
 public class UsersDto {
-	private int seq;
-	private String id;
-	private String pw;
-	private String name;
-	private String nickname;
-	private Date regdate;
-	private String delflag;
-	private String sex;
-	private Date birth;
-	private String email;
-	private String si;
-	private String gu;
+private int seq;
+private String id;
+private String pw;
+private String name;
+private String nickname;
+private Date regdate;
+private String delflag;
+private String sex;
+private Date birth;
+private String email;
+
 
 	public UsersDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public UsersDto(int seq, String id, String pw, String name, String nickname, Date regdate, String delflag,String sex, Date birth, String email, String si, String gu) {
+	public UsersDto(int seq, String id, String pw, String name, String nickname, Date regdate, String delflag,String sex, Date birth, String email) {
 		super();
 		this.seq = seq;
 		this.id = id;
@@ -31,8 +30,7 @@ public class UsersDto {
 		this.sex = sex;
 		this.birth = birth;
 		this.email = email;
-		this.si = si;
-		this.gu = gu;
+
 	}
 
 	public int getSeq() {
@@ -115,27 +113,14 @@ public class UsersDto {
 		this.email = email;
 	}
 
-	public String getSi() {
-		return si;
-	}
+	
 
-	public void setSi(String si) {
-		this.si = si;
-	}
-
-	public String getGu() {
-		return gu;
-	}
-
-	public void setGu(String gu) {
-		this.gu = gu;
-	}
 
 	@Override
 	public String toString() {
 		return "UsersDto [seq=" + seq + ", id=" + id + ", pw=" + pw + ", name=" + name + ", nickname=" + nickname
 				+ ", regdate=" + regdate + ", delflag=" + delflag + ", sex=" + sex + ", birth=" + birth + ", email="
-				+ email + ", si=" + si + ", gu=" + gu + "]";
+				+ email + "]";
 	}
 
 

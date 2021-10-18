@@ -204,6 +204,8 @@ span {
 			 var y= document.getElementById("gu");
 				 x.value=si;
 				 y.value=gu;
+			
+
 			console.log(si,gu);	 
 		}
 	</script>
