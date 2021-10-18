@@ -52,6 +52,7 @@
 	border-radius: 30px;
 	transition: .5s;
 }
+
 .social-icons {
 	margin: 30px auto;
 	text-align: center;
@@ -102,27 +103,7 @@ span {
 	left: 450px;
 }
 </style>
-<script type="text/javascript">
-	function idChk(){
-		var id = document.getElementsByName("id")[0].value;
-		$.ajax({
-			url:"UsersController.do",
-			data:{"command":"idChk","id":id},
-			method:"POST",
-			dataType:"Text"
-			success : function(data){ //data= 컨트롤러에서보낸 count이다.
-				if(data==1){
-					alert("중복아이디 입니다.");
-					//중복 아이디일시 아이디 칸을 공백으로 바꾸기.
-				}
-				else if(data==0){
-					alert("사용가능 합니다");
-				}
-			}
-		})
-	}	
 
-</script>
 </head>
 <%
 	AddressDao dao=new AddressDao();
@@ -156,12 +137,12 @@ span {
 		
 		
 		<form id="register" action="UsersController.do?command=register"  method="post" class="input-group">
-			<input type="text" name="idchk" class="input-field" placeholder="ID를 입력하세요" required="required">
-<!-- 			<button type = "button" value="ID중복체크" onclick ="idChk()"/> -->
-			<button type="button" onclick="idChk()">id중복체크</button>
+			<input type="text" name="id" class="input-field" placeholder="ID를 입력하세요" required="required">
+			<button type="button" onclick="adChk()">중복체크</button>
 			<input type="password" name="pw" class="input-field" placeholder="PW를 입력하세요" required="required"> 
 			<input type="text" name="name" class="input-field" placeholder="이름을 입력하세요" required="required">
 			<input type="text" name="nickname" class="input-field" placeholder="별명을 입력하세요" required="required">
+
 			<select name="setsi" id="setsi" style="width: 100px;">
 				<option value="X" >시</option>
 				<option value="서울특별시">서울특별시</option>
@@ -173,10 +154,10 @@ span {
 				<option value="동작구">동작구</option>
 			</select>
 			<button type="button" onclick="adChk()">확인</button>
-<!--				<button type="button" onclick="adChk()">주소체크</button> -->
  			<input type="text" name="si" id="si" class="input-field" placeholder="'시'를 입력하세요" readonly="readonly" required="required"> 
 			<input type="text" name="gu" id="gu" class="input-field" placeholder="'구'를 입력하세요" readonly="readonly"required="required"> 
 			<br/>
+
 			<input type="radio" name="sexchk"  value="m" /><label>남</label>
 			<input type="radio" name="sexchk"  value="w" /><label>여</label>
 			<br/> <hr/>
@@ -191,7 +172,7 @@ span {
 			<button type="submit" class="submit" >회원가입</button>
 		</form>
 	</div>
-	<script type="text/javascript">
+	<script>
 		var x = document.getElementById("login");
 		var y = document.getElementById("register");
 		var z = document.getElementById("btn");
@@ -206,7 +187,7 @@ span {
 			z.style.left = "110px";
 			
 		}
-		
+	
 		function idChk(){
 			var id=document.getElementsByName("idchk")[0].value;//입력된 아이디 구함
 			console.log(id);
@@ -226,7 +207,6 @@ span {
 				 y.value=gu;
 			console.log(si,gu);	 
  		}
-		
 		
 	</script>
 </body>

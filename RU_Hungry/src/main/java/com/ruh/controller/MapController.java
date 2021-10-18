@@ -64,6 +64,11 @@ public class MapController extends HttpServlet {
 			String foodname;
 			foodname=request.getParameter("foodname");
 //			System.out.println(foodname);
+			
+			String[] gu;
+			gu=request.getParameterValues("gu");
+			System.out.print(gu);
+			
 			List<ResListDto> restlist=dao.selectRest(foodname);
 	
 			Map<String, List<ResListDto>> map=new HashMap<>(); //자바 map = js json
