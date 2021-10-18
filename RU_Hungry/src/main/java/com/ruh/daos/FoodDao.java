@@ -1,6 +1,7 @@
 package com.ruh.daos;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -32,17 +33,19 @@ public class FoodDao extends SqlMapConfig{
 		return dto;
 	}
 
-	public List<ResListDto> selectRest(String foodname) {
-			List<ResListDto> dto=null;
-			SqlSession sqlSession=null;
-			
-			Map<String, String>map=new HashMap<>();
-			map.put("foodname", foodname);
-			sqlSession=getSqlSessionFactory().openSession(true);
-			
-			dto=sqlSession.selectList(namespace+"selectrest", map); //쿼리 id 는 selectrest
-			
-		return dto;
+
+	public List<ResListDto> selectRest(String foodname, String[] gu) {
+		List<ResListDto> dto=null;
+		SqlSession sqlSession=null;
+		
+		Map<String, Object>map=new HashMap<>();	//map 에 배열 넣기
+		map.put("foodname", foodname);
+		map.put("gu", gu);
+		sqlSession=getSqlSessionFactory().openSession(true);
+		
+		dto=sqlSession.selectList(namespace+"selectrest", map); //쿼리 id 는 selectrest
+		
+	return dto;
 	}
 	
 	

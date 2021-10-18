@@ -45,7 +45,7 @@
 var map;		//페이지 로드시 map 객체	사용자 주소
 var map1;	//식당 주소 객체
 
-var selectedGu=new Array();
+var selectedGu = new Array();
 
 function initMap() {    //페이지 로드시
 	var myLoca = { lat: <%=(float)jlat %> ,lng: <%=(float)jing %>};
@@ -88,8 +88,8 @@ function selectFood() {
 
 
 function chooseRest() {
-	
-	if(foodname!=null && foodname != sameFood){
+// 	&& foodname != sameFood
+	if(foodname!=null ){
 		deleteMarkers();
 //		clearElements();
 		if(selectedGu.length==0)	{	//구 설정을 안할시 설정된 위치(구) 로
@@ -98,9 +98,11 @@ function chooseRest() {
 			selectedGu.push(myGU);
 			console.log(selectedGu);
 		}
+		
 		$.ajax({
 			url: "MapController.do",
-			data: {"command": "chooserest", "foodname":foodname , "gu":selectedGu},		// 같은이름으로 키값 보내서 get para values   맵퍼에서 foreach
+			traditional:true,
+			data: {"command": "chooserest", "foodname":foodname , "gu":selectedGu },		// 같은이름으로 키값 보내서 get para values   맵퍼에서 foreach
 			method:"POST",
 			dataType: "JSON",
 			success: function(map) { //val은 db에서 select한 json
