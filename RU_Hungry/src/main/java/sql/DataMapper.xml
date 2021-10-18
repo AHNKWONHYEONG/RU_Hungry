@@ -38,9 +38,7 @@
 			SELECT FOODNAME FROM( SELECT * FROM FOOD WHERE ID=#{id} ORDER BY DBMS_RANDOM.RANDOM) WHERE ROWNUM=1
 	</select>
 	
-	<select id="selectrest" parameterType="map" resultType="restDto">
-		SELECT * FROM RESLIST WHERE FOODNAME=#{foodname} 
-	</select>
+
 
 	<update id="updatelocation" parameterType="map" >
 		UPDATE ADDRESS SET SI=#{si}, GU=#{gu} WHERE ID=#{id}
@@ -52,5 +50,7 @@
 	<insert id="setlocal" parameterType="AddressDto">
 		INSERT INTO ADDRESS VALUES(ADDRESS_SEQ.nextval, #{id},#{si},#{gu})
 	</insert>
-	
+		<select id="selectrest" parameterType="map" resultType="restDto">
+		SELECT * FROM RESLIST WHERE (FOODNAME=#{foodname}) AND (GU IN  <foreach collection="gu" item="type" index="index" open="(" close=")" separator=",">#{type}</foreach>)
+	</select>
 </mapper>
