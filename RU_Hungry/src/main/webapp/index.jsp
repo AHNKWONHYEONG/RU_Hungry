@@ -289,6 +289,12 @@ position: absolute;
 			z.style.left = "110px";
 			
 		}
+		function sgn(){
+			
+			window.scrollTo( 200, 1200 );
+		}
+		
+		
 		
 		function idChk(){
 			var id=document.getElementsByName("idchk")[0].value;//입력된 아이디 구함
