@@ -39,6 +39,7 @@ public class RouletteController extends HttpServlet {
 			UsersDto sess= (UsersDto)session.getAttribute("ruhDto");
 			String id= sess.getId();
 			FoodDto returnfood= dao.returnfood(id,foodname); //하나 select 한 dto
+			System.out.println(returnfood.toString());
 			int isS=dao.insertChosen(returnfood);	
 			
 			if(isS !=0) {

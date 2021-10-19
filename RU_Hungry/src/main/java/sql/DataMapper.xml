@@ -38,7 +38,7 @@
 			SELECT FOODNAME FROM( SELECT * FROM FOOD WHERE ID=#{id} ORDER BY DBMS_RANDOM.RANDOM) WHERE ROWNUM=1
 	</select>
 	<select id="returnfood" parameterType="map" resultType="foodDto">
-			SELECT * FROM (SELECT * FROM FOOD WHERE ID=#{id} AND FOODNAME=#{foodname} ORDER BY NUM DESC) WHERE ROWNUM=1
+			SELECT * FROM (SELECT * FROM FOOD WHERE ID=#{id} AND FOODNAME=#{foodname} ) WHERE ROWNUM=1
 	</select>
 
 
