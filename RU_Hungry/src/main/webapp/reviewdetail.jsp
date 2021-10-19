@@ -163,7 +163,7 @@ textarea{
 					<td class="td2"><%=dto.getId()%></td>
 				</tr>
 				<tr>
-					<th>제목</th>
+					<th>식당이름</th>
 					<td class="td3"><%=dto.getTitle()%></td>
 				</tr>
 				<tr>
@@ -172,7 +172,7 @@ textarea{
 				</tr>
 				<tr>
 					<td colspan="2" style="padding-bottom: 15px;text-align: center;">
-						<button class="btndeco" onclick="updateBoard()" title="수정폼이동">수정</button>
+						<button class="btndeco" onclick="location.href='ReviewController.do?command=updateform&seq=<%=dto.getSeq()%>'";>수정</button>
 						<button class="btndeco" onclick="location.href='ReviewController.do?command=muldel&chk=<%=dto.getSeq()%>'";>삭제</button>
 						<button class="btndeco" onclick="location.href='UsersController.do?command=choice'">목록</button>
 					</td>
@@ -196,9 +196,7 @@ textarea{
 	</section>
 	</main>
 	<script type="text/javascript">
-// 	function updateBoard(){
-<%-- 		location.href="ReviewController.do?command=updateform&seq=<%=dto.getSeq()%>"; --%>
-// 	}
+ 
 	</script>
 	  <script src="vendors/@popperjs/popper.min.js"></script>
     <script src="vendors/bootstrap/bootstrap.min.js"></script>

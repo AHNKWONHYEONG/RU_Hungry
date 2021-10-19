@@ -106,6 +106,7 @@ public class ReviewController extends HttpServlet {
 		
 		else if(command.equals("updateform")) {
 			String seq = request.getParameter("seq");
+								//글 상세조회:searchboard
 			ReviewDto dto=dao.searchBoard(Integer.parseInt(seq));
 			request.setAttribute("dto", dto);
 			
@@ -117,12 +118,22 @@ public class ReviewController extends HttpServlet {
 			String seq = request.getParameter("seq");
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
+			UsersDto sess= (UsersDto)session.getAttribute("ruhDto");
+			String id= sess.getId();
 			
 			int sseq = Integer.parseInt(seq);
-			boolean isS=dao.upBoard(new ReviewDto(sseq,title,content));
+			System.out.println(sseq+title+content+id);
+			boolean isS=dao.updateBoard(new ReviewDto(sseq,title,id,content));
 			
 			if(isS) {
 				response.sendRedirect("ReviewController.do?command=detail&seq="+seq);
+			}else if(!isS){
+				String jsTag="<script type='text/javascript'>"
+						+	"alert('수정 권한이 없습니다.');"
+						+	"location.href='ReviewController.do?command=reviewlist';"
+						+ "</script>";
+				PrintWriter pw =response.getWriter();
+				pw.print(jsTag);
 			}else {
 				request.setAttribute("msg", "글수정실패");
 				RequestDispatcher dispatch=request.getRequestDispatcher("update.jsp");

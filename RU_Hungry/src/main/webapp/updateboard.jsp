@@ -1,4 +1,7 @@
+<%@page import="java.io.PrintWriter"%>
+<%@page import="com.ruh.daos.UsersDao"%>
 <%@page import="com.ruh.dtos.UsersDto"%>
+<%@page import="com.ruh.dtos.ReviewDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%request.setCharacterEncoding("utf-8"); %>
 <%response.setContentType("text/html; charset=UTF-8"); %>
@@ -6,6 +9,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 <title></title>
 <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
@@ -98,12 +103,17 @@ textarea{
 
 </style>
 </head>
-<%
-	UsersDto udto = (UsersDto)session.getAttribute("ruhDto");
 
+<%
+	ReviewDto dto=(ReviewDto)request.getAttribute("dto");
+	UsersDto udto = (UsersDto)session.getAttribute("ruhDto");
+	
 	if(udto==null){
 		pageContext.forward("index.jsp");
 	}
+	
+	
+
 %>
 <body>
 <main class="main" id="top">
@@ -125,7 +135,7 @@ textarea{
           </div>
         </div>
       </nav>
-        <section class="py-5 overflow-hidden bg-primary" id="home">
+        <section class="py-5 overflow-hidden bg-primary" id="home">   <!-- 배경색 노랑-->>
           <div class="info">
          <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFGMboZCO9t-ZUJA9cIEJaLXfp67qJmS2hHRcvDldP2L8eCedaRVpI05anMy8TANCPk6w&usqp=CAU"
@@ -140,69 +150,45 @@ textarea{
          <br />
             
          
-      </div> 
-<!-- 	<div class="header"> -->
-<!-- 		<div class="home"> -->
-<!-- 			<button type="button"> -->
-<!-- 				<img -->
-<!-- 					src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAYFBMVEX///8AAADi4uI+Pj6Ghoa0tLQwMDDo6OilpaXKysotLS3y8vKWlpbr6+sWFhbu7u4oKCgiIiIbGxv39/cuLi5SUlJLS0vCwsKAgIBbW1sRERHW1tY1NTVqamrNzc16enpx7ABkAAAEgklEQVR4nO2c63aqMBBGpTeLHMRqtTfbvv9bHqsil0wgGXKZsL79s1oXezGT+dJUFgsAAAAAAAAAAAAABg+xL8Azu32238W+CJ/sDlmWHWasuDtmfxxnq1htsgubKval+KFcZTWrMvbF+OB2B+d6F4t11mZdxL4g15SbrMtmZoXa6sF59mLxoghm2cuMCrVaE4KnXpzNcrNUS/RaqMvYl+aGSid4UpzFXSzoEr0W6gx6saQWmdZyk/yKSoyJXqEmrlj0B73KJulC1YyJXi8mvNwoUU1zF5MtVLIHn4mfpdqLxZaQyRc58dNtkr1YUj2Yn16gFNcJ3kUyquXnlyjF9AJcRS0y+fVFSjG1XT8Z1fLby2ShJtWLZFTLW2+gFFMKcOSYyDtvoRRfk1Ekd/R5703kXUykUMmo1hfU9GISyw0Z1VRBzYqaQKEa9GANORfFK2qiGk2KAa60EdQoir6LFiV6IbVCHYxqNGkFuJGoRpNSgDMeE13SGRrWPViTSi8aRTWaNAKcYVSjSSHADezoTZC/6ycPX8wFNYqC7iJrTHSRPTRGd/QmSN71s8dEF7lDgxHVaKQGuEljoovMocGMajQSA5yjHqyR14sTohqNtADnsAdrZPXixKhGIynATY5qNHICnIOoRiMlwDmJajQyApzjMdFFwtAg/0/GlaBm9ActVA9jokvsoeE0qtHEDXBee7AmZi9aHb7wiXdsY3n4wifWsU2QEr0Qp1Cd7ehNiLHr9xbVaMIHOI9RjSZ0gCtfAwuG/r8b5zt6E0Lu+r1HNZpwAW4ZchVtQ66oHnb9AedgnzBzMfCY6BJiaASLajT+A1zEEr3gu1CDRjUavwEuag/W+OzFADt6E/zt+qP3YI2vXowS1Wj8BLhIUY3GR4DzcvjCx/2xjafDFz6uj23IMfHm7noZvFGFyu5F+kvKdy4v2Jo76pK4u37Nl5QFGjKHhu5LyhINWcc22i8pizRkDA39l5RlGloHuIEHBQg1tOxF8vBFuKHVsQ25oxdvaLHrH36WhVxD40Ild/RJGBru+gefJ2NmmD/zMEi8w4ZGAW45/DwZI8P3kY/Q8T7ZMHsZ32l8jF2GgeED09Dg2aZjhtnH6EcQXfgp1vBT+QiTTtz1Fb8OYg0PX31BoweHFsfOL+WLe7GG970t8dFw6FdtxdP6Jtmwo3g0jt+tjdPfAi7asKVos4Xa1anmPKFkG94UV1YP770W6mUECze8KpqX6FXx6SYo3vCs+GS9BT4NjTpEiTc8KZqNiS7VLSXKN1zk0/7ynYDhRCYafv/T8z0Lw8eBdz7CsA8MecBQAYYNMFSAIQ8YKsCwAYYKMOQBQwUYNsBQAYY8YKgAwwYYKsCQBwwVYNgAQwUY8oChAgwbYKgAQx4wVIBhAwwVYMgDhgowbIChAgx5wFABhg0wVIAhDxgqwLABhgow5AFDhcQNf8rlCNUv0/C3Gvvo8ieAoTXmhtbAEIYwhCEMYQhDGMIQhnMy3K+eJrAdNNxO+ejV3pEhAAAAAAAAAAAAAAAAAABACP4DkSlRlcOCV/AAAAAASUVORK5CYII=" -->
-<!-- 					width="100px" height="100px" onclick="location.href='main.jsp'"> -->
-<!-- 			</button> -->
-<!-- 		</div> -->
-<!-- 		<div class="randplay"> -->
-      
-<!--       <img id = "introImg" width="200px" height="150px" border="0"  -->
-<!--       src="randimg/Q.png"> -->
-<!--       <button onclick="funccc()">클릭~</button> -->
-<!--       <p> -->
-<!--          <span class="quiz-text">버튼을 클릭하세요.</span> -->
-<!--     </p> -->
-<!--       </div> -->
-		
-<!-- 	</div> -->
-<!-- 	<br /> -->
+      </div>
+	<br />
 
 	<div class="bbody">
-	 <div class="resp">
+	<form action = "ReviewController.do" method="post">
+	<input type="hidden" name="command" value="updateboard" />
+	<input type="hidden" name="seq" value="<%=dto.getSeq() %>"/>
+		 <div class="resp">
 		<div class="buttons">
 			<table class="resp_table shadow-lg">
-				<jsp:useBean id="dto" class="com.ruh.dtos.ReviewDto" scope="request" />
-			<form action="ReviewController.do" method="post">
-				<input type="hidden" name="command" value="updateboard" />
-				<input type="hidden" name="seq" value="<jsp:getProperty property="seq" name="dto"/>"/>
-					<tr>
-						<th>카테고리</th>
-						<td class="td1"><jsp:getProperty property="category" name="dto"/></td>
-					</tr>
-					<tr>
-						<th>작성자</th>
-						<td class="td2"><jsp:getProperty property="id" name="dto"/></td>
-					</tr>
-					<tr>
-						<th>식당이름</th>
-						<td class="td3"><input type="text" name="title" value="<jsp:getProperty property="title" name="dto"/>"/></td>
-					</tr>
-					<tr>
-						<th>내용</th>
-						<td class="td4"><textarea rows="10" cols="60" name="content"><jsp:getProperty property="content" name="dto"/></textarea></td>
-					</tr>
-					<tr>
-						<td colspan="2" style="padding-bottom: 15px;text-align: center;">
-							<input type="submit" class="btndeco" value="수정"/>
-							<button type="button" class="btndeco" onclick="boardList()">목록</button>
-						</td>
-					</tr>
-					</form>
-				</table>
-			
-		
-</div>
-			
-		</div>
-		
-		<div class="buttons">
-			
-		</div>
+				<tr>
+					<th>카테고리</th>
+					<td class="td1"><%=dto.getCategory()%></td>
+				</tr>
+				<tr>
+					<th>작성자</th>
+					<td class="td2"><%=dto.getId()%></td>
+				</tr>
+				<tr>
+					<th>제목</th>
+					<td class="td3"><input type="text" name="title" value="<%=dto.getTitle()%>"/></td>
+				</tr>
+				<tr>
+					<th>내용</th>
+					<td class="td4"><textarea rows="10" cols="60"><%=dto.getContent()%></textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2" style="padding-bottom: 15px;text-align: center;">
+<!-- 						<button class="btndeco" onclick="location.href='ReviewController.do?command=reviewlist'">수정</button> -->
+						<button class="btndeco" type="submit">수정</button>
+						<button class="btndeco" onclick="location.href='ReviewController.do?command=muldel&chk=<%=dto.getSeq()%>'";>삭제</button>
+						<button class="btndeco" onclick="location.href='UsersController.do?command=choice'">목록</button>
+					</td>
+				</tr>
+			</table>
+				</div>
+				
+				</div>
+			</form>	
 		<div class="chk">
 			<form action='a.jsp'>음식<br> 
 			<input type='checkbox' name='food' value='korean' />한식<br>
@@ -218,12 +204,9 @@ textarea{
 	</section>
 	</main>
 	<script type="text/javascript">
-	function boardList(){
-		location.href="ReviewController.do?command=detail&seq=${dto.seq}";
-
-	}
-</script>
- <script src="vendors/@popperjs/popper.min.js"></script>
+ 
+	</script>
+	  <script src="vendors/@popperjs/popper.min.js"></script>
     <script src="vendors/bootstrap/bootstrap.min.js"></script>
     <script src="vendors/is/is.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
@@ -231,5 +214,6 @@ textarea{
     <script src="assets/js/theme.js"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&amp;display=swap" rel="stylesheet">
+   
 </body>
 </html>

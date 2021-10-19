@@ -109,14 +109,17 @@ public class ReviewDao extends SqlMapConfig {
 		//4. 글수정 update 파라미터 받기
 		//수정할 컬럼: 제목, 내용, 작성일
 		//파라미터받을 목록 seq, 제목, 내용
-		public boolean upBoard(ReviewDto dto){
+		public boolean updateBoard(ReviewDto dto){
 			int count=0;
 			SqlSession sqlSession=null;
+			
 			try {
 				sqlSession=getSqlSessionFactory().openSession(true);
 				count=sqlSession.update(namespace+"updateboard", dto);
+			
+				
 			} 	catch (Exception e) {
-				System.out.println("JDBC실패:upBoard():"+getClass());
+				System.out.println("JDBC실패:updateBoard():"+getClass());
 				e.printStackTrace();
 			}finally {
 				sqlSession.close();
