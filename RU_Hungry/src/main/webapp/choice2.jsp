@@ -189,7 +189,7 @@
 						<th style="width:70px;"><input type="checkbox" name="all"
 							onclick="allSel(this.checked)" />번호</th>
 						<th>카테고리</th>
-						<th>제목</th>
+						<th>식당이름</th>
 						<th>작성자</th>
 						<th>작성일</th>
 					</tr>
