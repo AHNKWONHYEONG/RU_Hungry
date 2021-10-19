@@ -117,10 +117,7 @@
  		pageContext.forward("index.jsp");
  	}
 	
-	ReviewDao dao=new ReviewDao();
-	List<ReviewDto> list=dao.getBoardList();
-	request.setAttribute("list", list);
-
+ 	List<ReviewDto> list=(List<ReviewDto>)request.getAttribute("list");
 %>
 <script type="text/javascript">
 	//전체 체크박스 기능
@@ -169,7 +166,7 @@
 					ID:<%=udto.getId()%></h1>
 				<button class="btn1" type="button" onclick="showPopup()">location</button>
 				<br />
-				<button class="btn1" type="submit">Reset</button>
+				<button class="btn1" type="submit" onclick="location.href='choice.jsp'">Reset</button>
 				<br />
 
 				<button class="btn1" type="submit"
@@ -240,36 +237,32 @@
 		<div class="chk">
 			<form action='ReviewController.do' method="post">음식<br>
 			<input type="hidden" name="command" value="filter" /> 
-<!-- 			<input type="hidden" id="category" name="category" /> -->
-			<input type='checkbox' class='food'name="category" value='한식' />한식<br> 
-			<input type='checkbox' class='food'name="category" value='중식' />중식<br> 
-			<input type='checkbox' class='food'name="category" value='일식' />일식<br> 
-			<input type='checkbox' class='food'name="category" value='분식' />분식 <br>
-			<input type='checkbox' class='food'name="category" value='양식' />양식 <br> 
-			<input type='checkbox' class='food'name="category" value='패스트푸드' />패스트푸드 <br> 
+<!-- 			<input type="hidden" id="chk" name="category"  /> -->
+			<input type='checkbox' class='food' name="category" value='한식' />한식<br> 
+			<input type='checkbox' class='food' name="category" value='중식' />중식<br> 
+			<input type='checkbox' class='food' name="category" value='일식' />일식<br> 
+			<input type='checkbox' class='food' name="category" value='분식' />분식 <br>
+			<input type='checkbox' class='food' name="category" value='양식' />양식 <br> 
+			<input type='checkbox' class='food' name="category" value='패스트푸드' />패스트푸드 <br> 
 			<input type='submit' value="확인">
 			확인:<b id="sss"></b>
 			</form>
 			<script type="text/javascript">
 			$(function(){
 					$(".food").click(function(){
-						var category=[];
-// 						var category="";
+// 						var category=[];
+						var category="";
 						
 						$(".food").each(function(){
 							if($(this).is(":checked"))
-								category.push($(this).val());
-// 								category+=($(this).val());
+// 								category.push($(this).val());
+								category+=($(this).val());
 						});
 
-// 						$("#sss").text(category);
-// 						var test=$("#chk").value=category;
+						$("#sss").text(category);
+						var test=$("#chk").value=category;
 // 						console.log(category);
 // 						console.log(test);
-						var test=document.getElementById('sss').innerHTML=category;
-// 						console.log("sss="+test);
-// 						var test2=document.getElementById("category").value=test;
-// 						console.log("inputV="+test2);
 					
 // 						$.ajax({
 							
@@ -279,17 +272,7 @@
 // 							dataType:"json",
 // 							async:false,
 // 							success:function(obj){
-// 								var doc=$("#list");
-// 								for (var i=0; i<map["list"].lenght; i++){
-// 									var seq=map["list"][i]["seq"];
-// 									var categoty=map["list"][i]["categoty"];
-// 									var title=map["list"][i]["title"];
-// 									var id=map["list"][i]["id"];
-// 									var content=map["list"][i]["content"];
-// 									var regdate=map["list"][i]["regdate"];
-									
-// 									doc.innerHTML+="<td>"+seq+"</td><td>"+category+"</td><td>"+title+"</td><td>"+id+"</td><td>"+content+"</td><td>"+regdate+"</td>"
-// 								}
+								
 // 							},
 // 							error:function(){
 // 								alert("통신실패");

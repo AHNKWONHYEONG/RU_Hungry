@@ -2,6 +2,9 @@ package com.ruh.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +17,8 @@ import javax.servlet.http.HttpSession;
 import com.ruh.daos.ReviewDao;
 import com.ruh.dtos.ReviewDto;
 import com.ruh.dtos.UsersDto;
+
+import net.sf.json.JSONObject;
 
 @WebServlet("/ReviewController.do")
 public class ReviewController extends HttpServlet {
@@ -106,7 +111,6 @@ public class ReviewController extends HttpServlet {
 		
 		else if(command.equals("updateform")) {
 			String seq = request.getParameter("seq");
-								//글 상세조회:searchboard
 			ReviewDto dto=dao.searchBoard(Integer.parseInt(seq));
 			request.setAttribute("dto", dto);
 			
@@ -118,27 +122,28 @@ public class ReviewController extends HttpServlet {
 			String seq = request.getParameter("seq");
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
-			UsersDto sess= (UsersDto)session.getAttribute("ruhDto");
-			String id= sess.getId();
 			
 			int sseq = Integer.parseInt(seq);
-			System.out.println(sseq+title+content+id);
-			boolean isS=dao.updateBoard(new ReviewDto(sseq,title,id,content));
+			boolean isS=dao.updateBoard(new ReviewDto(sseq,title,content));
 			
 			if(isS) {
 				response.sendRedirect("ReviewController.do?command=detail&seq="+seq);
-			}else if(!isS){
-				String jsTag="<script type='text/javascript'>"
-						+	"alert('수정 권한이 없습니다.');"
-						+	"location.href='ReviewController.do?command=reviewlist';"
-						+ "</script>";
-				PrintWriter pw =response.getWriter();
-				pw.print(jsTag);
 			}else {
 				request.setAttribute("msg", "글수정실패");
 				RequestDispatcher dispatch=request.getRequestDispatcher("update.jsp");
 				dispatch.forward(request, response);
 			}
+		}
+		
+		else if(command.equals("filter")) {
+			String[] categorys=request.getParameterValues("category");
+			
+			List<ReviewDto> list=dao.filterlist(categorys);
+			
+			request.setAttribute("list", list);
+			RequestDispatcher dispatch=request.getRequestDispatcher("choice2.jsp");
+			dispatch.forward(request, response);
+			
 		}
 	
 	

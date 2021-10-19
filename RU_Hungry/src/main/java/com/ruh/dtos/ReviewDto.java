@@ -41,15 +41,10 @@ public class ReviewDto {
 		this.title = title;
 		this.content = content;
 	}
-	
-	
 
-	public ReviewDto(int seq, String title, String id, String content) {
+	public ReviewDto(String category) {
 		super();
-		this.seq = seq;
-		this.title = title;
-		this.id = id;
-		this.content = content;
+		this.category = category;
 	}
 
 	public int getSeq() {

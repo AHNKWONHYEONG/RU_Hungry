@@ -31,6 +31,19 @@ public class FoodDto {
 		this.category = category;
 	}
 	
+	public FoodDto(String id, String foodname, int spicy, int salty, int sour, int sweet, int hot, int cold,
+			String category) {
+		super();
+		this.id = id;
+		this.foodname = foodname;
+		this.spicy = spicy;
+		this.salty = salty;
+		this.sour = sour;
+		this.sweet = sweet;
+		this.hot = hot;
+		this.cold = cold;
+		this.category = category;
+	}
 	public FoodDto(String id) {
 		super();
 		this.id = id;

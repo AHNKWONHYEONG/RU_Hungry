@@ -43,6 +43,27 @@ public class ReviewDao extends SqlMapConfig {
 			return list;
 		}
 		
+		public List<ReviewDto> filterlist(String[] categorys){
+			List<ReviewDto> list=null;
+			SqlSession sqlSession=null;
+			try {
+				SqlSessionFactory sqlSessionFactory=getSqlSessionFactory();
+				
+				sqlSession=sqlSessionFactory.openSession(true);
+				Map<String, Object> map=new HashMap<>();
+				map.put("categorys", categorys);
+				list=sqlSession.selectList(namespace+"filter", map);
+				
+			} catch (Exception e) {
+				System.out.println("JDBC실패:filterlist:"+getClass());
+				e.printStackTrace();
+			}finally {
+				sqlSession.close();
+			}
+					
+			return list;
+		}
+		
 		//글목록의 페이지수 구하기
 //		public int getPCount(){
 //			int pcount=0;
@@ -112,14 +133,11 @@ public class ReviewDao extends SqlMapConfig {
 		public boolean updateBoard(ReviewDto dto){
 			int count=0;
 			SqlSession sqlSession=null;
-			
 			try {
 				sqlSession=getSqlSessionFactory().openSession(true);
 				count=sqlSession.update(namespace+"updateboard", dto);
-			
-				
 			} 	catch (Exception e) {
-				System.out.println("JDBC실패:updateBoard():"+getClass());
+				System.out.println("JDBC실패:upBoard():"+getClass());
 				e.printStackTrace();
 			}finally {
 				sqlSession.close();

@@ -12,6 +12,15 @@
 		SELECT SEQ ,CATEGORY ,TITLE ,ID ,CONTENT ,REGDATE 
 		FROM REVIEW
 	</select>
+	
+	<select id="filter"  resultType="reviewDto" parameterType="Map">
+		SELECT SEQ ,CATEGORY ,TITLE ,ID ,CONTENT ,REGDATE 
+		FROM REVIEW
+		WHERE CATEGORY IN 
+		<foreach collection="categorys" open="(" close=")" separator="," item="category">
+			#{category}
+		</foreach>
+	</select>
 
 	<select id="getboard" parameterType="int" resultType="reviewDto">
 		SELECT SEQ, CATEGORY, TITLE, ID, CONTENT, REGDATE
@@ -26,9 +35,19 @@
 	<update id="updateboard" parameterType="reviewDto">
 		UPDATE REVIEW
 		SET TITLE=#{title}, CONTENT=#{content}, REGDATE=SYSDATE
-		WHERE SEQ=#{seq} AND ID=#{id}
-		
+		WHERE SEQ=#{seq}
 	</update>
+	
+<!-- 	<select id="reviewboard"  resultType="reviewDto"> -->
+<!-- 		SELECT SEQ ,CATEGORY ,TITLE ,ID ,CONTENT ,REGDATE  -->
+<!-- 		FROM REVIEW -->
+<!-- 		<if test="categorys!=null"> -->
+<!-- 			WHERE CATEGORY IN  -->
+<!-- 			<foreach collection="categorys" open="(" close=")" separator="," item="category"> -->
+<!-- 				#{category} -->
+<!-- 			</foreach>		 -->
+<!-- 		</if> -->
+<!-- 	</select> -->
 </mapper>
 
 

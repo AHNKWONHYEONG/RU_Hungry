@@ -14,262 +14,29 @@ import com.ruh.dtos.UsersDto;
 
 public class FoodDao2 extends SqlMapConfig{
 	private String namespace="com.ruh.food.";// DataMapper와 연결
-	
-	public boolean insertFood0(FoodDto dto) {
-		int count=0;
-		SqlSession sqlsession=null;
-		
+
+	public boolean insertFood(String id,String foodname,int spicy,int salty,int sour,
+								int sweet,int hot,int cold,String category) {
+		int dto=0;
+		SqlSession sqlSession=null;
 		try {
-			sqlsession=getSqlSessionFactory().openSession(true);
-			count=sqlsession.insert(namespace+"0",dto);
+			Map<String, Object> map=new HashMap<>();
+			map.put("id", id);
+			map.put("foodname", foodname);
+			map.put("spicy", spicy);
+			map.put("salty", salty);
+			map.put("sour", sour);
+			map.put("sweet", sweet);
+			map.put("hot", hot);
+			map.put("cold", cold);
+			map.put("category", category);
+			sqlSession=getSqlSessionFactory().openSession(true);
+			dto=sqlSession.insert(namespace+"s", map); //쿼리 id 는 selectone
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			sqlsession.close();
+			sqlSession.close();
 		}
-		
-		return count>0?true:false;
+		return dto>0?true:false;
 	}
-	
-	public boolean insertFood1(FoodDto dto) {
-		int count=0;
-		SqlSession sqlsession=null;
-		
-		try {
-			sqlsession=getSqlSessionFactory().openSession(true);
-			count=sqlsession.insert(namespace+"1",dto);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			sqlsession.close();
-		}
-		
-		return count>0?true:false;
-	}
-	
-	public boolean insertFood2(FoodDto dto) {
-		int count=0;
-		SqlSession sqlsession=null;
-		
-		try {
-			sqlsession=getSqlSessionFactory().openSession(true);
-			count=sqlsession.insert(namespace+"2",dto);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			sqlsession.close();
-		}
-		
-		return count>0?true:false;
-	}
-	
-	public boolean insertFood3(FoodDto dto) {
-		int count=0;
-		SqlSession sqlsession=null;
-		
-		try {
-			sqlsession=getSqlSessionFactory().openSession(true);
-			count=sqlsession.insert(namespace+"3",dto);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			sqlsession.close();
-		}
-		
-		return count>0?true:false;
-	}
-	
-	public boolean insertFood4(FoodDto dto) {
-		int count=0;
-		SqlSession sqlsession=null;
-		
-		try {
-			sqlsession=getSqlSessionFactory().openSession(true);
-			count=sqlsession.insert(namespace+"4",dto);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			sqlsession.close();
-		}
-		
-		return count>0?true:false;
-	}
-	
-	public boolean insertFood5(FoodDto dto) {
-		int count=0;
-		SqlSession sqlsession=null;
-		
-		try {
-			sqlsession=getSqlSessionFactory().openSession(true);
-			count=sqlsession.insert(namespace+"5",dto);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			sqlsession.close();
-		}
-		
-		return count>0?true:false;
-	}
-	
-	public boolean insertFood6(FoodDto dto) {
-		int count=0;
-		SqlSession sqlsession=null;
-		
-		try {
-			sqlsession=getSqlSessionFactory().openSession(true);
-			count=sqlsession.insert(namespace+"6",dto);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			sqlsession.close();
-		}
-		
-		return count>0?true:false;
-	}
-	
-	public boolean insertFood7(FoodDto dto) {
-		int count=0;
-		SqlSession sqlsession=null;
-		
-		try {
-			sqlsession=getSqlSessionFactory().openSession(true);
-			count=sqlsession.insert(namespace+"7",dto);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			sqlsession.close();
-		}
-		
-		return count>0?true:false;
-	}
-	
-	public boolean insertFood8(FoodDto dto) {
-		int count=0;
-		SqlSession sqlsession=null;
-		
-		try {
-			sqlsession=getSqlSessionFactory().openSession(true);
-			count=sqlsession.insert(namespace+"8",dto);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			sqlsession.close();
-		}
-		
-		return count>0?true:false;
-	}
-	
-	public boolean insertFood9(FoodDto dto) {
-		int count=0;
-		SqlSession sqlsession=null;
-		
-		try {
-			sqlsession=getSqlSessionFactory().openSession(true);
-			count=sqlsession.insert(namespace+"9",dto);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			sqlsession.close();
-		}
-		
-		return count>0?true:false;
-	}
-	
-	public boolean insertFood10(FoodDto dto) {
-		int count=0;
-		SqlSession sqlsession=null;
-		
-		try {
-			sqlsession=getSqlSessionFactory().openSession(true);
-			count=sqlsession.insert(namespace+"10",dto);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			sqlsession.close();
-		}
-		
-		return count>0?true:false;
-	}
-	
-	public boolean insertFood11(FoodDto dto) {
-		int count=0;
-		SqlSession sqlsession=null;
-		
-		try {
-			sqlsession=getSqlSessionFactory().openSession(true);
-			count=sqlsession.insert(namespace+"11",dto);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			sqlsession.close();
-		}
-		
-		return count>0?true:false;
-	}
-	
-	public boolean insertFood12(FoodDto dto) {
-		int count=0;
-		SqlSession sqlsession=null;
-		
-		try {
-			sqlsession=getSqlSessionFactory().openSession(true);
-			count=sqlsession.insert(namespace+"12",dto);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			sqlsession.close();
-		}
-		
-		return count>0?true:false;
-	}
-	
-	public boolean insertFood13(FoodDto dto) {
-		int count=0;
-		SqlSession sqlsession=null;
-		
-		try {
-			sqlsession=getSqlSessionFactory().openSession(true);
-			count=sqlsession.insert(namespace+"13",dto);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			sqlsession.close();
-		}
-		
-		return count>0?true:false;
-	}
-	
-	public boolean insertFood14(FoodDto dto) {
-		int count=0;
-		SqlSession sqlsession=null;
-		
-		try {
-			sqlsession=getSqlSessionFactory().openSession(true);
-			count=sqlsession.insert(namespace+"14",dto);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			sqlsession.close();
-		}
-		
-		return count>0?true:false;
-	}
-	
-	public boolean insertFood15(FoodDto dto) {
-		int count=0;
-		SqlSession sqlsession=null;
-		
-		try {
-			sqlsession=getSqlSessionFactory().openSession(true);
-			count=sqlsession.insert(namespace+"15",dto);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			sqlsession.close();
-		}
-		
-		return count>0?true:false;
-	}
-	
-	
 }
