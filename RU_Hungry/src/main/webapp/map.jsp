@@ -106,23 +106,27 @@ function chooseRest() {
 		if(selectedGu.length==0)	{	//구 설정을 안할시 설정된 위치(구) 로
 			var myGU="";
 			myGU="<%= adto.getGu()%>";
-			selectedGu.push(myGU);
-			console.log(selectedGu);
+			var segu=[];
+			segu.push(myGU);
 		}
 		
 		$.ajax({
 			url: "MapController.do",
 			traditional:true,
-			data: {"command": "chooserest", "foodname":foodname , "gu":selectedGu },		// 같은이름으로 키값 보내서 get para values   맵퍼에서 foreach
+			data: {"command": "chooserest", "foodname":foodname , "gu":(selectedGu.length!=0) ? selectedGu: segu },		
 			method:"POST",
 			dataType: "JSON",
-			success: function(map) { //val은 db에서 select한 json
-//				var doc=document.getElementById("reslist");
+			success: function(map) { //map은 db에서 select한 dto 리스트를 담는 map(json)  
 				var doc=document.querySelectorAll("#reslist tbody")[0];
 				doc.innerHTML="";
 				var firstLat;
 				var firstIng;
 				
+					if(map["restlist"].length==0){
+						console.log("null입니다");
+					}
+// 					console.log(map["restlist"][0]["name"]);
+
 				for (var i = 0; i < map["restlist"].length; i++) {
 					var name=map["restlist"][i]["name"];
 					var foodname=map["restlist"][i]["foodname"];
@@ -142,13 +146,10 @@ function chooseRest() {
 						firstLat=parseFloat(lat);
 						firstIng=parseFloat(ing);
 					}
-					
-					
-					doc.innerHTML += "<tr><th>"+i +"</th><th>"+name +"</th><th>"+foodname +"</th><th>"+open+"~"+close +"</th><th>"+address +"</th><th><a href='index.jsp'>더보기</a></th></tr>"
-					
-					
+					doc.innerHTML += "<tr><th>"+i +"</th><th>"+name +"</th><th>"+foodname +"</th><th>"+open+"~"+close +"</th><th>"+address +"</th><th><a href='index.jsp'>더보기</a></th></tr>";
 					makemark(i,lat,ing);	//마커스 배열에 저장 푸쉬
 				}
+					
 				initMaps(firstLat,firstIng);
 				setMarkOnMap(map1);	//마커 배열을 지도에 표시
 			}
@@ -418,13 +419,13 @@ $(document).ready(function initmap() {			//페이지를 다 띄우면 온로드
  		</td>
  		</tr>
 			</table>
-			
-			<table  id="reslist" class="t4 resp_table shadow-lg table-striped">
+<!-- 			<div style="overflow: scroll; ;  height: 500px;  "> -->
+			<table style="display: block; overflow:auto; text-align: center;"  id="reslist" class="t4 resp_table shadow-lg table-striped" >
 				<col width="40px">
-				<col width="120px">
+				<col width="200px">
 				<col width="80px">
-				<col width="300px">
-				<col width="190px">
+				<col width="120px">
+				<col width="290px">
 				<col width="120px">
 			<thead>
 				<tr id="trlist" style="text-align: center;">
@@ -439,6 +440,7 @@ $(document).ready(function initmap() {			//페이지를 다 띄우면 온로드
 				<tbody></tbody>
 			
 			</table>
+<!-- 			</div> -->
 		</div>
 		
 
