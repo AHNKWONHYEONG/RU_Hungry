@@ -37,7 +37,9 @@
 	<select id="selectone" parameterType="map" resultType="foodDto">
 			SELECT FOODNAME FROM( SELECT * FROM FOOD WHERE ID=#{id} ORDER BY DBMS_RANDOM.RANDOM) WHERE ROWNUM=1
 	</select>
-	
+	<select id="returnfood" parameterType="map" resultType="foodDto">
+			SELECT * FROM (SELECT * FROM FOOD WHERE ID=#{id} AND FOODNAME=#{foodname} ORDER BY NUM DESC) WHERE ROWNUM=1
+	</select>
 
 
 	<update id="updatelocation" parameterType="map" >
@@ -53,4 +55,10 @@
 		<select id="selectrest" parameterType="map" resultType="restDto">
 		SELECT * FROM RESLIST WHERE (FOODNAME=#{foodname}) AND (GU IN  <foreach collection="gu" item="type" index="index" open="(" close=")" separator=",">#{type}</foreach>)
 	</select>
+	
+	<insert id="insertchosen" parameterType="foodDto">
+		INSERT INTO FOOD VALUES (FOOD_SEQ.nextval, #{id}, #{foodname}, #{spicy}, #{salty}, #{sour}, #{sweet}, #{hot}, #{cold}, #{category})
+	</insert>
+	
+	
 </mapper>

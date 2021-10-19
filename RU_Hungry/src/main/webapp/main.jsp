@@ -18,68 +18,57 @@
     <meta name="msapplication-TileImage" content="assets/img/favicons/mstile-150x150.png">
     <meta name="theme-color" content="#ffffff">
       <link href="assets/css/theme.css" rel="stylesheet" />
+      <%
+   UsersDto udto = (UsersDto)session.getAttribute("ruhDto");
+
+   if(udto==null){
+      pageContext.forward("index.jsp");
+   }
+%>
+<script type="text/javascript" src="jquery-3.6.0.js"></script>
 <script type="text/javascript">
 var imgArray = new Array();
+var randomNum;
+for (var i = 0; i < 38; i++) {
+	imgArray.push("img/rouletteimg/"+i+".JPG");
+}
+//index -> 음식이름 		사전
+var matchjson =  {	"0" : "LA갈비",	 "1" : "갈비찜",	 "2" : "김밥",	"3" : "김치찌개",	"4" : "꿔바로우",			
+		"5" : "나베",		"6" : "냉면",		"7" : "닭강정",		"8" : "닭발",		"9" : "덮밥",		"10" : "돈까스",
+		"11" : "된장찌개",		"12" : "떡볶이",		"13" : "리조또",		"14" : "마라탕",		"15" : "만두",		
+		"16" : "보쌈",		"17" : "삼겹살",		"18" : "샌드위치",		"19" : "샐러드",		"20" : "소바",
+		"21" : "스테이크",		"22" : "양장피",		"23" : "오돌뼈",		"24" : "족발",		"25" : "짜장면",		
+		"26" : "짬뽕",		"27" : "쭈꾸미",		"28" : "초밥",		"29" : "치킨",		"30" : "칼국수",
+		"31" : "콩국수",		"32" : "탕수육",		"33" : "토스트",		"34" : "파스타",		"35" : "피자",
+		"36" : "해물찜",		"37" : "햄버거",		"38" : "회" };		
 
-imgArray[0] = "img/wimg/0.jpg";
-imgArray[1] = "img/wimg/1.jpg";
-imgArray[2] = "img/wimg/2.jpg";
-imgArray[3] = "img/wimg/3.jpg";
-imgArray[4] = "img/wimg/4.jpg";
-imgArray[5] = "img/wimg/5.jpg";
-imgArray[6] = "img/wimg/6.jpg";
-imgArray[7] = "img/wimg/7.jpg";
-imgArray[8] = "img/wimg/8.jpg";
-imgArray[9] = "img/wimg/9.jpg";
-imgArray[10] = "img/wimg/10.jpg";
-imgArray[11] = "img/wimg/11.jpg";
-imgArray[12] = "img/wimg/12.jpg";
-imgArray[13] = "img/wimg/13.jpg";
-imgArray[14] = "img/wimg/14.jpg";
-imgArray[15] = "img/wimg/15.jpg";
-
-function funccc(){
+function recomm(){
+   randomNum =Math.floor(Math.random()*38);
+   var objImg = document.getElementById("introImg");
+   objImg.src = imgArray[randomNum];
    
-   
-   var imgNum = Math.round(Math.random()*15);
-   var objImg = document.getElementById("img");
-   objImg.src = imgArray[imgNum];
    let x = document.getElementsByClassName("quiz-text")[0];
-      x.innerText="Javascript"; 
-   if(imgNum==0){
-       x.innerText="오늘의 추천 메뉴: LA갈비"; 
-   }else if(imgNum==1){
-       x.innerText="오늘의 추천 메뉴: 치킨"; 
-   }else if(imgNum==2){
-       x.innerText="오늘의 추천 메뉴: 갈비찜"; 
-   }else if(imgNum==3){
-       x.innerText="오늘의 추천 메뉴: 삼겹살"; 
-   }else if(imgNum==4){
-       x.innerText="오늘의 추천 메뉴: 김치찌개"; 
-   }else if(imgNum==5){
-       x.innerText="오늘의 추천 메뉴: 나베"; 
-   }else if(imgNum==6){
-       x.innerText="오늘의 추천 메뉴: 돈까스"; 
-   }else if(imgNum==7){
-       x.innerText="오늘의 추천 메뉴: 짜장면"; 
-   }else if(imgNum==8){
-       x.innerText="오늘의 추천 메뉴: 칼국수"; 
-   }else if(imgNum==9){
-       x.innerText="오늘의 추천 메뉴: 피자"; 
-   }else if(imgNum==10){
-       x.innerText="오늘의 추천 메뉴: 파스타"; 
-   }else if(imgNum==11){
-       x.innerText="오늘의 추천 메뉴: 쭈꾸미"; 
-   }else if(imgNum==12){
-       x.innerText="오늘의 추천 메뉴: 초밥"; 
-   }else if(imgNum==13){
-       x.innerText="오늘의 추천 메뉴: 햄버거"; 
-   }else if(imgNum==14){
-       x.innerText="오늘의 추천 메뉴: 족발"; 
-   }else if(imgNum==15){
-       x.innerText="오늘의 추천 메뉴: 스테이크"; 
-   
+      x.innerText="Javascript";    
+      x.innerHTML="오늘의 추천 메뉴 : "+ matchjson[""+randomNum+""]+ "입니다";
 };
+
+function insertChosen() {
+	var foodname=matchjson[""+randomNum+""];
+	alert(foodname);
+	$.ajax({
+		url: "RouletteController.do",
+		traditional:true,
+		data: {"command": "insertchosen","foodname" : foodname },		
+		method:"POST",
+		dataType: "Text",
+		success: function(val) {	// val=foodname
+			alert(""+ val +"을 선택해 주셔서 감사합니다 " );
+		}
+		})
+}
+
+
+
 function showPopup() {
    alert("hi");
    window.open("location.jsp", "위치설정 팝업", "width=600, height=500, left=100, top=50");
@@ -179,30 +168,10 @@ function showPopup() {
 .td2{
    width:500px;
    }
-.b1{
-	position: absolute;
-	left:310px;
-	top:740px;
-   }
-.b2{
-	position: absolute;
-	left:675px;
-	top:740px;
-   }
-.b3{
-	position: absolute;
-	left:1050px;
-	top:740px;
-   }
+
 </style>
 </head>
-<%
-   UsersDto udto = (UsersDto)session.getAttribute("ruhDto");
 
-   if(udto==null){
-      pageContext.forward("index.jsp");
-   }
-%>
 <body>
   <main class="main" id="top">
       <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" data-navbar-on-scroll="data-navbar-on-scroll">
@@ -239,41 +208,26 @@ function showPopup() {
             
          
       </div>
-      
-<!--       <div class="randplay"> -->
-      
-<!--       <img id = "introImg" width="200px" height="150px" border="0"  -->
-<!--       src="randimg/Q.png"> -->
-<!--       <button onclick="funccc()">클릭~</button> -->
-<!--       <p> -->
-<!--          <span class="quiz-text">버튼을 클릭하세요.</span> -->
-<!--     </p> -->
-<!--       </div> -->
+
       
    <br />
 
    <div class="bbody">
    <div class="resp">
-   
-   <form action="RandController.do" method="post">
-	<input type="hidden" name="id" value="<%=udto.getId()%>"/>
-	<input id="rimage" type="hidden" name="img" value="image"/>	
    <table class="resp_table shadow-lg">
    <tr>
    <td class="td1">
    <h3 class="card-title mt-xl-5 mb-4"> Today Food recommendations<span class="text-primary"> for you!</span></h3>
    <h6><span class="quiz-text"></span></h6>
-   <div class="d-grid bottom-0"><button class="btn btn-lg btn-primary mt-xl-4" onclick="funccc()">Click!</button></div>
-   <div class="d-grid bottom-0"><input type="submit" class="btn btn-lg btn-primary mt-xl-2" value="I like it!"/></div>
+   <div class="d-grid bottom-0"><button type="button" class="btn btn-lg btn-primary mt-xl-4" onclick="recomm()">Click!</button></div>
+   <div class="d-grid bottom-0"><button type="button" class="btn btn-lg btn-primary mt-xl-2"  onclick="insertChosen()">I like it!</button></div>
    </td>
    <td class="td2">
-   <img class=" rounded-top rounded-md-end rounded-md-top-0" id = "img" width="500px" height="350px" border="0" 
+   <img class=" rounded-top rounded-md-end rounded-md-top-0" id = "introImg" width="500px" height="350px" border="0" 
       src="randimg/Q.png">
    </td>
    </tr>
    </table>
-   </form>
-   
    </div>
       <section class="py-0 bg-primary-gradient">
       <div class="container">
@@ -286,7 +240,6 @@ function showPopup() {
          <button type="button" class="btnbg1">
             <img class="shadow-icon" src="assets/img/gallery/meals.png" height="180" alt="..."  onclick="location.href='worldcup.jsp'"/>
          </button>
-         <h4><span class="b1 text-primary">Food WorldCup</span></h4>
          </div>
          </div>
          <div class="col-sm-6 col-md-3 mb-6">
@@ -294,7 +247,6 @@ function showPopup() {
          <button type="button" class="btnbg2">
             <img class="shadow-icon" src="assets/img/gallery/order.png" height="180" alt="..."  onclick="location.href='choice.jsp'"/>
          </button>
-         <h4><span class="b2 text-primary">Review</span></h4>
          </div>
          </div>
            <div class="row">
@@ -303,7 +255,6 @@ function showPopup() {
          <button type="button" class="btnbg3">
             <img class="shadow-icon" src="assets/img/gallery/location.png" height="180" alt="..." onclick="location.href='map.jsp'"/>
          </button>
-         <h4><span class="b3 text-primary">Map</span></h4>
          </div>
          </div>
          </div>
