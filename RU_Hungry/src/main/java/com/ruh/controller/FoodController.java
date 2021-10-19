@@ -31,8 +31,9 @@ public class FoodController extends HttpServlet {
 			String id = request.getParameter("id");
 			String img=request.getParameter("img");
 			
+			
 			if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/0.jpg")) {
-				boolean isS=dao.insertFood0(new FoodDto(id));
+				boolean isS=dao.insertFood(id, "LA갈비", 0, 1, 0, 1, 1, 0, "한식");
 				if(isS) {
 					response.sendRedirect("UsersController.do?command=worldcup");
 				}else {
@@ -46,7 +47,8 @@ public class FoodController extends HttpServlet {
 			}
 			
 			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/1.jpg")) {
-				boolean isS=dao.insertFood1(new FoodDto(id));
+//				VALUES(RUH_SEQ.nextval,#{id},'치킨',0,1,0,1,1,0,'패스트푸드')
+				boolean isS=dao.insertFood(id, "치킨", 0, 1, 0, 1, 1, 0, "패스트푸드");
 				if(isS) {
 					response.sendRedirect("UsersController.do?command=worldcup");
 				}else {
@@ -60,7 +62,9 @@ public class FoodController extends HttpServlet {
 			}
 			
 			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/2.jpg")) {
-				boolean isS=dao.insertFood2(new FoodDto(id));
+//				VALUES(RUH_SEQ.nextval,#{id},'갈비찜',0,1,0,1,1,0,'한식')
+
+				boolean isS=dao.insertFood(id, "갈비찜", 0, 1, 0, 1, 1, 0, "한식");
 				if(isS) {
 					response.sendRedirect("UsersController.do?command=worldcup");
 				}else {
@@ -74,7 +78,10 @@ public class FoodController extends HttpServlet {
 			}
 			
 			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/3.jpg")) {
-				boolean isS=dao.insertFood3(new FoodDto(id));
+
+//				VALUES(RUH_SEQ.nextval,#{id},'삼겹살',0,0,0,0,1,0,'한식')
+			
+				boolean isS=dao.insertFood(id, "삼겹살", 0, 0, 0, 0, 1, 0, "한식");
 				if(isS) {
 					response.sendRedirect("UsersController.do?command=worldcup");
 				}else {
@@ -88,7 +95,10 @@ public class FoodController extends HttpServlet {
 			}
 			
 			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/4.jpg")) {
-				boolean isS=dao.insertFood4(new FoodDto(id));
+
+//					VALUES(RUH_SEQ.nextval,#{id},'김치찌개',1,0,0,0,1,0,'한식')
+				
+				boolean isS=dao.insertFood(id, "김치찌개", 1, 0, 0, 0, 1, 0, "한식");
 				if(isS) {
 					response.sendRedirect("UsersController.do?command=worldcup");
 				}else {
@@ -102,7 +112,10 @@ public class FoodController extends HttpServlet {
 			}
 			
 			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/5.jpg")) {
-				boolean isS=dao.insertFood5(new FoodDto(id));
+
+//					VALUES(RUH_SEQ.nextval,#{id},'나베',0,1,0,1,1,0,'일식')
+				
+				boolean isS=dao.insertFood(id, "나베", 0, 1, 0, 1, 1, 0, "일식");
 				if(isS) {
 					response.sendRedirect("UsersController.do?command=worldcup");
 				}else {
@@ -116,7 +129,11 @@ public class FoodController extends HttpServlet {
 			}
 			
 			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/6.jpg")) {
-				boolean isS=dao.insertFood6(new FoodDto(id));
+
+//					VALUES(RUH_SEQ.nextval,#{id},'돈까스',0,0,0,0,1,0,'일식')
+
+					
+				boolean isS=dao.insertFood(id, "돈까스", 0, 0, 0, 0, 1, 0, "일식");
 				if(isS) {
 					response.sendRedirect("UsersController.do?command=worldcup");
 				}else {
@@ -130,7 +147,8 @@ public class FoodController extends HttpServlet {
 			}
 			
 			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/7.jpg")) {
-				boolean isS=dao.insertFood7(new FoodDto(id));
+//				VALUES(RUH_SEQ.nextval,#{id},'짜장면',0,1,0,0,1,0,'중식')
+				boolean isS=dao.insertFood(id, "짜장면", 0, 1, 0, 0, 1, 0, "중식");
 				if(isS) {
 					response.sendRedirect("UsersController.do?command=worldcup");
 				}else {
@@ -144,7 +162,10 @@ public class FoodController extends HttpServlet {
 			}
 			
 			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/8.jpg")) {
-				boolean isS=dao.insertFood8(new FoodDto(id));
+//				VALUES(RUH_SEQ.nextval,#{id},'칼국수',1,0,0,0,1,0,'한식')
+
+				
+				boolean isS=dao.insertFood(id, "칼국수", 1, 0, 0, 0, 1, 0, "한식");
 				if(isS) {
 					response.sendRedirect("UsersController.do?command=worldcup");
 				}else {
@@ -158,7 +179,10 @@ public class FoodController extends HttpServlet {
 			}
 			
 			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/9.jpg")) {
-				boolean isS=dao.insertFood9(new FoodDto(id));
+//				VALUES(RUH_SEQ.nextval,#{id},'피자',0,1,0,1,1,0,'패스트푸드')
+
+				
+				boolean isS=dao.insertFood(id, "피자", 0, 1, 0, 1, 1, 0, "패스트푸드");
 				if(isS) {
 					response.sendRedirect("UsersController.do?command=worldcup");
 				}else {
@@ -172,7 +196,10 @@ public class FoodController extends HttpServlet {
 			}
 			
 			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/10.jpg")) {
-				boolean isS=dao.insertFood10(new FoodDto(id));
+//				VALUES(RUH_SEQ.nextval,#{id},'파스타',0,1,0,1,1,0,'양식')
+
+				
+				boolean isS=dao.insertFood(id, "파스타", 0, 1, 0, 1, 1, 0, "양식");
 				if(isS) {
 					response.sendRedirect("UsersController.do?command=worldcup");
 				}else {
@@ -186,7 +213,10 @@ public class FoodController extends HttpServlet {
 			}
 			
 			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/11.jpg")) {
-				boolean isS=dao.insertFood11(new FoodDto(id));
+//				VALUES(RUH_SEQ.nextval,#{id},'쭈꾸미',1,1,0,0,1,0,'야식')
+
+				
+				boolean isS=dao.insertFood(id, "쭈꾸미", 1, 1, 0, 0, 1, 0, "야식");
 				if(isS) {
 					response.sendRedirect("UsersController.do?command=worldcup");
 				}else {
@@ -200,7 +230,10 @@ public class FoodController extends HttpServlet {
 			}
 			
 			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/12.jpg")) {
-				boolean isS=dao.insertFood12(new FoodDto(id));
+//				VALUES(RUH_SEQ.nextval,#{id},'초밥',0,0,1,1,0,1,'일식')
+
+				
+				boolean isS=dao.insertFood(id, "초밥", 0, 0, 1, 1, 0, 1, "일식");
 				if(isS) {
 					response.sendRedirect("UsersController.do?command=worldcup");
 				}else {
@@ -214,7 +247,10 @@ public class FoodController extends HttpServlet {
 			}
 			
 			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/13.jpg")) {
-				boolean isS=dao.insertFood13(new FoodDto(id));
+//				VALUES(RUH_SEQ.nextval,#{id},'햄버거',0,1,0,0,1,0,'패스트푸드')
+
+				
+				boolean isS=dao.insertFood(id, "햄버거", 0, 1, 0, 0, 1, 0, "패스트푸드");
 				if(isS) {
 					response.sendRedirect("UsersController.do?command=worldcup");
 				}else {
@@ -228,7 +264,10 @@ public class FoodController extends HttpServlet {
 			}
 			
 			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/14.jpg")) {
-				boolean isS=dao.insertFood14(new FoodDto(id));
+//				VALUES(RUH_SEQ.nextval,#{id},'족발',0,0,0,1,1,0,'야식')
+
+				
+				boolean isS=dao.insertFood(id, "족발", 0, 0, 0, 1, 1, 0, "야식");
 				if(isS) {
 					response.sendRedirect("UsersController.do?command=worldcup");
 				}else {
@@ -242,7 +281,8 @@ public class FoodController extends HttpServlet {
 			}
 			
 			else if(img.equals("http://localhost:8090/RU_Hungry/img/wimg/15.jpg")) {
-				boolean isS=dao.insertFood15(new FoodDto(id));
+//				VALUES(RUH_SEQ.nextval,#{id},'스테이크',0,1,0,0,1,0,'양식')
+				boolean isS=dao.insertFood(id, "스테이크", 0, 1, 0, 0, 1, 0, "양식");
 				if(isS) {
 					response.sendRedirect("UsersController.do?command=worldcup");
 				}else {

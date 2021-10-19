@@ -16,6 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
 <title>Insert title here</title>
+
 <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
@@ -109,19 +110,19 @@ li{
 	left:680px;
 	top:50px;	
 }
-.img1{
-position: absolute;
-	left:80px;
+.img1{ 
+	position: absolute; 
+	left:80px; 
+ 	top:50px; 
+
+} 
+
+.img2{ 
+ 	position: absolute; 
+ 	left:530px; 
 	top:50px;
 
-}
-
-.img2{
-position: absolute;
-	left:530px;
-	top:50px;
-
-}
+} 
 .versus{
 position:absolute;
 left:430px;
@@ -190,15 +191,14 @@ top:100px;
 			<h1 class="title1 card-title mt-xl-5 mb-4">MENU<span class="text-primary">    WORLDCUP</span></h1>	
 					<h1 class="text-800 mb-5 fs-4 title2" id="vs">16강</h1>
 		<div class="buttons">
-
-					
+	
 				
 			<form action="FoodController.do" method="post">
 				<input type="hidden" name="command" value="submit"/>
 				<input type="hidden" name="id" value="<%=udto.getId()%>"/>
 				<input id="simage" type="hidden" name="img" value="image"/>	
 				<img class="img1"id="image"  onclick="change(0)">
-				<h1 class="versus card-title mt-xl-5 mb-4">VS</h1>
+				<h1 class="versus card-title mt-xl-5 mb-4" id="vs2">VS</h1>
 				<img class="img2" id="images" onclick="change(1)">
 				<div >
 					<input class="btndeco" type="submit" value="등록" />
@@ -206,81 +206,85 @@ top:100px;
 				
 			</form>
 			<script type="text/javascript">				
-				text="";
-				var images=[];
-				var sImages=[];
-				
-				var cnt=0;
-				var num=0;
-				var sNum=0;
-				var cnt2=0;
+			text="";
+			var images=[];
+			var sImages=[];
 			
-				function show() {
-					
-					for (i=0; i<16; i++) {
-						images[i] = "img/wimg/"+[i]+".jpg";
-					}
-
-
+			var cnt=0;
+			var num=0;
+			var sNum=0;
+			var cnt2=0;
+		
+			function show() {
+				
+				for (i=0; i<16; i++) {
+					images[i] = "img/wimg/"+[i]+".jpg";
+				}
 					images.sort(function(a, b) {
 						return 0.5-Math.random()
 					});
-					showImg(num);
-				}
+				images.sort(function(a, b) {
+					return 0.5-Math.random()
+				});
+				showImg(num);
+			}
+		
+			show(0);
 			
-				show(0);
-				
-				function showImg(num) {
-					document.getElementById('image').src=images[num];
-					document.getElementById('images').src=images[num + 1];
-					cnt2++;
+			function showImg(num) {
+				document.getElementById('image').src=images[num];
+				document.getElementById('images').src=images[num + 1];
+				cnt2++;
 // 					console.log("cnt2:"+cnt2);
-// 					console.log("cnt:"+cnt);
+					console.log("cnt:"+cnt);
 // 					console.log("num:"+num);
 // 					console.log("snum:"+sNum);
-					var test=document.getElementById('image').src;
-					console.log("src="+test);
-					var test2=document.getElementById("simage").value=test;
-					console.log("src2="+test2);
-				}
-			
-				function change(n) {
-					if (cnt2<20) {
-						cnt++;
-						if (n==0)
-							sImages[sNum++]=images[num];
-						else
-							sImages[sNum++]=images[num + 1];
-						num+=2;
-						showImg(num);
-						if (cnt==images.length/2) {
-							for (i=0; i<sImages.length; i++) {
-								images[i]=sImages[i];
-								sImages[i]=null;
-							}
-							document.getElementById('vs').innerHTML=cnt+"강";
-							if(cnt==2){
-								document.getElementById('vs').innerHTML="결승";
-							}else if(cnt==1){
-								document.getElementById('vs').innerHTML="우승";
-								$("#images").hide();
-								$("#image").show(function(){
-									$(this).animate({
-										"width":500+"px",
-										"height":500+"px"
-									},2000,);									
-								});
-								console.log(images[0]);
-								
-							}
-							images.splice(cnt);
-							cnt=0;
-							num=0;
-							sNum=0;
-							showImg(num);
+				var test=document.getElementById('image').src;
+// 				console.log("src="+test);
+				var test2=document.getElementById("simage").value=test;
+// 				console.log("src2="+test2);
+// 				console.log(sImages.length);
+			}
+		
+			function change(n) {
+				if (cnt2<19) {
+					cnt++;
+					if (n==0)
+						sImages[sNum++]=images[num];
+					else
+						sImages[sNum++]=images[num + 1];
+					num+=2;
+					showImg(num);
+					if (cnt==images.length/2) {
+						for (i=0; i<sImages.length; i++) {
+							images[i]=sImages[i];
+							sImages[i]=null;
 						}
+						document.getElementById('vs').innerHTML=cnt+"강";
+						if(cnt==2){
+							document.getElementById('vs').innerHTML="결승";
+						}else if(cnt==1){
+							document.getElementById('vs').innerHTML="우승";
+// 							$("#images").hide();
+						}
+						else if(cnt==0){
+							$("#images").hide();
+							$("#image").show(function(){
+								$(this).animate({
+									"width":500+"px",
+									"height":500+"px"
+								},2000,);									
+							});
+ 							
+						}
+						images.splice(cnt);
+						cnt=0;
+						num=0;
+						sNum=0;
+						showImg(num);
 					}
 				}
+			}
 				
 				
 			</script>
