@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.ruh.config.SqlMapConfig;
+import com.ruh.dtos.ResListDto;
 import com.ruh.dtos.ReviewDto;
 
 //import com.hk.dtos.HkDto;
@@ -31,6 +32,33 @@ public class ReviewDao extends SqlMapConfig {
 				//selectList(쿼리id)실행하면 결과를 List로 반환해 준다.
 				list=sqlSession.selectList(namespace+"reviewboard");
 				
+//				sqlSession=getSqlSessionFactory().openSession(true);
+//				count=sqlSession.insert(nameSpace+"insertboard", dto);
+			} catch (Exception e) {
+				System.out.println("JDBC실패:reviewboard:"+getClass());
+				e.printStackTrace();
+			}finally {
+				sqlSession.close();
+			}
+					
+			return list;
+		}
+		
+		public List<ReviewDto> getBoardList(String title){
+			List<ReviewDto> list=new ArrayList<ReviewDto>();
+			SqlSession sqlSession=null;
+			System.out.println("getboard로 갓음");
+			try {
+				//SqlSessionFactory객체 구함
+				SqlSessionFactory sqlSessionFactory=getSqlSessionFactory();
+				
+				//SqlSessionFactory객체로 부터 SqlSession객체를 구해온다.
+				//이때 openSession(true)로 실행하면 autocommit->true로 설정
+				sqlSession=sqlSessionFactory.openSession(true);
+				//selectList(쿼리id)실행하면 결과를 List로 반환해 준다.
+				System.out.println(title);
+				list=sqlSession.selectList(namespace+"reviewtitle",title);
+				System.out.println("다오의 리스트"+list.isEmpty());
 //				sqlSession=getSqlSessionFactory().openSession(true);
 //				count=sqlSession.insert(nameSpace+"insertboard", dto);
 			} catch (Exception e) {
@@ -203,5 +231,26 @@ public class ReviewDao extends SqlMapConfig {
 				sqlSession.close();
 			}
 			return count>0?true:false;
+		}
+
+		public List<ResListDto> reslist(String title) {
+			List<ResListDto> dto=null;
+			SqlSession sqlSession=null;
+			
+			Map<String, String> map;
+			
+			try {
+				sqlSession=getSqlSessionFactory().openSession(true);
+				map = new HashMap<>();
+				map.put("title", title);
+				dto=sqlSession.selectList(namespace+"selectres", map); //쿼리 id 는 selectrest
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+		return dto;
+			
 		}
 }

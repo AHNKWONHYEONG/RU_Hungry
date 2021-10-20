@@ -118,6 +118,7 @@
  	}
 	
  	List<ReviewDto> list=(List<ReviewDto>)request.getAttribute("list");
+ 	
 %>
 <script type="text/javascript">
 	//전체 체크박스 기능

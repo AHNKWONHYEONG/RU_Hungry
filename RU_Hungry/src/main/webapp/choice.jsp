@@ -119,6 +119,8 @@
 	
 	ReviewDao dao=new ReviewDao();
 	List<ReviewDto> list=dao.getBoardList();
+	
+	
 	request.setAttribute("list", list);
 
 %>

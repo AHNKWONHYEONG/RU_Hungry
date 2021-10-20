@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ruh.daos.ReviewDao;
+import com.ruh.dtos.ResListDto;
 import com.ruh.dtos.ReviewDto;
 import com.ruh.dtos.UsersDto;
 
@@ -36,6 +37,17 @@ public class ReviewController extends HttpServlet {
 		
 		if(command.equals("reviewlist")) {
 			response.sendRedirect("choice.jsp");
+		}else if(command.equals("reviewlist2")) {
+			String title = request.getParameter("title");
+			System.out.println(title);
+			List<ReviewDto> list = dao.getBoardList(title);
+			System.out.println(list.isEmpty());
+			System.out.println(list.get(0));
+			request.setAttribute("list", list);
+			//자바객체를 고대로 전달할때는 forward, ajax요청을 응답할때는 json을 이용한 printwriter.
+			RequestDispatcher dispatch=request.getRequestDispatcher("choice2.jsp");
+			dispatch.forward(request, response);
+			
 		}
 		
 		

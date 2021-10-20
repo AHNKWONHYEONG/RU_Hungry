@@ -107,6 +107,15 @@ textarea{
 		pageContext.forward("index.jsp");
 	}
 %>
+<script type="text/javascript">
+	function caChk(){
+		alert("hi");
+		window.open("selectName.jsp", "위치설정 팝업", "width=400, height=400, left=100, top=50");
+		
+		var rname = <%=request.getParameter("name")%>;
+		alert(rname);
+	}
+</script>
 <body>
  <main class="main" id="top">
       <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" data-navbar-on-scroll="data-navbar-on-scroll">
@@ -152,14 +161,21 @@ textarea{
 			<form action="ReviewController.do" method="post">
 				<input type="hidden" name="command" value="addreview" />
 				<table class="resp_table shadow-lg" style="border:1px">
+					
 					<tr>
 						<th>카테고리</th>
-						<td class="td1"><input class="input1" type="text" name="category" /></td>
+						<td class="td1"><input class="input1" type="text" name="category" />
+						
+						</td>
+						
 					</tr>
 					<tr>
 						<th>제목</th>
-						<td class="td2"> <input class="input2" type="text" name="title" /></td>
+						<td class="td2"> <input class="input2" type="text" name="title" />
+						<button type="button" class="btnok" onclick="caChk()">검색</button><br/>
+						</td>
 					</tr>
+					
 					<tr>
 						<th>작성자</th>
 						<td class="td3"><input class="input3" type="text" name="id" value="<%=udto.getId()%>" readonly="readonly"/></td>
@@ -192,6 +208,7 @@ textarea{
 	</div>
 	</section>
 	</main>
+	
 	   <script src="vendors/@popperjs/popper.min.js"></script>
     <script src="vendors/bootstrap/bootstrap.min.js"></script>
     <script src="vendors/is/is.min.js"></script>

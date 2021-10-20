@@ -12,6 +12,11 @@
 		SELECT SEQ ,CATEGORY ,TITLE ,ID ,CONTENT ,REGDATE 
 		FROM REVIEW
 	</select>
+	<select id="reviewtitle" resultType="reviewDto" >
+		SELECT SEQ ,CATEGORY ,TITLE ,ID ,CONTENT ,REGDATE 
+		FROM REVIEW
+		WHERE TITLE=#{title}
+	</select>
 	
 	<select id="filter"  resultType="reviewDto" parameterType="Map">
 		SELECT SEQ ,CATEGORY ,TITLE ,ID ,CONTENT ,REGDATE 
@@ -37,6 +42,12 @@
 		SET TITLE=#{title}, CONTENT=#{content}, REGDATE=SYSDATE
 		WHERE SEQ=#{seq} AND ID=#{id}
 	</update>
+	
+	<select id="selectres" parameterType="map" resultType="restDto">
+		SELECT * FROM RESLIST
+		WHERE NAME LIKE '%' ||  #{title} || '%'
+		
+	</select>
 	
 <!-- 	<select id="reviewboard"  resultType="reviewDto"> -->
 <!-- 		SELECT SEQ ,CATEGORY ,TITLE ,ID ,CONTENT ,REGDATE  -->
