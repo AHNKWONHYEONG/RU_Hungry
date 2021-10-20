@@ -273,17 +273,7 @@ function showPopup() {
    </div>
    </section>
    </div>
-      <div class="chk">
-         <form action='a.jsp'>음식<br> 
-         <input type='checkbox' name='food' value='korean' />한식<br>
-         <input type='checkbox' name='food' value='chineese' />중식<br>
-         <input type='checkbox' name='food' value='japanese' />일식<br>
-         <input type='checkbox' name='food' value='boonsik' />분식 <br>
-         <input type='checkbox' name='food' value='yangsik' />양식 <br>
-         <input type='checkbox' name='food' value='fastfood' />패스트푸드 <br>
-         <input type='submit'>
-         </form>
-      </div>
+      
    </section>
       </main>
    <script src="vendors/@popperjs/popper.min.js"></script>
