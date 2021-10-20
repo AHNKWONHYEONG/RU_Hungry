@@ -7,7 +7,7 @@
 	
 	<insert id="s" parameterType="Map">
 		INSERT INTO FOOD 
-		VALUES(RUH_SEQ.nextval,#{id},#{foodname},#{spicy},#{salty},#{sour},#{sweet},#{hot},#{cold},#{category})
+		VALUES(FOOD_SEQ.nextval,#{id},#{foodname},#{spicy},#{salty},#{sour},#{sweet},#{hot},#{cold},#{category})
 	</insert>
 	
 	<select id="returnfood" parameterType="map" resultType="foodDto">
