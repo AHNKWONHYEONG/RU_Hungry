@@ -141,6 +141,9 @@ top:100px;
 	left:360px;
 	top:400px;
 }
+/* #menu2{ */
+/* 	display: none; */
+/* } */
 </style>
 </head>
 <%
@@ -178,7 +181,7 @@ top:100px;
             <h1 class="text-800 mb-5 fs-4">ID:<%=udto.getId()%></h1>
           <button class="btn1" type="button" onclick="showPopup()" >location</button>
             <br />
-         <button class="btn1" type="submit">Reset</button>
+         <button class="btn1" type="submit" onclick="location.href='worldcup.jsp'">Reset</button>
          <br />
          
          <button class="btn1" type="submit" onclick="location.href='index.jsp'">LogOut</button>
@@ -196,16 +199,27 @@ top:100px;
 			<form action="FoodController.do" method="post">
 				<input type="hidden" name="command" value="submit"/>
 				<input type="hidden" name="id" value="<%=udto.getId()%>"/>
-				<input id="simage" type="hidden" name="img" value="image"/>	
+				<input id="simage" type="hidden" name="img" />	
+<!-- 				<input id="smenu" type="hidden" name="foodname" /> -->
 				<img class="img1"id="image"  onclick="change(0)">
+<!-- 				<div id="menu2"></div> -->
 				<h1 class="versus card-title mt-xl-5 mb-4" id="vs2">VS</h1>
 				<img class="img2" id="images" onclick="change(1)">
+				
 				<div >
 					<input class="btndeco" type="submit" value="등록" />
 				</div>
 				
 			</form>
-			<script type="text/javascript">				
+			<script type="text/javascript">		
+			var matchjson =  {	"0" : "LA갈비",	 "1" : "갈비찜",	 "2" : "김밥",	"3" : "김치찌개",	"4" : "꿔바로우",			
+					"5" : "나베",		"6" : "냉면",		"7" : "닭강정",		"8" : "닭발",		"9" : "덮밥",		"10" : "돈까스",
+					"11" : "된장찌개",		"12" : "떡볶이",		"13" : "리조또",		"14" : "마라탕",		"15" : "만두",		
+					"16" : "보쌈",		"17" : "삼겹살",		"18" : "샌드위치",		"19" : "샐러드",		"20" : "소바",
+					"21" : "스테이크",		"22" : "양장피",		"23" : "오돌뼈",		"24" : "족발",		"25" : "짜장면",		
+					"26" : "짬뽕",		"27" : "쭈꾸미",		"28" : "초밥",		"29" : "치킨",		"30" : "칼국수",
+					"31" : "콩국수",		"32" : "탕수육",		"33" : "토스트",		"34" : "파스타",		"35" : "피자",
+					"36" : "해물찜",		"37" : "햄버거",		"38" : "회" };	
 			text="";
 			var images=[];
 			var sImages=[];
@@ -214,35 +228,49 @@ top:100px;
 			var num=0;
 			var sNum=0;
 			var cnt2=0;
-		
+			var randomNum;
+			
 			function show() {
 				
 				for (i=0; i<16; i++) {
-					images[i] = "img/wimg/"+[i]+".jpg";
+					images[i] = "img/wimg/"+[i]+".JPG";
 				}
 					images.sort(function(a, b) {
 						return 0.5-Math.random()
 					});
-				images.sort(function(a, b) {
-					return 0.5-Math.random()
-				});
+// 					randomNum =Math.floor(Math.random()*38);
+// 					var foodname=matchjson[""+randomNum+""];
+// 					console.log("foodname:"+foodname);
+// 				images.splice(16);
+// 				console.log("images:"+images);
 				showImg(num);
+				
 			}
 		
 			show(0);
 			
 			function showImg(num) {
+// 				randomNum =Math.floor(Math.random()*16);
 				document.getElementById('image').src=images[num];
 				document.getElementById('images').src=images[num + 1];
+// 				document.getElementById("menu2").innerHTML=matchjson[""+randomNum+""];
 				cnt2++;
-// 					console.log("cnt2:"+cnt2);
-					console.log("cnt:"+cnt);
-// 					console.log("num:"+num);
-// 					console.log("snum:"+sNum);
+				
+// 				console.log(images);
+// 				console.log("cnt2:"+cnt2);
+// 				console.log("cnt:"+cnt);
+// 				console.log("num:"+num);
+// 				console.log("snum:"+sNum);
+				
+// 				var fn=document.getElementById('menu2').innerHTML;
+// 				console.log("fn="+fn);
+// 				var sfn=document.getElementById('smenu').value=fn;
+// 				console.log("sfn="+sfn);
 				var test=document.getElementById('image').src;
-// 				console.log("src="+test);
+				console.log("src="+test);
 				var test2=document.getElementById("simage").value=test;
-// 				console.log("src2="+test2);
+// 				var test2=document.getElementById("simage").value=test;
+				console.log("src2="+test2);
 // 				console.log(sImages.length);
 			}
 		
@@ -267,16 +295,16 @@ top:100px;
 							document.getElementById('vs').innerHTML="우승";
 // 							$("#images").hide();
 						}
-						else if(cnt==0){
-							$("#images").hide();
-							$("#image").show(function(){
-								$(this).animate({
-									"width":500+"px",
-									"height":500+"px"
-								},2000,);									
-							});
+// 						else if(cnt==0){
+// 							$("#images").hide();
+// 							$("#image").show(function(){
+// 								$(this).animate({
+// 									"width":500+"px",
+// 									"height":500+"px"
+// 								},2000,);									
+// 							});
  							
-						}
+// 						}
 						images.splice(cnt);
 						cnt=0;
 						num=0;
@@ -292,17 +320,17 @@ top:100px;
 		</div>
 		</div>
 		</div>
-		<div class="chk">
-			<form action='a.jsp'>
-				음식<br> <input type='checkbox' name='food' value='korean' />한식
-				<br> <input type='checkbox' name='food' value='chineese' />중식
-				<br> <input type='checkbox' name='food' value='japanese' />일식
-				<br> <input type='checkbox' name='food' value='boonsik' />분식 <br>
-				<input type='checkbox' name='food' value='yangsik' />양식 <br> 
-				<input type='checkbox' name='food' value='fastfood' />패스트푸드 <br> 
-				<input type='submit'>
-			</form>
-		</div>
+<!-- 		<div class="chk"> -->
+<!-- 			<form action='a.jsp'> -->
+<!-- 				음식<br> <input type='checkbox' name='food' value='korean' />한식 -->
+<!-- 				<br> <input type='checkbox' name='food' value='chineese' />중식 -->
+<!-- 				<br> <input type='checkbox' name='food' value='japanese' />일식 -->
+<!-- 				<br> <input type='checkbox' name='food' value='boonsik' />분식 <br> -->
+<!-- 				<input type='checkbox' name='food' value='yangsik' />양식 <br>  -->
+<!-- 				<input type='checkbox' name='food' value='fastfood' />패스트푸드 <br>  -->
+<!-- 				<input type='submit'> -->
+<!-- 			</form> -->
+<!-- 		</div> -->
 	</section>
 	</main>
 	<script src="vendors/@popperjs/popper.min.js"></script>

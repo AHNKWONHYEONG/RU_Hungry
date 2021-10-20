@@ -39,4 +39,37 @@ public class FoodDao2 extends SqlMapConfig{
 		}
 		return dto>0?true:false;
 	}
+	
+	public int insertChosen(FoodDto returnfood) {
+		SqlSession sqlSession=null;
+		int count=0;
+		try {
+			sqlSession=getSqlSessionFactory().openSession(true);
+			count=sqlSession.insert(namespace+"s", returnfood); //쿼리 id 는 selectone
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		return count;
+	}
+
+
+	public FoodDto returnfood(String id, String foodname) {
+		FoodDto dto=null;
+		SqlSession sqlSession=null;
+		
+		try {
+			Map<String, String>map=new HashMap<>();
+			map.put("id", id);
+			map.put("foodname", foodname);
+			sqlSession=getSqlSessionFactory().openSession(true);
+			dto=sqlSession.selectOne(namespace+"returnfood", map); //쿼리 id 는 selectone
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		return dto;
+	}
 }

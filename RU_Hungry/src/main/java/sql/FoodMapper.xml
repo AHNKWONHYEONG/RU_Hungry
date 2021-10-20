@@ -9,7 +9,10 @@
 		INSERT INTO FOOD 
 		VALUES(RUH_SEQ.nextval,#{id},#{foodname},#{spicy},#{salty},#{sour},#{sweet},#{hot},#{cold},#{category})
 	</insert>
-
+	
+	<select id="returnfood" parameterType="map" resultType="foodDto">
+			SELECT * FROM (SELECT * FROM FOOD WHERE ID=#{id} AND FOODNAME=#{foodname} ) WHERE ROWNUM=1
+	</select>
 	
 </mapper>
 
