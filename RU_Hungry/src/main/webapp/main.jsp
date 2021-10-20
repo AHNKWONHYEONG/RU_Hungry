@@ -168,6 +168,21 @@ function showPopup() {
 .td2{
    width:500px;
    }
+   .b1{
+	position: absolute;
+	left:310px;
+	top:740px;
+   }
+.b2{
+	position: absolute;
+	left:675px;
+	top:740px;
+   }
+.b3{
+	position: absolute;
+	left:1050px;
+	top:740px;
+   }
 
 </style>
 </head>
@@ -180,15 +195,7 @@ function showPopup() {
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"> </span></button>
           <div class="collapse navbar-collapse border-top border-lg-0 my-2 mt-lg-0" id="navbarSupportedContent">
           
-            <div class="mx-auto pt-5 pt-lg-0 d-block d-lg-none d-xl-block">
-              <p class="mb-0 fw-bold text-lg-center">Deliver to: <i class="fas fa-map-marker-alt text-warning mx-2"></i><span class="fw-normal">Current Location </span><span>Mirpur 1 Bus Stand, Dhaka</span></p>
-            </div>
-            <form class="d-flex mt-4 mt-lg-0 ms-lg-auto ms-xl-0">
-              <div class="input-group-icon pe-2"><i class="fas fa-search input-box-icon text-primary"></i>
-                <input class="form-control border-0 input-box bg-100" type="search" placeholder="Search Food" aria-label="Search" />
-              </div>
-              <button class="btn btn-white shadow-warning text-warning" type="submit"> <i class="fas fa-user me-2"></i>Login</button>
-            </form>
+            
           </div>
         </div>
       </nav>
@@ -200,8 +207,7 @@ function showPopup() {
             <h1 class="text-800 mb-5 fs-4">ID:<%=udto.getId()%></h1>
           <button class="btn1" type="button" onclick="showPopup()" >location</button>
             <br />
-         <button class="btn1" type="submit">Reset</button>
-         <br />
+         
          
          <button class="btn1" type="submit" onclick="location.href='index.jsp'">LogOut</button>
          <br />
@@ -240,6 +246,7 @@ function showPopup() {
          <button type="button" class="btnbg1">
             <img class="shadow-icon" src="assets/img/gallery/meals.png" height="180" alt="..."  onclick="location.href='worldcup.jsp'"/>
          </button>
+         <h4><span class="b1 text-primary">Food WorldCup</span></h4>
          </div>
          </div>
          <div class="col-sm-6 col-md-3 mb-6">
@@ -247,6 +254,7 @@ function showPopup() {
          <button type="button" class="btnbg2">
             <img class="shadow-icon" src="assets/img/gallery/order.png" height="180" alt="..."  onclick="location.href='choice.jsp'"/>
          </button>
+           <h4><span class="b2 text-primary">Review</span></h4>
          </div>
          </div>
            <div class="row">
@@ -255,6 +263,7 @@ function showPopup() {
          <button type="button" class="btnbg3">
             <img class="shadow-icon" src="assets/img/gallery/location.png" height="180" alt="..." onclick="location.href='map.jsp'"/>
          </button>
+         <h4><span class="b3 text-primary">Map</span></h4>
          </div>
          </div>
          </div>
