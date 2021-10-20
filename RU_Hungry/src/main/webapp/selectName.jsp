@@ -57,18 +57,21 @@ function setRes() {
 				var gu=map["restlist"][i]["gu"];
 // 				var lat=map["restlist"][i]["lat"];
 // 				var ing=map["restlist"][i]["ing"];
-			
-				doc1.innerHTML+=" <tr><td>"+ "<a href='#' onclick='openopen(this)' >"+name+"</a>"+"</td><td>"+foodname+"</td><td>"+address+"</td><td>"+phone+"</td><td>"+si+"</td><td>"+gu+"</td></tr>";
+				var category=map["category"];
+				//alert("카테고리는"+category);
+				doc1.innerHTML+=" <tr><td>"+ "<a href='#' onclick='openopen(this,\""+category+"\")' >"+name+"</a>"+"</td><td>"+foodname+"</td><td>"+address+"</td><td>"+phone+"</td><td>"+si+"</td><td>"+gu+"</td></tr>";
 				
 			}
 		}
 	})
 	
 }
-function openopen(el) {
+function openopen(el,category) {
 	//el1= <a hre ,... >
 	var el1=el.textContent;
+	
 	opener.document.getElementsByName("title")[0].value=el1;
+	opener.document.getElementsByName("category")[0].value=category;
 	self.close();
 }
 

@@ -81,4 +81,24 @@ public class FoodDao extends SqlMapConfig{
 		}
 		return dto;
 	}
+
+
+	public FoodDto food2category(String food2category) {
+		FoodDto dto=null;
+		SqlSession sqlSession=null;
+		
+		try {
+			Map<String, String>map=new HashMap<>();
+			map.put("foodname", food2category);
+			
+			sqlSession=getSqlSessionFactory().openSession(true);
+			
+			dto=sqlSession.selectOne(namespace+"food2category", map); //쿼리 id 는 selectone
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		return dto;
+	}
 }

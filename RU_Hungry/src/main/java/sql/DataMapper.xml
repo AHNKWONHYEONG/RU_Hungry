@@ -60,5 +60,8 @@
 		INSERT INTO FOOD VALUES (FOOD_SEQ.nextval, #{id}, #{foodname}, #{spicy}, #{salty}, #{sour}, #{sweet}, #{hot}, #{cold}, #{category})
 	</insert>
 	
+	<select id="food2category" parameterType="map" resultType="foodDto">
+		SELECT * FROM (SELECT * FROM FOOD WHERE FOODNAME=#{foodname} ) WHERE ROWNUM=1
+	</select>
 	
 </mapper>

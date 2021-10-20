@@ -112,8 +112,8 @@ textarea{
 		alert("hi");
 		window.open("selectName.jsp", "위치설정 팝업", "width=400, height=400, left=100, top=50");
 		
-		var rname = <%=request.getParameter("name")%>;
-		alert(rname);
+
+	
 	}
 </script>
 <body>
@@ -164,25 +164,25 @@ textarea{
 					
 					<tr>
 						<th>카테고리</th>
-						<td class="td1"><input class="input1" type="text" name="category" />
+						<td class="td1"><input class="input1" type="text" readonly="readonly" name="category" required="required" />
 						
 						</td>
 						
 					</tr>
 					<tr>
 						<th>제목</th>
-						<td class="td2"> <input class="input2" type="text" name="title" />
+						<td class="td2"> <input class="input2" type="text" readonly="readonly" name="title" required="required"/>
 						<button type="button" class="btnok" onclick="caChk()">검색</button><br/>
 						</td>
 					</tr>
 					
 					<tr>
 						<th>작성자</th>
-						<td class="td3"><input class="input3" type="text" name="id" value="<%=udto.getId()%>" readonly="readonly"/></td>
+						<td class="td3"><input class="input3" type="text" name="id" value="<%=udto.getId()%>" readonly="readonly" required="required"/></td>
 					</tr>
 					<tr>
 						<th>내용</th>
-						<td class="td4"><textarea rows="10" cols="60" name="content"></textarea></td>
+						<td class="td4"><textarea rows="10" cols="60" name="content" required="required"></textarea></td>
 					</tr>
 					<tr>
 						<td colspan="2" style="padding-bottom: 15px;text-align: center;">
