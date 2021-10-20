@@ -24,7 +24,7 @@
     <meta name="theme-color" content="#ffffff">
       <link href="assets/css/theme.css" rel="stylesheet" />
 <script type="text/javascript" src="jquery-3.6.0.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCePJSFCOeZEfNI7b31h51yWJw4HXTgDT8&callback=initMap&region=kr"></script>
+<script asyn defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCePJSFCOeZEfNI7b31h51yWJw4HXTgDT8&callback=initMap&region=kr"></script>
 <%
 	UsersDto udto = (UsersDto)session.getAttribute("ruhDto");
 
@@ -321,15 +321,7 @@ $(document).ready(function initmap() {			//페이지를 다 띄우면 온로드
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"> </span></button>
           <div class="collapse navbar-collapse border-top border-lg-0 my-2 mt-lg-0" id="navbarSupportedContent">
           
-            <div class="mx-auto pt-5 pt-lg-0 d-block d-lg-none d-xl-block">
-              <p class="mb-0 fw-bold text-lg-center">Deliver to: <i class="fas fa-map-marker-alt text-warning mx-2"></i><span class="fw-normal">Current Location </span><span>Mirpur 1 Bus Stand, Dhaka</span></p>
-            </div>
-            <form class="d-flex mt-4 mt-lg-0 ms-lg-auto ms-xl-0">
-              <div class="input-group-icon pe-2"><i class="fas fa-search input-box-icon text-primary"></i>
-                <input class="form-control border-0 input-box bg-100" type="search" placeholder="Search Food" aria-label="Search" />
-              </div>
-              <button class="btn btn-white shadow-warning text-warning" type="submit"> <i class="fas fa-user me-2"></i>Login</button>
-            </form>
+            
           </div>
         </div>
       </nav>
@@ -340,8 +332,7 @@ $(document).ready(function initmap() {			//페이지를 다 띄우면 온로드
             width="150px" height="150px"> <br />
             <h1 class="text-800 mb-5 fs-4">ID:<%=udto.getId()%></h1>
           <button class="btn1" type="button" onclick="showPopup()" >location</button>
-            <br />
-         <button class="btn1" type="submit">Reset</button>
+        
          <br /> 
          
          <button class="btn1" type="submit" onclick="location.href='index.jsp'">LogOut</button>
