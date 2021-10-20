@@ -122,13 +122,22 @@ public class ReviewController extends HttpServlet {
 			String seq = request.getParameter("seq");
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
-			
+			UsersDto sess = (UsersDto)session.getAttribute("ruhDto");
+			String id = sess.getId();
 			int sseq = Integer.parseInt(seq);
-			boolean isS=dao.updateBoard(new ReviewDto(sseq,title,content));
+			boolean isS=dao.updateBoard(new ReviewDto(sseq,title,content,id));
 			
 			if(isS) {
 				response.sendRedirect("ReviewController.do?command=detail&seq="+seq);
-			}else {
+			}else if(!isS) {
+				String jsTag="<script type='text/javascript'>"
+						+	"alert('수정 권한이 없습니다.');"
+						+	"location.href='ReviewController.do?command=reviewlist';"
+						+ "</script>";
+				PrintWriter pw =response.getWriter();
+				pw.print(jsTag);
+			}
+			else {
 				request.setAttribute("msg", "글수정실패");
 				RequestDispatcher dispatch=request.getRequestDispatcher("update.jsp");
 				dispatch.forward(request, response);

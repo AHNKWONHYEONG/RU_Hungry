@@ -35,7 +35,7 @@
 	<update id="updateboard" parameterType="reviewDto">
 		UPDATE REVIEW
 		SET TITLE=#{title}, CONTENT=#{content}, REGDATE=SYSDATE
-		WHERE SEQ=#{seq}
+		WHERE SEQ=#{seq} AND ID=#{id}
 	</update>
 	
 <!-- 	<select id="reviewboard"  resultType="reviewDto"> -->

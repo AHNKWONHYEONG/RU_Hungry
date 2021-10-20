@@ -266,7 +266,6 @@ position: absolute;
 			<input type="email" name="email" class="form-control border-0 input-box bg-300" placeholder="이메일을 입력하세요"  required="required">
 			<div style="height:25px;"></div>
 			<button type="submit" class="submit btndeco btnsign" >회원가입</button>
-	
     </div>
     </div>
    	</div>
