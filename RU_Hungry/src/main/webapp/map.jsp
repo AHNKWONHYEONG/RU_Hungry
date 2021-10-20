@@ -80,6 +80,11 @@ var foodname;
 var sameFood;		//중복체크 
 var markers=[];
 
+function showPopup() {
+	   alert("hi");
+	   window.open("location.jsp", "위치설정 팝업", "width=600, height=500, left=100, top=50");
+	};
+
 function selectFood() {
 	$.ajax({
 		url: "MapController.do",
@@ -124,6 +129,7 @@ function chooseRest() {
 				
 					if(map["restlist"].length==0){
 						console.log("null입니다");
+						doc.innerHTML="<tr><th>"+"x" +"</th><th>"+"찾는 식당이없음" +"</th><th>"+"" +"</th><th>"+""+"다른 음식과"+"" +"</th><th>"+" 위치를 시도해보세요~" +"</th><th></th></tr>";
 					}
 // 					console.log(map["restlist"][0]["name"]);
 
@@ -146,7 +152,7 @@ function chooseRest() {
 						firstLat=parseFloat(lat);
 						firstIng=parseFloat(ing);
 					}
-					doc.innerHTML += "<tr><th>"+i +"</th><th>"+name +"</th><th>"+foodname +"</th><th>"+open+"~"+close +"</th><th>"+address +"</th><th><a href='index.jsp'>더보기</a></th></tr>";
+					doc.innerHTML += "<tr><th>"+i +"</th><th>"+name +"</th><th>"+foodname +"</th><th>"+open+"~"+close +"</th><th>"+address +"</th><th><a href='ReviewController.do?command=reviewlist2&title="+name+"'>더보기</a></th></tr>";
 					makemark(i,lat,ing);	//마커스 배열에 저장 푸쉬
 				}
 					
@@ -350,7 +356,7 @@ $(document).ready(function initmap() {			//페이지를 다 띄우면 온로드
  			  <td class="td1">
  			  <h3 class="card-title mt-xl-5 mb-4"> Today Food recommendations<span class="text-primary"> for you!</span></h3>
  			  <h6><span class="quiz-text"></span></h6>
- 			  <div class="d-grid bottom-0"><button class="btn btn-lg btn-primary mt-xl-4" onclick="selectFood()">추천받기 (받으면 사진띄움)</button></div>
+ 			  <div class="d-grid bottom-0"><button class="btn btn-lg btn-primary mt-xl-4" onclick="selectFood()">선호 기반 추천받기</button></div>
  			  <div class="d-grid bottom-0"><button class="btn btn-lg btn-primary mt-xl-2" onclick="chooseRest()">음식이 맘에들어~</button></div>
  			  </td>
  			  </tr>
@@ -369,7 +375,7 @@ $(document).ready(function initmap() {			//페이지를 다 띄우면 온로드
 			<table class="t3 resp_table shadow-lg">
 			<tr>
 			<td>
-			<div><h5 class="card-title mt-xl-2 mb-4"> 현재 나의 위치: <%=adto.getSi() %> - <%=adto.getGu() %></h5></div>
+			<div><h5 class="card-title mt-xl-2 mb-4"> 현재 나의 위치: <%=adto.getSi() %> - <%=adto.getGu() %></h5> <h6>  구 미설정시 현재 위치 기반으로 설정합니다</h6></div>
 		<div>
 		<select id="selgu"  onchange="mulgu()">
 			<option value="X" id="X">구를 선택하세요(최대 3개)</option>
@@ -425,7 +431,7 @@ $(document).ready(function initmap() {			//페이지를 다 띄우면 온로드
 					<th>음식</th>
 					<th>영업시간</th>
 					<th>주소</th>
-					<th>상세보기</th>
+					<th>리뷰보기</th>
 				</tr>
 				</thead>
 				<tbody></tbody>
